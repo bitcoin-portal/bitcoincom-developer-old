@@ -3,6 +3,8 @@
 node_modules
 yarn-error.log
 package-lock.json
+/src/data
+/temp
 
 # Build directory
 /public
