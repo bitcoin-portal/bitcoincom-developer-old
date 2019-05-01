@@ -1,6 +1,6 @@
 // @flow
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Well = styled.div`
   background-color: ${props => props.theme.primary100};
@@ -10,6 +10,6 @@ const Well = styled.div`
   border: 1px solid ${props => props.theme.primary200};
   border-radius: 4px;
   white-space: pre-line;
-`
+`;
 
-export default Well
+export default Well;

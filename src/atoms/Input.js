@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Input = styled.input`
   font-size: 18px;
@@ -16,6 +16,6 @@ const Input = styled.input`
   ::placeholder {
     color: ${props => props.theme.backgroundMuted};
   }
-`
+`;
 
-export default Input
+export default Input;

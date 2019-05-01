@@ -1,7 +1,7 @@
 // @flow
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const Li = styled.li``
+const Li = styled.li``;
 
-export default Li
+export default Li;

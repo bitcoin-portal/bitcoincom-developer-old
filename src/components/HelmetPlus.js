@@ -1,7 +1,7 @@
 // @flow
 
-import * as React from 'react'
-import Helmet from 'react-helmet'
+import * as React from 'react';
+import Helmet from 'react-helmet';
 
 // keywords on every page.
 const keywordsBase = [
@@ -15,7 +15,7 @@ const keywordsBase = [
   'blockchain development',
   'bitcoin development',
   'bch developer',
-]
+];
 
 type Props = {
   title: string,
@@ -24,11 +24,11 @@ type Props = {
   keywords?: string[],
   location: { pathname: string, origin: string },
   children?: React.Node,
-}
+};
 class HelmetPlus extends React.PureComponent<Props> {
   static defaultProps = {
     keywords: [],
-  }
+  };
 
   render() {
     const {
@@ -38,7 +38,7 @@ class HelmetPlus extends React.PureComponent<Props> {
       image,
       location,
       children,
-    } = this.props
+    } = this.props;
 
     return (
       <Helmet>
@@ -84,8 +84,8 @@ class HelmetPlus extends React.PureComponent<Props> {
         )}
         {children}
       </Helmet>
-    )
+    );
   }
 }
 
-export default HelmetPlus
+export default HelmetPlus;

@@ -1,26 +1,25 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import HelmetPlus from 'components/HelmetPlus'
-import { FaAndroid, FaApple, FaJs } from 'react-icons/fa'
-import InfoCard from 'components/InfoCard'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import HelmetPlus from 'components/HelmetPlus';
+import { FaAndroid, FaApple, FaJs } from 'react-icons/fa';
+import InfoCard from 'components/InfoCard';
 
-import Text from 'atoms/Text'
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
-import Button from 'atoms/Button'
-import Code from 'atoms/Code'
-import StyledLink from 'atoms/StyledLink'
-import { SmartLink } from 'atoms/StyledLink'
+import Text from 'atoms/Text';
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
+import Button from 'atoms/Button';
+import Code from 'atoms/Code';
+import { SmartLink } from 'atoms/StyledLink';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const CardLayout = styled.div`
   display: grid;
@@ -30,23 +29,23 @@ const CardLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
   `};
-`
+`;
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const HeroButtonLayout = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-`
+`;
 
 const HeroButtonItem = styled.div`
   margin-right: ${spacing.small};
   margin-bottom: ${spacing.small};
-`
+`;
 
 const PreviewLayout = styled.div`
   display: grid;
@@ -56,7 +55,7 @@ const PreviewLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
   `};
-`
+`;
 
 // const PreviewItem = styled.div`
 const ItemLayout = styled.div`
@@ -67,12 +66,12 @@ const ItemLayout = styled.div`
   ${media.medium`
     grid-column: 'span 2';
   `};
-`
+`;
 
 type ItemProps = {
   children: React.Node,
   to?: string,
-}
+};
 
 const PreviewItem = ({ children, to }: ItemProps) => (
   <ItemLayout>
@@ -83,18 +82,18 @@ const PreviewItem = ({ children, to }: ItemProps) => (
       </StyledLink>
     )}
   </ItemLayout>
-)
+);
 
 type Props = {
   location: Object,
   data: { heroImage: any },
-}
+};
 
 const SLPPage = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`SLP - ${data.site.siteMetadata.title}`}
-      description={'SLP based bitcoin.com developer platform and resources'}
+      description="SLP based bitcoin.com developer platform and resources"
       keywords={[
         'slp',
         'simple ledger protocol',
@@ -186,9 +185,9 @@ const SLPPage = ({ location, data }: Props) => (
       </PreviewLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default SLPPage
+export default SLPPage;
 
 export const query = graphql`
   query {
@@ -209,4 +208,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

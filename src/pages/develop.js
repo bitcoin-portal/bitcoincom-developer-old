@@ -1,25 +1,25 @@
 // @flow
 
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import InfoCard from 'components/InfoCard'
-import HelmetPlus from 'components/HelmetPlus'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import InfoCard from 'components/InfoCard';
+import HelmetPlus from 'components/HelmetPlus';
 
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const CardLayout = styled.div`
   display: grid;
@@ -29,20 +29,18 @@ const CardLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
   `};
-`
+`;
 
 type Props = {
   location: Object,
   data: { heroImage: any },
-}
+};
 
 const DevelopPage = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`Develop - ${data.site.siteMetadata.title}`}
-      description={
-        'Development hub for all your development needs to be successful on Bitcoin Cash (BCH)'
-      }
+      description="Development hub for all your development needs to be successful on Bitcoin Cash (BCH)"
       keywords={[
         'develop on bitcoin',
         'develop on bitcoin cash',
@@ -109,9 +107,9 @@ const DevelopPage = ({ location, data }: Props) => (
       </CardLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default DevelopPage
+export default DevelopPage;
 
 export const query = graphql`
   query {
@@ -132,4 +130,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

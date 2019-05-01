@@ -66,7 +66,18 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$/,
+        exclude: /(node_modules|cache|public)/,
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
   ],
-}
+};

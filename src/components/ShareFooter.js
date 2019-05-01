@@ -1,17 +1,17 @@
 // @flow
 
-import React from 'react'
-import styled from 'styled-components'
-import { FaReddit, FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa'
+import React from 'react';
+import styled from 'styled-components';
+import { FaReddit, FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa';
 
-import H3 from 'atoms/H3'
-import Text from 'atoms/Text'
-import { SmartLink } from 'atoms/StyledLink'
+import H3 from 'atoms/H3';
+import Text from 'atoms/Text';
+import { SmartLink } from 'atoms/StyledLink';
 
-import Container from 'components/Container'
+import Container from 'components/Container';
 
-import spacing from 'styles/spacing'
-import media from 'styles/media'
+import spacing from 'styles/spacing';
+import media from 'styles/media';
 
 const ShareLayout = styled.div`
   grid-template-columns: 1fr;
@@ -24,18 +24,18 @@ const ShareLayout = styled.div`
   ${media.medium`
     grid-template-columns: .5fr .5fr;
   `};
-`
+`;
 
 const EmailCTA = styled.div`
   display: grid;
   grid-gap: ${spacing.small};
-`
+`;
 
 const ShareCTA = styled.div`
   min-height: 75px;
   display: grid;
   align-content: end;
-`
+`;
 
 const SocialLinks = styled(H3)`
   justify-content: end;
@@ -43,55 +43,55 @@ const SocialLinks = styled(H3)`
   grid-template-columns: min-content min-content min-content min-content;
   grid-template-rows: 1fr;
   grid-gap: ${spacing.small};
-`
+`;
 
 type Props = {
   location: Object,
-}
+};
 
 const makeShareLink = (
   platform: 'reddit' | 'twitter' | 'facebook' | 'linkedin',
-  href: string
+  href: string,
 ) => {
   switch (platform) {
     case 'reddit':
-      return `http://www.reddit.com/submit/?url=${href}`
+      return `http://www.reddit.com/submit/?url=${href}`;
     case 'twitter':
-      return `https://twitter.com/intent/tweet/?text=Visit&url=${href}&via=bitcoincom&hashtags=programming,development,bitcoin,bitcoincash,bch`
+      return `https://twitter.com/intent/tweet/?text=Visit&url=${href}&via=bitcoincom&hashtags=programming,development,bitcoin,bitcoincash,bch`;
     case 'linkedin':
-      return `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=bitcoincom&source=https://developer.bitcoin.com&summary=developer.bitcoin.com`
+      return `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=bitcoincom&source=https://developer.bitcoin.com&summary=developer.bitcoin.com`;
     case 'facebook':
-      return `https://www.facebook.com/sharer/sharer.php?u=${href}`
+      return `https://www.facebook.com/sharer/sharer.php?u=${href}`;
     default:
-      return '/'
+      return '/';
   }
-}
+};
 
 class ShareFooter extends React.Component<Props> {
   componentDidMount() {
-    const om = document.createElement('script')
-    om.src = `https://a.optmnstr.com/app/js/api.min.js`
-    om.setAttribute('data-campaign', 'v8lwzo6nqacmgnulutqp')
-    om.setAttribute('data-user', '46652')
-    om.async = true
-    document.body.appendChild(om)
+    const om = document.createElement('script');
+    om.src = `https://a.optmnstr.com/app/js/api.min.js`;
+    om.setAttribute('data-campaign', 'v8lwzo6nqacmgnulutqp');
+    om.setAttribute('data-user', '46652');
+    om.async = true;
+    document.body.appendChild(om);
 
     if (window.omv8lwzo6nqacmgnulutqp) {
-      window.omv8lwzo6nqacmgnulutqp.reset()
+      window.omv8lwzo6nqacmgnulutqp.reset();
     }
 
     // Keep track of the script tag
-    this.scriptTag = om
+    this.scriptTag = om;
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this.scriptTag)
+    document.body.removeChild(this.scriptTag);
   }
 
   render() {
-    const { location } = this.props
+    const { location } = this.props;
 
-    const url = `https://developer.bitcoin.com${location.pathname}`
+    const url = `https://developer.bitcoin.com${location.pathname}`;
 
     return (
       <Container>
@@ -118,8 +118,8 @@ class ShareFooter extends React.Component<Props> {
           </ShareCTA>
         </ShareLayout>
       </Container>
-    )
+    );
   }
 }
 
-export default ShareFooter
+export default ShareFooter;

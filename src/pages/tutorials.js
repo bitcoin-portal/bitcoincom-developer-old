@@ -1,28 +1,28 @@
 // @flow
 
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import styled from 'styled-components'
+import * as React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import HelmetPlus from 'components/HelmetPlus'
-import InfoCard from 'components/InfoCard'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import HelmetPlus from 'components/HelmetPlus';
+import InfoCard from 'components/InfoCard';
 
-import { FaAngleLeft } from 'react-icons/fa'
+import { FaAngleLeft } from 'react-icons/fa';
 
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
-import StyledLink from 'atoms/StyledLink'
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
+import StyledLink from 'atoms/StyledLink';
 
-import spacing from 'styles/spacing'
-import media from 'styles/media'
+import spacing from 'styles/spacing';
+import media from 'styles/media';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const PreviewLayout = styled.div`
   display: grid;
@@ -32,7 +32,7 @@ const PreviewLayout = styled.div`
   ${media.medium`
     grid-template-columns: .7fr;
   `};
-`
+`;
 
 type Props = {
   location: Object,
@@ -51,18 +51,16 @@ type Props = {
       },
     },
   },
-}
+};
 
 const Tutorials = ({ location, data }: Props) => {
-  const tutorials = data.allMarkdownRemark.edges
+  const tutorials = data.allMarkdownRemark.edges;
 
   return (
     <DefaultLayout location={location}>
       <HelmetPlus
         title={`Tutorials - ${data.site.siteMetadata.title}`}
-        description={
-          'Tutorials for the building on Bitcoin Cash, utilizing the Bitbox and SLP SDKs'
-        }
+        description="Tutorials for the building on Bitcoin Cash, utilizing the Bitbox and SLP SDKs"
         keywords={[
           'bitcoin tutorials',
           'bitcoin cash tutorials',
@@ -99,10 +97,10 @@ const Tutorials = ({ location, data }: Props) => {
         </PreviewLayout>
       </Container>
     </DefaultLayout>
-  )
-}
+  );
+};
 
-export default Tutorials
+export default Tutorials;
 
 export const query = graphql`
   query TutorialsQuery {
@@ -142,4 +140,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

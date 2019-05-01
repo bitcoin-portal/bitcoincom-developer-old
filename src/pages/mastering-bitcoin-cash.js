@@ -1,48 +1,48 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import { FaAngleLeft } from 'react-icons/fa'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import { FaAngleLeft } from 'react-icons/fa';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import MasteringBitcoinCashAttribution from 'components/MasteringBitcoinCashAttribution'
-import HelmetPlus from 'components/HelmetPlus'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import MasteringBitcoinCashAttribution from 'components/MasteringBitcoinCashAttribution';
+import HelmetPlus from 'components/HelmetPlus';
 
-import H3 from 'atoms/H3'
-import H2 from 'atoms/H2'
-import H1 from 'atoms/H1'
-import StyledLink from 'atoms/StyledLink'
+import H3 from 'atoms/H3';
+import H2 from 'atoms/H2';
+import H1 from 'atoms/H1';
+import StyledLink from 'atoms/StyledLink';
 
-import spacing from 'styles/spacing'
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const PageLayout = styled.div`
   display: grid;
   margin-top: ${spacing.medium};
   grid-gap: ${spacing.small};
-`
+`;
 
 const ChapterLayout = styled.div`
   display: grid;
   grid-template-columns: max-content 1fr;
   grid-row-gap: ${spacing.tiny};
   grid-column-gap: ${spacing.tiny};
-`
+`;
 
 type Props = {
   location: Object,
   data: { heroImage: any, allMarkdownRemark: any },
-}
+};
 
 const Learn = ({ location, data }: Props) => {
-  const chapters = data.allMarkdownRemark.edges
+  const chapters = data.allMarkdownRemark.edges;
 
   return (
     <DefaultLayout location={location}>
@@ -50,9 +50,7 @@ const Learn = ({ location, data }: Props) => {
         title={`Mastering Bitcoin Cash - book - ${
           data.site.siteMetadata.title
         }`}
-        description={
-          'Learn all about Bitcoin Cash to take you from a beginner to expert.'
-        }
+        description="Learn all about Bitcoin Cash to take you from a beginner to expert."
         keywords={['mastering bitcoin cash', 'bitcoin cash book', 'free book']}
         location={location}
       />
@@ -96,10 +94,10 @@ const Learn = ({ location, data }: Props) => {
         </PageLayout>
       </Container>
     </DefaultLayout>
-  )
-}
+  );
+};
 
-export default Learn
+export default Learn;
 
 export const query = graphql`
   query MasteringBookQuery {
@@ -141,4 +139,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

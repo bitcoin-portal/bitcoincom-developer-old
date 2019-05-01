@@ -7,7 +7,6 @@ const titleMap = {
   slp: 'SLP',
   badger: 'Badger',
   other: 'Other',
-}
-export const getTitleDisplay = (product: string) => {
-  return titleMap[product] || titleMap['other']
-}
+};
+export const getTitleDisplay = (product: string) =>
+  titleMap[product] || titleMap.other;

@@ -1,33 +1,33 @@
 // @flow
-import * as React from 'react'
-import styled from 'styled-components'
-import rehypeReact from 'rehype-react'
-import { graphql } from 'gatsby'
-import { FaAngleLeft } from 'react-icons/fa'
+import * as React from 'react';
+import styled from 'styled-components';
+import rehypeReact from 'rehype-react';
+import { graphql } from 'gatsby';
+import { FaAngleLeft } from 'react-icons/fa';
 
-import HelmetPlus from 'components/HelmetPlus'
-import DefaultLayout from 'components/layouts/DefaultLayout.js'
-import Container from 'components/Container'
+import HelmetPlus from 'components/HelmetPlus';
+import DefaultLayout from 'components/layouts/DefaultLayout.js';
+import Container from 'components/Container';
 
-import StyledLink from 'atoms/StyledLink'
-import H2 from 'atoms/H2'
-import H3 from 'atoms/H3'
+import StyledLink from 'atoms/StyledLink';
+import H2 from 'atoms/H2';
+import H3 from 'atoms/H3';
 
-import spacing from 'styles/spacing'
-import { standardTransforms } from 'utils/markdown-helpers'
+import spacing from 'styles/spacing';
+import { standardTransforms } from 'utils/markdown-helpers';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     ...standardTransforms,
   },
-}).Compiler
+}).Compiler;
 
 const PageLayout = styled.div`
   display: grid;
   margin-top: ${spacing.medium};
   grid-gap: ${spacing.medium};
-`
+`;
 
 // too wide is hard to read, limit to some amount;
 const InsightHolder = styled.div`
@@ -42,17 +42,17 @@ const InsightHolder = styled.div`
   & > div > *:first-child {
     margin-top: 0 !important;
   }
-`
+`;
 
 type Props = {
   data: Object,
   location: Object,
-}
+};
 
 class InsightTemplate extends React.PureComponent<Props> {
   render() {
-    const { data, location } = this.props
-    const insight = data.markdownRemark
+    const { data, location } = this.props;
+    const insight = data.markdownRemark;
 
     return (
       <DefaultLayout location={location}>
@@ -81,11 +81,11 @@ class InsightTemplate extends React.PureComponent<Props> {
           </PageLayout>
         </Container>
       </DefaultLayout>
-    )
+    );
   }
 }
 
-export default InsightTemplate
+export default InsightTemplate;
 
 export const query = graphql`
   query InsightQuery($slug: String!) {
@@ -105,4 +105,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

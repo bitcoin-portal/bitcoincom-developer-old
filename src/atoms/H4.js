@@ -1,7 +1,7 @@
 // @flow
-import React from 'react'
+import React from 'react';
 
-import HeaderBase from './headerBase'
+import HeaderBase from './headerBase';
 
 const H4 = (props: any) => (
   <HeaderBase
@@ -10,6 +10,6 @@ const H4 = (props: any) => (
     fontSize={[18, 1.25]}
     {...props}
   />
-)
+);
 
-export default H4
+export default H4;

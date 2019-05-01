@@ -10,6 +10,6 @@ const palette = {
   tundora: '#444444',
   white: '#ffffff',
   silver: '#bbbbbb',
-}
+};
 
-export default palette
+export default palette;

@@ -1,27 +1,27 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import HelmetPlus from 'components/HelmetPlus'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import HelmetPlus from 'components/HelmetPlus';
 
-import Text from 'atoms/Text'
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
-import Button from 'atoms/Button'
-import StyledLink from 'atoms/StyledLink'
+import Text from 'atoms/Text';
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
+import Button from 'atoms/Button';
+import StyledLink from 'atoms/StyledLink';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const InstallCTA = styled.div`
   margin-top: ${spacing.medium};
@@ -29,7 +29,7 @@ const InstallCTA = styled.div`
   grid-auto-flow: dense;
   grid-template-columns: max-content;
   grid-gap: ${spacing.small};
-`
+`;
 
 const PreviewLayout = styled.div`
   display: grid;
@@ -39,7 +39,7 @@ const PreviewLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
   `};
-`
+`;
 
 const ItemLayout = styled.div`
   display: grid;
@@ -49,13 +49,13 @@ const ItemLayout = styled.div`
   ${media.medium`
     grid-column: ${props => (props.full ? 'span 2' : 'auto')};
   `};
-`
+`;
 
 type ItemProps = {
   children: React.Node,
   to?: string,
   full?: boolean,
-}
+};
 
 const PreviewItem = ({ children, to, full }: ItemProps) => (
   <ItemLayout full={full}>
@@ -66,18 +66,18 @@ const PreviewItem = ({ children, to, full }: ItemProps) => (
       </StyledLink>
     )}
   </ItemLayout>
-)
+);
 
 type Props = {
   location: Object,
   data: { heroImage: any },
-}
+};
 
 const GuiPage = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`GUI - ${data.site.siteMetadata.title}`}
-      description={'GUI based bitcoin.com developer platform and resources'}
+      description="GUI based bitcoin.com developer platform and resources"
       keywords={['gui']}
       location={location}
     />
@@ -140,9 +140,9 @@ const GuiPage = ({ location, data }: Props) => (
       </PreviewLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default GuiPage
+export default GuiPage;
 
 export const query = graphql`
   query {
@@ -163,4 +163,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -6,6 +6,6 @@ const spacing = {
   small2: '16px',
   medium: '24px',
   large: '64px',
-}
+};
 
-export default spacing
+export default spacing;

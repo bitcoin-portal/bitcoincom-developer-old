@@ -1,9 +1,9 @@
 // @flow
 
-import styled from 'styled-components'
-import { defaultProps } from 'recompose'
+import styled from 'styled-components';
+import { defaultProps } from 'recompose';
 
-import { textBase } from 'atoms/Text'
+import { textBase } from 'atoms/Text';
 
 const Pre = defaultProps({ monospace: true })(styled.span`
   ${textBase};
@@ -15,6 +15,6 @@ const Pre = defaultProps({ monospace: true })(styled.span`
   overflow-y: scroll;
   border-radius: 4px;
   margin-top: 12px;
-`)
+`);
 
-export default Pre
+export default Pre;

@@ -4,8 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 // Allow webpack to work with absolute paths
 exports.onCreateWebpackConfig = ({
@@ -18,85 +18,88 @@ exports.onCreateWebpackConfig = ({
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        'styled-components': path.resolve('./node_modules/styled-components'),
+      },
     },
-  })
-}
+  });
+};
 
 // Generate GraphQL Schema
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   // Deal with markdown files
   if (node.internal.type === `MarkdownRemark`) {
-    const filePath = createFilePath({ node, getNode })
-    const filename = filePath.split('/').slice(-2, -1)
+    const filePath = createFilePath({ node, getNode });
+    const filename = filePath.split('/').slice(-2, -1);
 
     // Split by type;
-    const isDoc = filePath.includes(`/docs/`)
-    const isTutorial = filePath.includes('/tutorials/')
-    const isInsight = filePath.includes('/insights/')
-    const isChapter = filePath.includes('/mastering-bitcoin-cash/')
-    let slug = filePath
+    const isDoc = filePath.includes(`/docs/`);
+    const isTutorial = filePath.includes('/tutorials/');
+    const isInsight = filePath.includes('/insights/');
+    const isChapter = filePath.includes('/mastering-bitcoin-cash/');
+    let slug = filePath;
 
     if (isDoc) {
-      let product = 'other'
+      let product = 'other';
 
       // get sdk
-      const isBitbox = filePath.includes('/bitbox/')
-      const isSlp = filePath.includes('/slp/')
-      const isGui = filePath.includes('/gui/')
-      const isRest = filePath.includes('/rest/')
-      const isBadger = filePath.includes('/badger/')
+      const isBitbox = filePath.includes('/bitbox/');
+      const isSlp = filePath.includes('/slp/');
+      const isGui = filePath.includes('/gui/');
+      const isRest = filePath.includes('/rest/');
+      const isBadger = filePath.includes('/badger/');
 
       // get platform
-      const isJs = filePath.includes('/js/')
-      const isAndroid = filePath.includes('/android/')
-      const isiOS = filePath.includes('/ios/')
+      const isJs = filePath.includes('/js/');
+      const isAndroid = filePath.includes('/android/');
+      const isiOS = filePath.includes('/ios/');
 
       if (isBitbox) {
-        slug = `/bitbox/docs/${filename}`
-        product = 'bitbox'
+        slug = `/bitbox/docs/${filename}`;
+        product = 'bitbox';
       }
       if (isSlp) {
         if (isJs) {
-          slug = `/slp/docs/js/${filename}`
+          slug = `/slp/docs/js/${filename}`;
         } else if (isAndroid) {
-          slug = `/slp/docs/android/${filename}`
+          slug = `/slp/docs/android/${filename}`;
         } else if (isiOS) {
-          slug = `/slp/docs/ios/${filename}`
+          slug = `/slp/docs/ios/${filename}`;
         } else {
-          slug = `/slp/docs/${filename}`
+          slug = `/slp/docs/${filename}`;
         }
-        product = 'slp'
+        product = 'slp';
       }
       if (isGui) {
-        slug = `/gui/docs/${filename}`
-        product = 'gui'
+        slug = `/gui/docs/${filename}`;
+        product = 'gui';
       }
       if (isRest) {
-        slug = `/rest/docs/${filename}`
-        product = 'rest'
+        slug = `/rest/docs/${filename}`;
+        product = 'rest';
       }
       if (isBadger) {
-        slug = `/badger/docs/${filename}`
-        product = 'badger'
+        slug = `/badger/docs/${filename}`;
+        product = 'badger';
       }
 
       createNodeField({
         node,
         name: `slug`,
         value: slug,
-      })
+      });
       createNodeField({
         node,
         name: `type`,
         value: 'docs',
-      })
+      });
       createNodeField({
         node,
         name: `product`,
         value: product,
-      })
+      });
     }
 
     if (isTutorial) {
@@ -104,12 +107,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         node,
         name: `slug`,
         value: slug,
-      })
+      });
       createNodeField({
         node,
         name: `type`,
         value: 'tutorial',
-      })
+      });
     }
 
     if (isInsight) {
@@ -117,12 +120,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         node,
         name: `slug`,
         value: slug,
-      })
+      });
       createNodeField({
         node,
         name: `type`,
         value: 'insight',
-      })
+      });
     }
 
     if (isChapter) {
@@ -130,18 +133,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         node,
         name: `slug`,
         value: slug,
-      })
+      });
       createNodeField({
         node,
         name: `type`,
         value: 'chapter',
-      })
+      });
     }
   }
-}
+};
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   // Query graphQL data
   const results = await graphql(`
@@ -190,12 +193,12 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
     }
-  `)
+  `);
 
   // Generate doc pages
-  const docs = results.data.docs.edges
+  const docs = results.data.docs.edges;
   docs.forEach(({ node }) => {
-    const { slug, product } = node.fields
+    const { slug, product } = node.fields;
     createPage({
       path: slug,
       component: path.resolve(`./src/templates/docPage.js`),
@@ -203,45 +206,45 @@ exports.createPages = async ({ graphql, actions }) => {
         slug,
         product,
       },
-    })
-  })
+    });
+  });
 
   // Generate tutorial pages
-  const tutorials = results.data.tutorials.edges
+  const tutorials = results.data.tutorials.edges;
   tutorials.forEach(({ node }) => {
-    const { slug } = node.fields
+    const { slug } = node.fields;
     createPage({
       path: slug,
       component: path.resolve('./src/templates/tutorialPage.js'),
       context: {
         slug,
       },
-    })
-  })
+    });
+  });
 
   // Generate insight pages
-  const insights = results.data.insights.edges
+  const insights = results.data.insights.edges;
   insights.forEach(({ node }) => {
-    const { slug } = node.fields
+    const { slug } = node.fields;
     createPage({
       path: slug,
       component: path.resolve('./src/templates/insightPage.js'),
       context: {
         slug,
       },
-    })
-  })
+    });
+  });
 
   // Generate mastering-bitcoin-cash pages
-  const chapters = results.data.chapters.edges
+  const chapters = results.data.chapters.edges;
   chapters.forEach(({ node }) => {
-    const { slug } = node.fields
+    const { slug } = node.fields;
     createPage({
       path: slug,
       component: path.resolve('./src/templates/chapterPage.js'),
       context: {
         slug,
       },
-    })
-  })
-}
+    });
+  });
+};

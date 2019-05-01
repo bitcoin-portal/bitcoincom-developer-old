@@ -1,41 +1,41 @@
 // @flow
-import * as React from 'react'
-import styled from 'styled-components'
-import rehypeReact from 'rehype-react'
-import { graphql } from 'gatsby'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import * as React from 'react';
+import styled from 'styled-components';
+import rehypeReact from 'rehype-react';
+import { graphql } from 'gatsby';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
-import HelmetPlus from 'components/HelmetPlus'
-import DefaultLayout from 'components/layouts/DefaultLayout.js'
-import Container from 'components/Container'
-import MasteringBitcoinCashAttribution from 'components/MasteringBitcoinCashAttribution'
+import HelmetPlus from 'components/HelmetPlus';
+import DefaultLayout from 'components/layouts/DefaultLayout.js';
+import Container from 'components/Container';
+import MasteringBitcoinCashAttribution from 'components/MasteringBitcoinCashAttribution';
 
-import StyledLink from 'atoms/StyledLink'
-import Text from 'atoms/Text'
-import H1 from 'atoms/H1'
-import H2 from 'atoms/H2'
+import StyledLink from 'atoms/StyledLink';
+import Text from 'atoms/Text';
+import H1 from 'atoms/H1';
+import H2 from 'atoms/H2';
 
-import spacing from 'styles/spacing'
+import spacing from 'styles/spacing';
 
-import { standardTransforms } from 'utils/markdown-helpers'
+import { standardTransforms } from 'utils/markdown-helpers';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
   components: {
     ...standardTransforms,
   },
-}).Compiler
+}).Compiler;
 
 type Props = {
   data: Object,
   location: Object,
-}
+};
 
 const PageLayout = styled.div`
   display: grid;
   margin-top: ${spacing.medium};
   grid-gap: ${spacing.small};
-`
+`;
 
 const ChapterNav = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ const ChapterNav = styled.div`
   padding-top: ${spacing.medium};
   justify-content: space-between;
   max-width: 820px;
-`
+`;
 
 // TODO: DRY this AST holder div elsewhere
 const ChapterHolder = styled.div`
@@ -58,22 +58,22 @@ const ChapterHolder = styled.div`
   & > div > *:first-child {
     margin-top: 0 !important;
   }
-`
+`;
 
 class ChapterTemplate extends React.PureComponent<Props> {
   render() {
-    const { data, location } = this.props
-    const chapterNode = data.markdownRemark
+    const { data, location } = this.props;
+    const chapterNode = data.markdownRemark;
 
-    const allChapters = data.allMarkdownRemark.edges
-    const currentChapter = chapterNode.frontmatter.chapter
+    const allChapters = data.allMarkdownRemark.edges;
+    const currentChapter = chapterNode.frontmatter.chapter;
 
     const prevChapter = allChapters.find(
-      item => item.node.frontmatter.chapter === currentChapter - 1
-    )
+      item => item.node.frontmatter.chapter === currentChapter - 1,
+    );
     const nextChapter = allChapters.find(
-      item => item.node.frontmatter.chapter === currentChapter + 1
-    )
+      item => item.node.frontmatter.chapter === currentChapter + 1,
+    );
 
     return (
       <DefaultLayout location={location}>
@@ -138,11 +138,11 @@ class ChapterTemplate extends React.PureComponent<Props> {
           </PageLayout>
         </Container>
       </DefaultLayout>
-    )
+    );
   }
 }
 
-export default ChapterTemplate
+export default ChapterTemplate;
 
 export const query = graphql`
   query ChapterQuery($slug: String!) {
@@ -179,4 +179,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

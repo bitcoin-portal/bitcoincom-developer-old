@@ -1,9 +1,9 @@
 // @flow
 
-import styled from 'styled-components'
-import spacing from 'styles/spacing'
+import styled from 'styled-components';
+import spacing from 'styles/spacing';
 
-import Li from './Li'
+import Li from './Li';
 
 const Ol = styled.ol`
   margin: 0;
@@ -13,6 +13,6 @@ const Ol = styled.ol`
   grid-gap: ${spacing.tiny};
   ${Li} {
   }
-`
+`;
 
-export default Ol
+export default Ol;

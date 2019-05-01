@@ -1,25 +1,25 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import HelmetPlus from 'components/HelmetPlus'
-import InfoCard from 'components/InfoCard'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import HelmetPlus from 'components/HelmetPlus';
+import InfoCard from 'components/InfoCard';
 
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const SectionLayout = styled.div`
   display: grid;
@@ -30,18 +30,18 @@ const SectionLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
   `};
-`
+`;
 
 type Props = {
   location: Object,
   data: { heroImage: any },
-}
+};
 
 const Faucet = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`Faucet - ${data.site.siteMetadata.title}`}
-      description={'Testnet BCH for developers'}
+      description="Testnet BCH for developers"
       keywords={[
         'bch faucet',
         'bitcoin cash faucet',
@@ -70,9 +70,9 @@ const Faucet = ({ location, data }: Props) => (
       </SectionLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default Faucet
+export default Faucet;
 
 export const query = graphql`
   query {
@@ -93,4 +93,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -1,27 +1,27 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import HelmetPlus from 'components/HelmetPlus'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import HelmetPlus from 'components/HelmetPlus';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
 
-import StyledLink, { SmartLink } from 'atoms/StyledLink'
-import Text from 'atoms/Text'
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
-import Button from 'atoms/Button'
+import StyledLink, { SmartLink } from 'atoms/StyledLink';
+import Text from 'atoms/Text';
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
+import Button from 'atoms/Button';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const InstallCTA = styled.div`
   margin-top: ${spacing.medium};
@@ -29,7 +29,7 @@ const InstallCTA = styled.div`
   grid-auto-flow: dense;
   grid-template-columns: max-content;
   grid-gap: ${spacing.small};
-`
+`;
 
 const PreviewLayout = styled.div`
   display: grid;
@@ -39,7 +39,7 @@ const PreviewLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(300px, .5fr));
   `};
-`
+`;
 
 const ItemLayout = styled.div`
   display: grid;
@@ -50,12 +50,12 @@ const ItemLayout = styled.div`
     grid-column: span 1;
     grid-template-rows: max-content max-content 1fr;
   `};
-`
+`;
 
 type ItemProps = {
   children: React.Node,
   to?: string,
-}
+};
 
 const PreviewItem = ({ children, to }: ItemProps) => (
   <ItemLayout>
@@ -68,7 +68,7 @@ const PreviewItem = ({ children, to }: ItemProps) => (
       </div>
     )}
   </ItemLayout>
-)
+);
 
 type Props = {
   location: Object,
@@ -80,15 +80,13 @@ type Props = {
     },
     heroImage: any,
   },
-}
+};
 
 const BadgerPage = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`Badger - ${data.site.siteMetadata.title}`}
-      description={
-        'Badger documentation, your gateway to the world of Bitcoin Cash (BCH) applications'
-      }
+      description="Badger documentation, your gateway to the world of Bitcoin Cash (BCH) applications"
       keywords={[
         'badger',
         'badger sdk',
@@ -135,9 +133,9 @@ const BadgerPage = ({ location, data }: Props) => (
       </PreviewLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default BadgerPage
+export default BadgerPage;
 
 export const query = graphql`
   query {
@@ -158,4 +156,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

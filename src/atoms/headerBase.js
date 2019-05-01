@@ -1,8 +1,8 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { textBase } from './Text'
-import media from '../styles/media'
+import { textBase } from './Text';
+import media from '../styles/media';
 
 const HeaderBase = styled.h1`
   ${textBase};
@@ -18,6 +18,6 @@ const HeaderBase = styled.h1`
     font-size: ${props => props.fontSize[0]}px;
     line-height: ${props => props.fontSize[1]}em;
     `};
-`
+`;
 
-export default HeaderBase
+export default HeaderBase;

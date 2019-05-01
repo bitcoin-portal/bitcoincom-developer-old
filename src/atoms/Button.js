@@ -1,6 +1,6 @@
 // @flow
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Button = styled.button`
   transition: all 0.15s;
@@ -21,6 +21,6 @@ const Button = styled.button`
     border-color: ${props => props.theme.primary600};
     color: ${props => props.theme.background};
   }
-`
+`;
 
-export default Button
+export default Button;

@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react'
+import * as React from 'react';
 
 // https://react-icons.netlify.com/#/
 
@@ -35,72 +35,72 @@ import {
   FaUserCircle,
   FaWallet,
   FaReact,
-} from 'react-icons/fa'
+} from 'react-icons/fa';
 
 // Whitelist of valid icons
 export const getIcon = (icon: string): React.Node => {
   switch (icon) {
     case 'android':
-      return <FaAndroid />
+      return <FaAndroid />;
     case 'ios':
-      return <FaApple />
+      return <FaApple />;
     case 'elipses':
-      return <FaEllipsisH />
+      return <FaEllipsisH />;
     case 'plus':
-      return <FaPlus />
+      return <FaPlus />;
     case 'home':
-      return <FaHome />
+      return <FaHome />;
     case 'js':
-      return <FaJs />
+      return <FaJs />;
     case 'terminal':
-      return <FaTerminal />
+      return <FaTerminal />;
     case 'file':
-      return <FaFile />
+      return <FaFile />;
     case 'wallet':
-      return <FaWallet />
+      return <FaWallet />;
     case 'qrcode':
-      return <FaQrcode />
+      return <FaQrcode />;
     case 'bitcoin':
-      return <FaBtc />
+      return <FaBtc />;
     case 'check':
-      return <FaCheck />
+      return <FaCheck />;
     case 'coins':
-      return <FaCoins />
+      return <FaCoins />;
     case 'cube':
-      return <FaCube />
+      return <FaCube />;
     case 'cubes':
-      return <FaCubes />
+      return <FaCubes />;
     case 'gamepad':
-      return <FaGamepad />
+      return <FaGamepad />;
     case 'link':
-      return <FaLink />
+      return <FaLink />;
     case 'key':
-      return <FaKey />
+      return <FaKey />;
     case 'buromobelexperte':
-      return <FaBuromobelexperte />
+      return <FaBuromobelexperte />;
     case 'code-branch':
-      return <FaCodeBranch />
+      return <FaCodeBranch />;
     case 'hdd':
-      return <FaHdd />
+      return <FaHdd />;
     case 'dollar-sign':
-      return <FaDollarSign />
+      return <FaDollarSign />;
     case 'exchange':
-      return <FaExchangeAlt />
+      return <FaExchangeAlt />;
     case 'code':
-      return <FaCode />
+      return <FaCode />;
     case 'plug':
-      return <FaPlug />
+      return <FaPlug />;
     case 'arrows-vertical':
-      return <FaArrowsAltV />
+      return <FaArrowsAltV />;
     case 'cogs':
-      return <FaCogs />
+      return <FaCogs />;
     case 'database':
-      return <FaDatabase />
+      return <FaDatabase />;
     case 'user-circle':
-      return <FaUserCircle />
+      return <FaUserCircle />;
     case 'react':
-      return <FaReact />
+      return <FaReact />;
     default:
-      return <FaAngleRight />
+      return <FaAngleRight />;
   }
-}
+};

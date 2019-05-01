@@ -1,11 +1,11 @@
 // @flow
 
-import styled from 'styled-components'
-import spacing from 'styles/spacing'
+import styled from 'styled-components';
+import spacing from 'styles/spacing';
 
-import Favicon from 'images/favicon.png'
+import Favicon from 'images/favicon.png';
 
-import Li from './Li'
+import Li from './Li';
 
 const Ul = styled.ul`
   margin: 0;
@@ -29,6 +29,6 @@ const Ul = styled.ul`
       background-size: contain;
     }
   }
-`
+`;
 
-export default Ul
+export default Ul;

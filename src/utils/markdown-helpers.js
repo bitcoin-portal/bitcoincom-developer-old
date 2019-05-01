@@ -1,11 +1,11 @@
 // @flow
-import * as React from 'react'
-import styled from 'styled-components'
-import { defaultProps } from 'recompose'
+import * as React from 'react';
+import styled from 'styled-components';
+import { defaultProps } from 'recompose';
 
-import { BadgerButton, BadgerBadge } from 'badger-components-react'
+import { BadgerButton, BadgerBadge } from 'badger-components-react';
 
-import { SmartLink } from 'atoms/StyledLink'
+import { SmartLink } from 'atoms/StyledLink';
 import {
   H1Md,
   H2Md,
@@ -16,50 +16,48 @@ import {
   OlMd,
   ImgMd,
   ThMd,
-} from 'atoms/markdownAtoms'
-import Li from 'atoms/Li'
-import Code from 'atoms/Code'
-import Pre from 'atoms/Pre'
-import Tip from 'atoms/Tip'
-import Caption from 'atoms/Caption'
+} from 'atoms/markdownAtoms';
+import Li from 'atoms/Li';
+import Code from 'atoms/Code';
+import Pre from 'atoms/Pre';
+import Tip from 'atoms/Tip';
+import Caption from 'atoms/Caption';
 
-import spacing from 'styles/spacing'
+import spacing from 'styles/spacing';
 
 type BasicProps = {
   children: React.Node,
-}
+};
 
 // Short use inline custom component, long use codeblock
 const CodePreSplitter = ({ children }: BasicProps) => {
   if (children && children[0].length > 25) {
-    return <Code fontSize={14}>{children}</Code>
+    return <Code fontSize={14}>{children}</Code>;
   }
-  return <Pre>{children}</Pre>
-}
+  return <Pre>{children}</Pre>;
+};
 
 type AnchorProps = {
   name: string,
   children?: React.Node,
-}
-const Anchor = ({ name, children }: AnchorProps) => {
-  return (
-    <div>
-      <a id={name}>{children}</a>
-    </div>
-  )
-}
+};
+const Anchor = ({ name, children }: AnchorProps) => (
+  <div>
+    <a id={name}>{children}</a>
+  </div>
+);
 
 const Spacer = styled.div`
   margin-top: ${props =>
     props.size === 'small' ? spacing.small : spacing.medium};
-`
+`;
 
 type ButtonProps = {
   price: string,
   repeattimeout: string,
   isrepeatable: string,
   watchaddress: string,
-}
+};
 // All props from markdown come in as strings
 class BadgerButtonTransform extends React.PureComponent<ButtonProps> {
   render() {
@@ -69,9 +67,9 @@ class BadgerButtonTransform extends React.PureComponent<ButtonProps> {
       isrepeatable,
       watchaddress,
       ...rest
-    } = this.props
-    const priceNumber = parseFloat(price)
-    const repeatTimeoutNumber = parseInt(repeattimeout)
+    } = this.props;
+    const priceNumber = parseFloat(price);
+    const repeatTimeoutNumber = parseInt(repeattimeout);
     return (
       <BadgerButton
         price={priceNumber}
@@ -80,17 +78,17 @@ class BadgerButtonTransform extends React.PureComponent<ButtonProps> {
         isRepeatable={isrepeatable}
         {...rest}
       />
-    )
+    );
   }
 }
 
-type BadgeProps = { price: string, repeatTimeout: string }
+type BadgeProps = { price: string, repeatTimeout: string };
 // All props from markdown come in as strings
 class BadgerBadgeTransform extends React.PureComponent<BadgeProps> {
   render() {
-    const { price, ...rest } = this.props
-    const priceNumber = parseFloat(price)
-    return <BadgerBadge price={priceNumber} {...rest} />
+    const { price, ...rest } = this.props;
+    const priceNumber = parseFloat(price);
+    return <BadgerBadge price={priceNumber} {...rest} />;
   }
 }
 export const standardTransforms = {
@@ -109,10 +107,10 @@ export const standardTransforms = {
   img: ImgMd,
   tip: Tip,
   link: SmartLink,
-  ['image-caption']: defaultProps({ center: true })(Caption),
-  ['table-caption']: Caption,
+  'image-caption': defaultProps({ center: true })(Caption),
+  'table-caption': Caption,
   spacer: Spacer,
   anchor: Anchor,
-  ['badger-button']: BadgerButtonTransform,
-  ['badger-badge']: BadgerBadgeTransform,
-}
+  'badger-button': BadgerButtonTransform,
+  'badger-badge': BadgerBadgeTransform,
+};

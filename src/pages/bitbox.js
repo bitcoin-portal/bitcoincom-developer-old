@@ -1,28 +1,28 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import HelmetPlus from 'components/HelmetPlus'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import HelmetPlus from 'components/HelmetPlus';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
 
-import StyledLink, { SmartLink } from 'atoms/StyledLink'
-import Text from 'atoms/Text'
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
-import Button from 'atoms/Button'
-import Code from 'atoms/Code'
+import StyledLink, { SmartLink } from 'atoms/StyledLink';
+import Text from 'atoms/Text';
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
+import Button from 'atoms/Button';
+import Code from 'atoms/Code';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const InstallCTA = styled.div`
   margin-top: ${spacing.medium};
@@ -30,7 +30,7 @@ const InstallCTA = styled.div`
   grid-auto-flow: dense;
   grid-template-columns: max-content;
   grid-gap: ${spacing.small};
-`
+`;
 
 const PreviewLayout = styled.div`
   display: grid;
@@ -40,7 +40,7 @@ const PreviewLayout = styled.div`
   ${media.medium`
     grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
   `};
-`
+`;
 
 const ItemLayout = styled.div`
   display: grid;
@@ -50,12 +50,12 @@ const ItemLayout = styled.div`
   ${media.medium`
     grid-column: 'span 2';
   `};
-`
+`;
 
 type ItemProps = {
   children: React.Node,
   to?: string,
-}
+};
 
 const PreviewItem = ({ children, to }: ItemProps) => (
   <ItemLayout>
@@ -66,18 +66,18 @@ const PreviewItem = ({ children, to }: ItemProps) => (
       </StyledLink>
     )}
   </ItemLayout>
-)
+);
 
 type Props = {
   location: Object,
   data: { heroImage: any },
-}
+};
 
 const BitboxPage = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`Bitbox - ${data.site.siteMetadata.title}`}
-      description={'Bitbox based bitcoin.com developer platform and resources'}
+      description="Bitbox based bitcoin.com developer platform and resources"
       keywords={['bitbox', 'bitbox sdk', 'learn bitbox', 'bitbox development']}
       location={location}
     />
@@ -95,7 +95,7 @@ const BitboxPage = ({ location, data }: Props) => (
           <SmartLink to="https://www.npmjs.com/package/bitbox-sdk">
             INSTALL VIA NPM
           </SmartLink>
-          <Code language="bash">{`npm install bitbox-sdk --global`}</Code>
+          <Code language="bash">npm install bitbox-sdk --global</Code>
           <StyledLink to="/bitbox/docs/getting-started">
             <Button round>Start Here</Button>
           </StyledLink>
@@ -287,9 +287,9 @@ BITBOX.Script.opcodes.OP_BIN2NUM
       </PreviewLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default BitboxPage
+export default BitboxPage;
 
 export const query = graphql`
   query {
@@ -310,4 +310,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

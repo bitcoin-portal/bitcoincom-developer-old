@@ -1,16 +1,16 @@
 // @flow
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import spacing from 'styles/spacing'
-import Text from 'atoms/Text'
+import spacing from 'styles/spacing';
+import Text from 'atoms/Text';
 
 const BalanceGrid = styled.div`
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: max-content;
   align-content: center;
-`
+`;
 
 const BalanceRow = styled.div`
   display: grid;
@@ -18,17 +18,17 @@ const BalanceRow = styled.div`
   grid-gap: ${spacing.large};
   background-color: ${props => props.theme.primary100};
   padding: 10px;
-`
+`;
 type Props = {
   title: string,
   data: {
     item: string,
     amount: number | string,
   }[],
-}
+};
 const BalanceDisplay = (props: Props) => {
-  const { title, data } = props
-  console.log(data)
+  const { title, data } = props;
+  console.log(data);
   return (
     <BalanceGrid>
       <Text bold center>
@@ -49,7 +49,7 @@ const BalanceDisplay = (props: Props) => {
         ))}
       </BalanceRow>
     </BalanceGrid>
-  )
-}
+  );
+};
 
-export default BalanceDisplay
+export default BalanceDisplay;

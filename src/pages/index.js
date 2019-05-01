@@ -1,27 +1,27 @@
 // @flow
 
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-import Img from 'gatsby-image'
+import Img from 'gatsby-image';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
 
-import Text from 'atoms/Text'
-import H3 from 'atoms/H3'
-import H2 from 'atoms/H2'
-import H1 from 'atoms/H1'
-import Button from 'atoms/Button'
-import Code from 'atoms/Code'
-import StyledLink, { SmartLink } from 'atoms/StyledLink'
+import Text from 'atoms/Text';
+import H3 from 'atoms/H3';
+import H2 from 'atoms/H2';
+import H1 from 'atoms/H1';
+import Button from 'atoms/Button';
+import Code from 'atoms/Code';
+import StyledLink, { SmartLink } from 'atoms/StyledLink';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
-import { FaCube, FaCogs, FaCreditCard, FaCartPlus } from 'react-icons/fa'
+import { FaCube, FaCogs, FaCreditCard, FaCartPlus } from 'react-icons/fa';
 
 const HeroLayout = styled.div`
   display: grid;
@@ -30,38 +30,38 @@ const HeroLayout = styled.div`
   ${media.medium`
     grid-template-columns: auto auto;
   `};
-`
+`;
 
 const HeroBlurbLayout = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   grid-gap: ${spacing.medium};
-`
+`;
 
 const HeroButtonLayout = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-`
+`;
 
 const HeroButtonItem = styled.div`
   margin-right: ${spacing.small};
   margin-bottom: ${spacing.small};
-`
+`;
 const SDKLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.small};
   grid-template-rows: repeat(5, min-content);
   align-content: end;
   justify-items: center;
-`
+`;
 
 const WhyDevelopLayout = styled.div`
   padding-top: ${spacing.large} !important;
   display: grid;
   grid-gap: ${spacing.medium};
   max-width: 900px;
-`
+`;
 
 const FeaturesLayout = styled.div`
   display: grid;
@@ -69,13 +69,13 @@ const FeaturesLayout = styled.div`
   grid-gap: ${spacing.medium};
   margin-top: ${spacing.large};
   margin-bottom: ${spacing.large};
-`
+`;
 
 const Feature = styled.div`
   display: grid;
   grid-template-rows: min-content min-content;
   grid-gap: ${spacing.small};
-`
+`;
 
 const GetStartedLayout = styled.div`
   grid-template-columns: 1fr;
@@ -86,7 +86,7 @@ const GetStartedLayout = styled.div`
   ${media.medium`
     grid-template-columns: .5fr .5fr;
   `};
-`
+`;
 
 const StartedInfo = styled.div`
   background-color: ${props => props.theme.background};
@@ -99,7 +99,7 @@ const StartedInfo = styled.div`
   grid-template-rows: min-content min-content 1fr min-content;
   justify-items: center;
   grid-gap: ${spacing.medium};
-`
+`;
 
 const BubbleImg = styled.div`
   width: 150px;
@@ -108,7 +108,7 @@ const BubbleImg = styled.div`
   border: 3px solid ${props => props.theme.primary};
   position: relative;
   overflow: hidden;
-`
+`;
 
 type Props = {
   location: Object,
@@ -118,7 +118,7 @@ type Props = {
     learnImage: any,
     bannerImage: any,
   },
-}
+};
 
 const IndexPage = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
@@ -276,9 +276,9 @@ const IndexPage = ({ location, data }: Props) => (
       </GetStartedLayout>
     </Hero>
   </DefaultLayout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
 
 export const query = graphql`
   query {
@@ -319,4 +319,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

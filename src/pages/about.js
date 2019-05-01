@@ -1,28 +1,28 @@
 // @flow
 
-import * as React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import { FaCube } from 'react-icons/fa'
+import * as React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import { FaCube } from 'react-icons/fa';
 
-import DefaultLayout from 'components/layouts/DefaultLayout'
-import Hero from 'components/Hero'
-import Container from 'components/Container'
-import HelmetPlus from 'components/HelmetPlus'
+import DefaultLayout from 'components/layouts/DefaultLayout';
+import Hero from 'components/Hero';
+import Container from 'components/Container';
+import HelmetPlus from 'components/HelmetPlus';
 
-import Code from 'atoms/Code'
-import Text from 'atoms/Text'
-import H3 from 'atoms/H3'
-import H1 from 'atoms/H1'
-import { SmartLink } from 'atoms/StyledLink'
+import Code from 'atoms/Code';
+import Text from 'atoms/Text';
+import H3 from 'atoms/H3';
+import H1 from 'atoms/H1';
+import { SmartLink } from 'atoms/StyledLink';
 
-import media from 'styles/media'
-import spacing from 'styles/spacing'
+import media from 'styles/media';
+import spacing from 'styles/spacing';
 
 const HeroLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
-`
+`;
 
 const AboutLayout = styled.div`
   display: grid;
@@ -32,29 +32,27 @@ const AboutLayout = styled.div`
   ${media.medium`
     grid-template-columns: 1fr 1fr;
   `};
-`
+`;
 
-const Item = styled.div``
+const Item = styled.div``;
 
 const InstallCTA = styled.div`
   display: grid;
   grid-gap: ${spacing.small};
   align-content: end;
   justify-items: center;
-`
+`;
 
 type Props = {
   location: Object,
   data: { heroImage: any },
-}
+};
 
 const About = ({ location, data }: Props) => (
   <DefaultLayout location={location}>
     <HelmetPlus
       title={`About  - ${data.site.siteMetadata.title}`}
-      description={
-        'Bitcoin.com developer platform.  Developer Tooling, Resources, Cloud, and Market'
-      }
+      description="Bitcoin.com developer platform.  Developer Tooling, Resources, Cloud, and Market"
       keywords={['about page']}
       location={location}
     />
@@ -123,9 +121,9 @@ const About = ({ location, data }: Props) => (
       </AboutLayout>
     </Container>
   </DefaultLayout>
-)
+);
 
-export default About
+export default About;
 
 export const query = graphql`
   query {
@@ -146,4 +144,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

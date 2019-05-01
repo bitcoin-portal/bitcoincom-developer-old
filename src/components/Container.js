@@ -1,7 +1,7 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import media from 'styles/media'
+import media from 'styles/media';
 
 const Container = styled.div`
   width: 98%;
@@ -12,6 +12,6 @@ const Container = styled.div`
     padding: 0;
     margin: 0 auto;
   `};
-`
+`;
 
-export default Container
+export default Container;

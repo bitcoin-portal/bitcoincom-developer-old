@@ -1,10 +1,10 @@
 // @flow
-import * as React from 'react'
+import * as React from 'react';
 
-import Text from 'atoms/Text'
-import { SmartLink } from 'atoms/StyledLink'
+import Text from 'atoms/Text';
+import { SmartLink } from 'atoms/StyledLink';
 
-type Props = {}
+type Props = {};
 
 class MasteringBitcoinCashAttribution extends React.PureComponent<Props> {
   render() {
@@ -23,8 +23,8 @@ class MasteringBitcoinCashAttribution extends React.PureComponent<Props> {
           Creative Commons Attribution-ShareAlike
         </SmartLink>
       </Text>
-    )
+    );
   }
 }
 
-export default MasteringBitcoinCashAttribution
+export default MasteringBitcoinCashAttribution;
