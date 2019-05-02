@@ -10,7 +10,6 @@ import Container from 'components/Container';
 const Main = styled.div`
   padding: ${spacing.medium};
   position: relative;
-  background-color: ${props => props.theme.foreground};
   padding: ${spacing.large} 0;
 `;
 
@@ -30,7 +29,6 @@ const Cover = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(25, 25, 25, 0.75);
   z-index: 0;
 `;
 
@@ -46,24 +44,11 @@ type Props = {
 
 class Hero extends React.PureComponent<Props> {
   render() {
-    const { image } = this.props;
+    const { image, children } = this.props;
     return (
       <Main>
-        {image.childImageSharp && (
-          <Img
-            imgStyle={{ objectPosition: 'top center' }}
-            style={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
-            }}
-            fluid={image.childImageSharp.fluid}
-          />
-        )}
         <Cover />
-        <Content>{this.props.children}</Content>
+        <Content>{children}</Content>
         <Flourish />
       </Main>
     );

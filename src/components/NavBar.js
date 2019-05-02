@@ -1,36 +1,50 @@
 // @flow
 
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
 import Container from 'components/Container';
-import spacing from 'styles/spacing';
 
-import { textBase } from 'atoms/Text';
+import { theme } from 'bitcoincom-storybook';
 
 const Main = styled.div`
   position: sticky;
   top: 0;
-  background-color: ${props => props.theme.foreground};
+  background-color: #2d323b;
   z-index: 999;
-  padding: ${spacing.small2};
+  padding: ${theme.spacing.unit * 2}px;
+  text-align: center;
 `;
 
 const NavLayout = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 `;
 
 const NavItem = styled(Link)`
-  ${textBase};
-  color: ${props =>
-    props.isActive ? props.theme.primary : props.theme.background};
+  position: relative;
+  color: ${theme.palette.text.contrast};
   text-decoration: none;
-  margin-right: ${spacing.medium};
+  padding: 0 ${theme.spacing.unit * 2}px;
   &:hover {
     color: ${props => props.theme.primary600};
   }
+
+  ${props =>
+    props.isActive &&
+    css`
+      &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        background-color: ${theme.palette.primary.main};
+        width: 100%;
+        left: 0;
+        bottom: -${theme.spacing.unit * 2}px;
+      }
+    `}
 `;
 
 type Props = {
@@ -69,25 +83,21 @@ class NavBar extends React.PureComponent<Props> {
       false,
     );
     const aboutActive = pathname.includes('/about');
-    const faqActive = pathname.includes('/faq');
+    // const faqActive = pathname.includes('/faq');
     return (
       <Main>
         <Container>
           <NavLayout>
-            <NavItem monospace="true" to="/" isActive={homeActive}>
+            <NavItem to="/" isActive={homeActive}>
               Home
             </NavItem>
-            <NavItem monospace="true" to="/learn" isActive={learnActive}>
+            <NavItem to="/learn" isActive={learnActive}>
               Learn
             </NavItem>
-            <NavItem
-              monospace="true"
-              to="/develop"
-              isActive={developActive && !learnActive}
-            >
+            <NavItem to="/develop" isActive={developActive && !learnActive}>
               Develop
             </NavItem>
-            <NavItem monospace="true" to="/about" isActive={aboutActive}>
+            <NavItem to="/about" isActive={aboutActive}>
               About
             </NavItem>
           </NavLayout>

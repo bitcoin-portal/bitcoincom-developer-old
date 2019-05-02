@@ -5,7 +5,7 @@ import rehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { FaAngleLeft } from 'react-icons/fa';
 
-import DefaultLayout from 'components/layouts/DefaultLayout.js';
+import DefaultLayout from 'components/layouts/DefaultLayout';
 import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
 

@@ -2150,7 +2150,7 @@ bindings@^1.3.1:
 
 "bitcoincom-universal@git+ssh://git@github.com/bitcoin-portal/bitcoincom-universal.git":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/bitcoin-portal/bitcoincom-universal.git#01a503ca96ad07be22d98f2e8a240e1a11d7724f"
+  resolved "git+ssh://git@github.com/bitcoin-portal/bitcoincom-universal.git#1901cf7201de14d124741f615881c0b1d3539cef"
   dependencies:
     bitcoincom-storybook "git+ssh://git@github.com/bitcoin-portal/bitcoincom-storybook.git"
     react-stickynode "^2.1.1"
@@ -4364,7 +4364,7 @@ eslint-plugin-graphql@^2.0.0:
     graphql-config "^2.0.1"
     lodash "^4.11.1"
 
-eslint-plugin-import@^2.15.0:
+eslint-plugin-import@^2.17.2:
   version "2.17.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.17.2.tgz#d227d5c6dc67eca71eb590d2bb62fb38d86e9fcb"
   integrity sha512-m+cSVxM7oLsIpmwNn2WXTJoReOF9f/CtLMo7qOVmKd1KntBy0hEcuNZ3erTmWjx+DxRO0Zcrm5KwAvI9wHcV5g==

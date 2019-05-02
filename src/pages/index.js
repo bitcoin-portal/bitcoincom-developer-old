@@ -121,51 +121,55 @@ type Props = {
 };
 
 const IndexPage = ({ location, data }: Props) => (
-  <DefaultLayout location={location}>
-    <Hero image={data.heroImage}>
-      <HeroLayout>
-        <HeroBlurbLayout>
-          <H3 primary thin>
-            {' '}
-            Bitcoin.com Developer Platform
-          </H3>
-          <H1 background>
-            Change the world with <br /> Bitcoin Cash
-          </H1>
-          <H3 background thin>
-            Developer Tooling, Cloud, and Market
-          </H3>
-          <HeroButtonLayout>
-            <HeroButtonItem>
-              <StyledLink to="/bitbox">
-                <Button round>BITBOX SDK</Button>
-              </StyledLink>
-            </HeroButtonItem>
-            <HeroButtonItem>
-              <StyledLink to="/slp">
-                <Button round>SLP SDK</Button>
-              </StyledLink>
-            </HeroButtonItem>
-            <HeroButtonItem>
-              <StyledLink to="/badger">
-                <Button round>Badger SDK</Button>
-              </StyledLink>
-            </HeroButtonItem>
-          </HeroButtonLayout>
-        </HeroBlurbLayout>
-        <SDKLayout>
-          <H3 background centerVertical>
-            <FaCube />
-            &nbsp; BITBOX SDK
-          </H3>
-          <SmartLink to="https://www.npmjs.com/package/bitbox-sdk">
-            Install via NPM
-          </SmartLink>
-          <Code language="bash">npm install -g bitbox-sdk</Code>
-        </SDKLayout>
-      </HeroLayout>
-    </Hero>
-
+  <DefaultLayout
+    location={location}
+    heroImage={data.heroImage}
+    hero={
+      <Hero image="">
+        <HeroLayout>
+          <HeroBlurbLayout>
+            <H3 primary thin>
+              {' '}
+              Bitcoin.com Developer Platform
+            </H3>
+            <H1 background>
+              Change the world with <br /> Bitcoin Cash
+            </H1>
+            <H3 background thin>
+              Developer Tooling, Cloud, and Market
+            </H3>
+            <HeroButtonLayout>
+              <HeroButtonItem>
+                <StyledLink to="/bitbox">
+                  <Button round>BITBOX SDK</Button>
+                </StyledLink>
+              </HeroButtonItem>
+              <HeroButtonItem>
+                <StyledLink to="/slp">
+                  <Button round>SLP SDK</Button>
+                </StyledLink>
+              </HeroButtonItem>
+              <HeroButtonItem>
+                <StyledLink to="/badger">
+                  <Button round>Badger SDK</Button>
+                </StyledLink>
+              </HeroButtonItem>
+            </HeroButtonLayout>
+          </HeroBlurbLayout>
+          <SDKLayout>
+            <H3 background centerVertical>
+              <FaCube />
+              &nbsp; BITBOX SDK
+            </H3>
+            <SmartLink to="https://www.npmjs.com/package/bitbox-sdk">
+              Install via NPM
+            </SmartLink>
+            <Code language="bash">npm install -g bitbox-sdk</Code>
+          </SDKLayout>
+        </HeroLayout>
+      </Hero>
+    }
+  >
     <Container>
       <WhyDevelopLayout>
         <H2 isTitle>Why develop on Bitcoin Cash?</H2>
