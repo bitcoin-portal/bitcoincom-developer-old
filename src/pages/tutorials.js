@@ -5,33 +5,34 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
-import InfoCard from 'components/InfoCard';
 
-import { FaAngleLeft } from 'react-icons/fa';
+import { theme, media, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
 
-import H3 from 'atoms/H3';
-import H1 from 'atoms/H1';
-import StyledLink from 'atoms/StyledLink';
+const StyledContentBlock = styled(ContentBlock)`
+  margin: 0;
+  & > div > div {
+    margin: ${theme.spacing.unit}px auto !important;
+  }
 
-import spacing from 'styles/spacing';
-import media from 'styles/media';
-
-const HeroLayout = styled.div`
-  display: grid;
-  grid-gap: ${spacing.tiny};
+  & > div > div > div {
+    max-width: unset;
+  }
 `;
 
-const PreviewLayout = styled.div`
+const CardContainer = styled.div`
   display: grid;
-  padding-top: ${spacing.large};
-  grid-gap: ${spacing.medium};
-  grid-template-columns: 1fr;
-  ${media.medium`
-    grid-template-columns: .7fr;
-  `};
+  grid-row-gap: ${theme.spacing.unit * 4}px;
+  grid-column-gap: ${theme.spacing.unit * 4}px;
+  margin-top: ${theme.spacing.unit * 8}px;
+  ${media.md`
+    grid-template-columns: 1fr 1fr;
+  `}
+
+  & > div {
+    margin: 0 auto;
+    background-color: ${theme.palette.background.default};
+  }
 `;
 
 type Props = {
@@ -57,7 +58,19 @@ const Tutorials = ({ location, data }: Props) => {
   const tutorials = data.allMarkdownRemark.edges;
 
   return (
-    <DefaultLayout location={location}>
+    <DefaultLayout
+      location={location}
+      heroImage={data.heroImage}
+      hero={
+        <StyledContentBlock>
+          <H1 contrast>Tutorials</H1>
+          <H2 style={{ color: theme.palette.primary.main }}>
+            Real world examples to learn from and bootstrap your next Bitcoin
+            Cash project
+          </H2>
+        </StyledContentBlock>
+      }
+    >
       <HelmetPlus
         title={`Tutorials - ${data.site.siteMetadata.title}`}
         description="Tutorials for the building on Bitcoin Cash, utilizing the Bitbox and SLP SDKs"
@@ -68,34 +81,18 @@ const Tutorials = ({ location, data }: Props) => {
         ]}
         location={location}
       />
-      <Hero image={data.heroImage}>
-        <HeroLayout>
-          <StyledLink to="/learn">
-            <H3 centerVertical thin>
-              {' '}
-              <FaAngleLeft />
-              Learn
-            </H3>
-          </StyledLink>
-          <H1 background>Tutorials</H1>
-          <H3 background thin>
-            Real world examples to learn from and bootstrap your next Bitcoin
-            Cash project
-          </H3>
-        </HeroLayout>
-      </Hero>
-      <Container>
-        <PreviewLayout>
-          {tutorials.map((tutorial, idx) => (
-            <InfoCard
-              to={tutorial.node.fields.slug}
+      <ContentBlock>
+        <CardContainer>
+          {tutorials.map(tutorial => (
+            <Card
+              key={tutorial.node.frontmatter.title}
               title={tutorial.node.frontmatter.title}
-              text={tutorial.node.description || tutorial.node.excerpt}
-              cta="Read"
+              subtitle={tutorial.node.description || tutorial.node.excerpt}
+              cta={{ text: 'Read', link: tutorial.node.fields.slug }}
             />
           ))}
-        </PreviewLayout>
-      </Container>
+        </CardContainer>
+      </ContentBlock>
     </DefaultLayout>
   );
 };
