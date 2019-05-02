@@ -5,31 +5,38 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
 
-import InfoCard from 'components/InfoCard';
+import { theme, media, ContentBlock, H2, H1, Card } from 'bitcoincom-storybook';
 
-import H3 from 'atoms/H3';
-import H1 from 'atoms/H1';
-
-import media from 'styles/media';
-import spacing from 'styles/spacing';
-
-const HeroLayout = styled.div`
+const CardContainer = styled.div`
   display: grid;
-  grid-gap: ${spacing.tiny};
+  grid-row-gap: ${theme.spacing.unit * 4}px;
+  grid-column-gap: ${theme.spacing.unit * 4}px;
+  margin-top: ${theme.spacing.unit * 8}px;
+  ${media.md`
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
+
+  & > div {
+    margin: 0 auto;
+    background-color: ${theme.palette.background.default};
+  }
+
+  & > div > div {
+    justify-content: space-between;
+  }
+
+  & > div > div > h3 {
+    margin: 0 auto;
+  }
 `;
 
-const SectionLayout = styled.div`
-  display: grid;
-  padding-top: ${spacing.medium};
-  grid-gap: ${spacing.medium};
-  grid-template-columns: 1fr;
-  ${media.medium`
-    grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
-  `};
+const StyledContentBlock = styled(ContentBlock)`
+  margin: 0;
+  & > div > div {
+    margin: ${theme.spacing.unit}px auto !important;
+  }
 `;
 
 type Props = {
@@ -38,7 +45,17 @@ type Props = {
 };
 
 const Learn = ({ location, data }: Props) => (
-  <DefaultLayout location={location}>
+  <DefaultLayout
+    location={location}
+    hero={
+      <StyledContentBlock>
+        <H1 contrast>Change the world with Bitcoin Cash</H1>
+        <H2 style={{ color: theme.palette.primary.main }}>
+          Developer Tooling, Cloud, and Market
+        </H2>
+      </StyledContentBlock>
+    }
+  >
     <HelmetPlus
       title={`Learn - ${data.site.siteMetadata.title}`}
       description="Learning center and resources for all of your Bitcoin Cash development needs"
@@ -51,41 +68,37 @@ const Learn = ({ location, data }: Props) => (
       ]}
       location={location}
     />
-    <Hero image={data.heroImage}>
-      <HeroLayout>
-        <H1 background>Learn</H1>
-        <H3 primary thin>
-          Go from hobbyist to professional step-by-step
-        </H3>
-      </HeroLayout>
-    </Hero>
-    <Container>
-      <SectionLayout>
-        <InfoCard
-          to="/tutorials"
+
+    <ContentBlock>
+      <CardContainer>
+        <Card
+          round
+          image="temp"
           title="Tutorials"
-          text="Step by step instructions to build Bitcoin Cash apps from scratch.
+          subtitle="Step by step instructions to build Bitcoin Cash apps from scratch.
             See real world examples built and have your own working copies
             to bootstrap your project from."
-          cta="View"
+          cta={{ text: 'View', link: '/tutorials' }}
         />
-        <InfoCard
-          to="/insights"
+        <Card
+          round
+          image="temp"
           title="Insights"
-          text="Learn from developers who have already shipped successful apps. What
+          subtitle="Learn from developers who have already shipped successful apps. What
             worked and what would they do different?"
-          cta="View"
+          cta={{ text: 'View', link: '/insights' }}
         />
-        <InfoCard
-          to="/mastering-bitcoin-cash"
+        <Card
+          round
+          image="temp"
           title="Mastering Bitcoin Cash"
-          text="Based on Mastering Bitcoin by Andreas M. Antonopoulos, Mastering
+          subtitle="Based on Mastering Bitcoin by Andreas M. Antonopoulos, Mastering
             Bitcoin Cash is the ultimate guide to bring your knowledge from
             beginner to professional step by step."
-          cta="Read"
+          cta={{ text: 'Read', link: '/mastering-bitcoinc-cash' }}
         />
-      </SectionLayout>
-    </Container>
+      </CardContainer>
+    </ContentBlock>
   </DefaultLayout>
 );
 

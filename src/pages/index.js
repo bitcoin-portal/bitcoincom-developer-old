@@ -4,21 +4,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
-import Img from 'gatsby-image';
-
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
 
-import Text from 'atoms/Text';
-import StyledLink from 'atoms/StyledLink';
-
-import media from 'styles/media';
-import spacing from 'styles/spacing';
-
-import { FaCube, FaCogs, FaCreditCard, FaCartPlus } from 'react-icons/fa';
 import {
   theme,
+  media,
   ContentBlock,
   H2,
   H1,
@@ -27,60 +17,6 @@ import {
   Card,
   Paragraph,
 } from 'bitcoincom-storybook';
-
-const WhyDevelopLayout = styled.div`
-  padding-top: ${spacing.large} !important;
-  display: grid;
-  grid-gap: ${spacing.medium};
-  max-width: 900px;
-`;
-
-const FeaturesLayout = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  grid-gap: ${spacing.medium};
-  margin-top: ${spacing.large};
-  margin-bottom: ${spacing.large};
-`;
-
-const Feature = styled.div`
-  display: grid;
-  grid-template-rows: min-content min-content;
-  grid-gap: ${spacing.small};
-`;
-
-const GetStartedLayout = styled.div`
-  grid-template-columns: 1fr;
-  grid-gap: ${spacing.medium};
-  display: grid;
-  margin-top: ${spacing.medium};
-  margin-bottom: ${spacing.medium};
-  ${media.medium`
-    grid-template-columns: .5fr .5fr;
-  `};
-`;
-
-const StartedInfo = styled.div`
-  background-color: ${props => props.theme.background};
-  border-radius: ${spacing.small};
-  padding: ${spacing.medium};
-  text-align: center;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: min-content min-content 1fr min-content;
-  justify-items: center;
-  grid-gap: ${spacing.medium};
-`;
-
-const BubbleImg = styled.div`
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
-  border: 3px solid ${props => props.theme.primary};
-  position: relative;
-  overflow: hidden;
-`;
 
 const StyledContentBlock = styled(ContentBlock)`
   & > div > :nth-child(2) {
@@ -94,17 +30,25 @@ const StyledContentBlock = styled(ContentBlock)`
 const ButtonWrapper = styled.div`
   display: grid;
   grid-column-gap: ${theme.spacing.unit * 2}px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: ${theme.spacing.unit * 2}px;
+  margin: 0 auto;
+  justify-items: center;
+  ${media.md`
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
 `;
 
 const CardContainer = styled.div`
   display: grid;
   grid-row-gap: ${theme.spacing.unit * 4}px;
   grid-column-gap: ${theme.spacing.unit * 4}px;
-  grid-template-columns: 1fr 1fr;
   margin-top: ${theme.spacing.unit * 8}px;
+  ${media.md`
+    grid-template-columns: 1fr 1fr;
+  `}
 
   & > div {
+    margin: 0 auto;
     background-color: ${theme.palette.background.default};
   }
 `;
@@ -131,13 +75,13 @@ const IndexPage = ({ location, data }: Props) => (
         <H1 contrast>Change the world with Bitcoin Cash</H1>
         <H2 contrast>Developer Tooling, Cloud, and Market</H2>
         <ButtonWrapper>
-          <Button href="/bitbox" round link>
+          <Button href="/bitbox" round link dark>
             BITBOX SDK
           </Button>
-          <Button href="/slp" round link>
+          <Button href="/slp" round link dark>
             SLP SDK
           </Button>
-          <Button href="/badger" round link>
+          <Button href="/badger" round link dark>
             Badger SDK
           </Button>
         </ButtonWrapper>
@@ -149,12 +93,12 @@ const IndexPage = ({ location, data }: Props) => (
         Developing on{' '}
         <span style={{ color: theme.palette.primary.main }}>Bitcoin Cash</span>
       </H2>
-      <Paragraph center>
+      <Paragraph center style={{ maxWidth: 'unset' }}>
         Money is critical to the Human Condition. Bitcoin Cash and Blockchain
         technology enable financial sovereignty in a way which is unique in
         history.
       </Paragraph>
-      <Paragraph center>
+      <Paragraph center style={{ maxWidth: 'unset' }}>
         Bitcoin Cash is the soundest money the world has ever known. As a
         developer you can make it available to all people, whatever their age,
         gender, nationality or financial status.

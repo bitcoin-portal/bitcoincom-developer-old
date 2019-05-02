@@ -1,11 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import { Nav, Footer } from 'bitcoincom-universal';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { defaultTheme } from 'styles/themes';
 import HelmetPlus from 'components/HelmetPlus';
 import NavBar from 'components/NavBar';
 import ShareFooter from 'components/ShareFooter';
@@ -49,30 +48,29 @@ const DefaultLayout = ({ children, location, heroImage, hero }: Props) => (
         >
           <meta charSet="utf-8" />
         </HelmetPlus>
-        <div>
-          <GlobalStyle />
-          <TopWrap background={heroImage !== null}>
-            {heroImage && heroImage.childImageSharp && (
-              <Img
-                imgStyle={{ objectPosition: 'top center' }}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                }}
-                fluid={heroImage.childImageSharp.fluid}
-              />
-            )}
-            <Nav locale="en" contrast />
-            <NavBar pathname={location ? location.pathname : ''} />
-            {hero && hero}
-          </TopWrap>
-          {children}
-          <ShareFooter location={location} />
-          <Footer locale="en" />
-        </div>
+
+        <GlobalStyle />
+        <TopWrap background={heroImage !== null}>
+          {heroImage && heroImage.childImageSharp && (
+            <Img
+              imgStyle={{ objectPosition: 'top center' }}
+              style={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+              }}
+              fluid={heroImage.childImageSharp.fluid}
+            />
+          )}
+          <Nav locale="en" contrast />
+          <NavBar pathname={location ? location.pathname : ''} />
+          {hero && hero}
+        </TopWrap>
+        {children}
+        <ShareFooter location={location} />
+        <Footer locale="en" />
       </>
     )}
   />
