@@ -5,30 +5,38 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
-import InfoCard from 'components/InfoCard';
 import HelmetPlus from 'components/HelmetPlus';
 
-import H3 from 'atoms/H3';
-import H1 from 'atoms/H1';
+import { theme, media, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
 
-import media from 'styles/media';
-import spacing from 'styles/spacing';
-
-const HeroLayout = styled.div`
+const CardContainer = styled.div`
   display: grid;
-  grid-gap: ${spacing.tiny};
+  grid-row-gap: ${theme.spacing.unit * 4}px;
+  grid-column-gap: ${theme.spacing.unit * 4}px;
+  margin-top: ${theme.spacing.unit * 8}px;
+  ${media.md`
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
+
+  & > div {
+    margin: 0 auto;
+    background-color: ${theme.palette.background.default};
+  }
+
+  & > div > div {
+    justify-content: space-between;
+  }
+
+  & > div > div > h3 {
+    margin: 0 auto;
+  }
 `;
 
-const CardLayout = styled.div`
-  display: grid;
-  padding-top: ${spacing.large};
-  grid-gap: ${spacing.medium};
-  grid-template-columns: 1fr;
-  ${media.medium`
-    grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
-  `};
+const StyledContentBlock = styled(ContentBlock)`
+  margin: 0;
+  & > div > div {
+    margin: ${theme.spacing.unit}px auto !important;
+  }
 `;
 
 type Props = {
@@ -37,7 +45,17 @@ type Props = {
 };
 
 const DevelopPage = ({ location, data }: Props) => (
-  <DefaultLayout location={location}>
+  <DefaultLayout
+    location={location}
+    hero={
+      <StyledContentBlock>
+        <H1 contrast>Develop on Bitcoin Cash</H1>
+        <H2 style={{ color: theme.palette.primary.main }}>
+          Help bring financial sovereignty to the world
+        </H2>
+      </StyledContentBlock>
+    }
+  >
     <HelmetPlus
       title={`Develop - ${data.site.siteMetadata.title}`}
       description="Development hub for all your development needs to be successful on Bitcoin Cash (BCH)"
@@ -48,64 +66,51 @@ const DevelopPage = ({ location, data }: Props) => (
       ]}
       location={location}
     />
-    <Hero image={data.heroImage}>
-      <HeroLayout>
-        <H1 background>Develop on Bitcoin Cash</H1>
-        <H3 primary thin>
-          Help bring financial sovereignty to the world
-        </H3>
-      </HeroLayout>
-    </Hero>
-    <Container>
-      <CardLayout>
-        <InfoCard
-          to="/bitbox"
+    <ContentBlock>
+      <CardContainer>
+        <Card
           title="BITBOX"
-          text="Fully featured javascript framework. Offering utility methods for Mnemonics, HDNodes, ECPairs, Crypto, Address conversion, Transactions and much more."
-          cta="View"
+          subtitle="Fully featured javascript framework. Offering utility methods for Mnemonics, HDNodes, ECPairs, Crypto, Address conversion, Transactions and much more."
+          cta={{ text: 'View', link: '/bitbox' }}
         />
-        <InfoCard
-          to="/badger"
+        <Card
           title="Badger"
-          text="Your gateway to the Bitcoin Cash (BCH) ecosystem. Integrate your app with with the Bitcoin Cash blockchain, without the complexity."
-          cta="View"
+          subtitle="Your gateway to the Bitcoin Cash (BCH) ecosystem. Integrate your app with with the Bitcoin Cash blockchain, without the complexity."
+          cta={{ text: 'View', link: '/badger' }}
         />
-        <InfoCard
-          to="/rest"
+        <Card
           title="REST"
-          text="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
-          cta="View"
+          subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
+          cta={{ text: 'View', link: '/rest' }}
         />
-        <InfoCard
-          to="/slp"
+        <Card
           title="SLP"
-          text="Tokenize anything. Everything you need to easily issue, spend or trade your own token."
-          cta="View"
+          subtitle="Tokenize anything. Everything you need to easily issue, spend or trade your own token."
+          cta={{ text: 'View', link: '/slp' }}
         />
-        <InfoCard
-          to="/gui"
+        <Card
           title="GUI"
-          text="BIP44 development wallet. Convert between cashaddr/legacy addresses. Create QR codes for WIF, XPub and XPrivs. Sign and verify messages."
-          cta="View"
+          subtitle="BIP44 development wallet. Convert between cashaddr/legacy addresses. Create QR codes for WIF, XPub and XPrivs. Sign and verify messages."
+          cta={{ text: 'View', link: '/gui' }}
         />
-        <InfoCard
+        <Card
           to="/faucets"
           title="Faucets"
-          text="Testnet BCH for developers."
-          cta="View"
+          subtitle="Testnet BCH for developers."
+          cta={{ text: 'View', link: '/faucets' }}
         />
-        <InfoCard
+        <Card
           title="Cloud"
-          text="Blockchain-as-a-Service. Infrastructure to deploy and scale your apps. An ecosystem of add-ons for data, monitoring, logging, metrics, testing and more all built w/ BITBOX."
-          disabledcta="Coming soon"
+          subtitle="Blockchain-as-a-Service. Infrastructure to deploy and scale your apps. An ecosystem of add-ons for data, monitoring, logging, metrics, testing and more all built w/ BITBOX."
+          cta={{ text: 'Coming soon' }}
         />
-        <InfoCard
+        <Card
           title="Market"
-          text="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
-          disabledcta="Coming soon"
+          subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
+          cta={{ text: 'Coming soon' }}
         />
-      </CardLayout>
-    </Container>
+      </CardContainer>
+    </ContentBlock>
   </DefaultLayout>
 );
 
