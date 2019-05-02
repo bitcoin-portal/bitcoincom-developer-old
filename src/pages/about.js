@@ -3,18 +3,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import { FaCube } from 'react-icons/fa';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
-
-import Code from 'atoms/Code';
-import Text from 'atoms/Text';
-import { SmartLink } from 'atoms/StyledLink';
-
-import spacing from 'styles/spacing';
 
 import {
   theme,
@@ -24,18 +15,9 @@ import {
   H2,
   Card,
   Paragraph,
-  H3,
+  Code,
 } from 'bitcoincom-storybook';
 import BitboxLogo from 'assets/images/bitboxLogo';
-
-const Item = styled.div``;
-
-const InstallCTA = styled.div`
-  display: grid;
-  grid-gap: ${spacing.small};
-  align-content: end;
-  justify-items: center;
-`;
 
 const StyledContentBlock = styled(ContentBlock)`
   margin: 0;
@@ -86,6 +68,17 @@ const CardText = styled.div`
     text-align: left;
   `}
 `;
+const CardInstall = styled.div`
+  text-align: center;
+  grid-area: install;
+
+  ${media.md`
+    text-align: left;
+    & > p {
+      text-align: left;
+    }
+  `}
+`;
 
 type Props = {
   location: Object,
@@ -125,12 +118,12 @@ const About = ({ location, data }: Props) => (
               much more.
             </Paragraph>
           </CardText>
-          <div style={{ gridArea: 'install' }}>
+          <CardInstall>
             <Paragraph style={{ color: theme.palette.primary.main }}>
               Install BITBOX SDK via NPM
             </Paragraph>
             <Code language="bash">npm install -g bitbox-sdk</Code>
-          </div>
+          </CardInstall>
         </CardContent>
       </Card>
 
