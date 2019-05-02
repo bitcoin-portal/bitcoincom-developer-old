@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { FaCube } from 'react-icons/fa';
@@ -12,27 +12,21 @@ import HelmetPlus from 'components/HelmetPlus';
 
 import Code from 'atoms/Code';
 import Text from 'atoms/Text';
-import H3 from 'atoms/H3';
-import H1 from 'atoms/H1';
 import { SmartLink } from 'atoms/StyledLink';
 
-import media from 'styles/media';
 import spacing from 'styles/spacing';
 
-const HeroLayout = styled.div`
-  display: grid;
-  grid-gap: ${spacing.tiny};
-`;
-
-const AboutLayout = styled.div`
-  display: grid;
-  margin-top: ${spacing.large};
-  grid-gap: ${spacing.medium};
-  grid-template-columns: 1fr;
-  ${media.medium`
-    grid-template-columns: 1fr 1fr;
-  `};
-`;
+import {
+  theme,
+  media,
+  ContentBlock,
+  H1,
+  H2,
+  Card,
+  Paragraph,
+  H3,
+} from 'bitcoincom-storybook';
+import BitboxLogo from 'assets/images/bitboxLogo';
 
 const Item = styled.div``;
 
@@ -43,83 +37,122 @@ const InstallCTA = styled.div`
   justify-items: center;
 `;
 
+const StyledContentBlock = styled(ContentBlock)`
+  margin: 0;
+  & > div > div {
+    margin: ${theme.spacing.unit}px auto !important;
+  }
+
+  & > div > div > div {
+    max-width: unset;
+  }
+`;
+
+const CardContainer = styled.div`
+  display: grid;
+  grid-row-gap: ${theme.spacing.unit * 4}px;
+  grid-column-gap: ${theme.spacing.unit * 4}px;
+  margin-top: ${theme.spacing.unit * 8}px;
+  ${media.md`
+    grid-template-columns: 1fr 1fr;
+  `}
+
+  & > div {
+    margin: 0 auto;
+    background-color: ${theme.palette.background.default};
+  }
+`;
+
+const CardContent = styled.div`
+  display: grid;
+  grid-template-areas: 'logo' 'content' 'install';
+  justify-content: center;
+  align-items: center;
+  ${media.md`
+  justify-content: space-evenly;
+    grid-template-areas: 'logo content' 'logo install';
+  `}
+  ${media.lg`
+  grid-template-areas: 'logo content install';
+    flex-direction: row;
+  `}
+`;
+
+const CardText = styled.div`
+  text-align: center;
+  grid-area: content;
+
+  ${media.md`
+    text-align: left;
+  `}
+`;
+
 type Props = {
   location: Object,
   data: { heroImage: any },
 };
 
 const About = ({ location, data }: Props) => (
-  <DefaultLayout location={location}>
+  <DefaultLayout
+    location={location}
+    hero={
+      <StyledContentBlock>
+        <H1 contrast>About</H1>
+        <H2 style={{ color: theme.palette.primary.main }}>
+          Developer Tooling, Resources, Cloud, and Market
+        </H2>
+      </StyledContentBlock>
+    }
+  >
     <HelmetPlus
       title={`About  - ${data.site.siteMetadata.title}`}
       description="Bitcoin.com developer platform.  Developer Tooling, Resources, Cloud, and Market"
       keywords={['about page']}
       location={location}
     />
-    <Hero image={data.heroImage}>
-      <HeroLayout>
-        <H3 primary thin>
-          Bitcoin.com's developer platform
-        </H3>
-        <H1 background>About</H1>
-        <H3 background thin>
-          Developer Tooling, Resources, Cloud, and Market
-        </H3>
-      </HeroLayout>
-    </Hero>
-    <Container>
-      <AboutLayout>
-        <Item>
-          <H3>BITBOX</H3>
-          <Text>
-            Bitcoin.com’s developer platform is based on the popular BITBOX
-            javascript framework. Offering utility methods for Mnemonics,
-            HDNodes, ECPairs, Crypto, Address conversion, Transactions and much
-            more.
-          </Text>
-        </Item>
-        <InstallCTA>
-          <H3 centerVertical>
-            <FaCube />
-            &nbsp; BITBOX SDK
-          </H3>
+    <StyledContentBlock>
+      <Card>
+        <CardContent>
+          <div style={{ gridArea: 'logo' }}>
+            <BitboxLogo size={158} />
+          </div>
+          <CardText>
+            <H2 left>BITBOX</H2>
+            <Paragraph>
+              Bitcoin.com’s developer platform is based on the popular BITBOX
+              javascript framework. Offering utility methods for Mnemonics,
+              HDNodes, ECPairs, Crypto, Address conversion, Transactions and
+              much more.
+            </Paragraph>
+          </CardText>
+          <div style={{ gridArea: 'install' }}>
+            <Paragraph style={{ color: theme.palette.primary.main }}>
+              Install BITBOX SDK via NPM
+            </Paragraph>
+            <Code language="bash">npm install -g bitbox-sdk</Code>
+          </div>
+        </CardContent>
+      </Card>
 
-          <SmartLink to="https://www.npmjs.com/package/bitbox-sdk">
-            Install via NPM
-          </SmartLink>
-          <Code language="bash">npm install -g bitbox-sdk</Code>
-        </InstallCTA>
-        <Item>
-          <H3>Badger</H3>
-          <Text>
-            Your gateway to the world of Bitcoin Cash (BCH) applications.
-          </Text>
-        </Item>
-        <Item>
-          <H3>REST</H3>
-          <Text>
-            The BCH JSON RPC over HTTP including a fully documented and
-            interactive GUI which developers can use to test their ideas and
-            confirm their code is making proper API calls.
-          </Text>
-        </Item>
-        <Item>
-          <H3>Cloud</H3>
-          <Text>
-            Blockchain-as-a-Service. Infrastructure to deploy and scale your
-            apps. An ecosystem of add-ons for data, monitoring, logging,
-            metrics, testing and more all built w/ BITBOX.
-          </Text>
-        </Item>
-        <Item>
-          <H3>Market</H3>
-          <Text>
-            Paid downloads, streaming media, in-app purchases, tokens and more
-            ways for you to monetize.
-          </Text>
-        </Item>
-      </AboutLayout>
-    </Container>
+      <CardContainer>
+        <Card
+          title="Badger"
+          subtitle="Your gateway to the world of Bitcoin Cash (BCH) applications."
+        />
+        <Card
+          title="REST"
+          subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
+        />
+        <Card
+          title="Cloud"
+          subtitle="Blockchain-as-a-Service. Infrastructure to deploy and scale your apps. An ecosystem of add-ons for data, monitoring, logging, metrics, testing and more all built w/ BITBOX."
+        />
+        <Card
+          title="Market"
+          subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
+        />
+      </CardContainer>
+    </StyledContentBlock>
   </DefaultLayout>
 );
 
