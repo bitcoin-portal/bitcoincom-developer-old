@@ -9,7 +9,7 @@ import Text from 'atoms/Text';
 import { SmartLink } from 'atoms/StyledLink';
 
 import Container from 'components/Container';
-
+import { ContentBlock, H2, Button } from 'bitcoincom-storybook';
 import spacing from 'styles/spacing';
 import media from 'styles/media';
 
@@ -121,5 +121,16 @@ class ShareFooter extends React.Component<Props> {
     );
   }
 }
+export { ShareFooter };
 
-export default ShareFooter;
+const SharedFooter = () => (
+  <ContentBlock>
+    <H2>Do You Want To Get Free Developer Resources?</H2>
+
+    <Button link primary href="/" style={{ margin: 'auto' }}>
+      {"Yes, I'm Interested"}
+    </Button>
+  </ContentBlock>
+);
+
+export default SharedFooter;

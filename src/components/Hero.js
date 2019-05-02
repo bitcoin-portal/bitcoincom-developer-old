@@ -1,11 +1,11 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 
 import spacing from 'styles/spacing';
 import Container from 'components/Container';
+import { ContentBlock } from 'bitcoincom-storybook';
 
 const Main = styled.div`
   padding: ${spacing.medium};
@@ -39,20 +39,16 @@ const Content = styled(Container)`
 
 type Props = {
   children: React.Node,
-  image: { childImageSharp: { fluid: any } },
+  image: ?String,
 };
 
-class Hero extends React.PureComponent<Props> {
-  render() {
-    const { image, children } = this.props;
-    return (
-      <Main>
-        <Cover />
-        <Content>{children}</Content>
-        <Flourish />
-      </Main>
-    );
-  }
-}
+const Hero = ({ children, image }: Props) => (
+  <ContentBlock image={image}>
+    {children}
+    {/* <Cover />
+    <Content>{children}</Content>
+    <Flourish /> */}
+  </ContentBlock>
+);
 
 export default Hero;
