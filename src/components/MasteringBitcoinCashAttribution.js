@@ -13,8 +13,12 @@ const Text = styled(Paragraph)`
   }
 `;
 
-const MasteringBitcoinCashAttribution = () => (
-  <Text size="tiny">
+type Props = {
+  contrast: boolean,
+};
+
+const MasteringBitcoinCashAttribution = ({ contrast }: Props) => (
+  <Text contrast={contrast}>
     The following is based on{' '}
     <Link href="https://github.com/bitcoinbook/bitcoinbook">
       Mastering Bitcoin
