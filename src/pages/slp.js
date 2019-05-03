@@ -41,7 +41,6 @@ type Props = {
 const SLPPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
-    heroImage={data.heroImage}
     hero={
       <ContentBlock aside={<React.Fragment />}>
         <H3 style={{ color: theme.palette.primary.main }}>Tokenize anything</H3>

@@ -6,17 +6,15 @@ import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
-
+import MasteringBitcoinCashAttribution from 'components/MasteringBitcoinCashAttribution';
 import {
   theme,
-  media,
   ContentBlock,
   H1,
   H2,
   H3,
   OL,
   Link,
-  Paragraph,
 } from 'bitcoincom-storybook';
 
 const StyledContentBlock = styled(ContentBlock)`
@@ -28,16 +26,6 @@ const StyledContentBlock = styled(ContentBlock)`
 
   & > div > div > div {
     max-width: unset;
-  }
-`;
-
-const Text = styled(Paragraph)`
-  max-width: 800px;
-  ${media.md`
-  margin: 0 auto ${theme.spacing.unit * 4}px auto;
-  `}
-  & > a {
-    display: inline;
   }
 `;
 
@@ -71,20 +59,7 @@ const Learn = ({ location, data }: Props) => {
       />
 
       <ContentBlock>
-        <Text size="tiny">
-          The following is based on{' '}
-          <Link href="https://github.com/bitcoinbook/bitcoinbook">
-            Mastering Bitcoin
-          </Link>{' '}
-          by Andreas M. Antonopoulos{' '}
-          <Link href="https://github.com/bitcoinbook/bitcoinbook#mastering-bitcoin---first-edition">
-            First Edition
-          </Link>{' '}
-          which is licensed under{' '}
-          <Link href="https://creativecommons.org/licenses/by-sa/4.0/">
-            Creative Commons Attribution-ShareAlike
-          </Link>
-        </Text>
+        <MasteringBitcoinCashAttribution />
         <H2>Chapters</H2>
         <OL>
           {chapters.map(chapter => (

@@ -51,7 +51,6 @@ type Props = {
 const BitboxPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
-    heroImage={data.heroImage}
     hero={
       <ContentBlock
         aside={

@@ -50,7 +50,6 @@ type Props = {
 const RestPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
-    heroImage={data.heroImage}
     hero={
       <StyledContentBlock image="none">
         <H3 style={{ color: theme.palette.primary.main }}>BCH RPC over HTTP</H3>

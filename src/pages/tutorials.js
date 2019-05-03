@@ -60,7 +60,6 @@ const Tutorials = ({ location, data }: Props) => {
   return (
     <DefaultLayout
       location={location}
-      heroImage={data.heroImage}
       hero={
         <StyledContentBlock>
           <H1 contrast>Tutorials</H1>
