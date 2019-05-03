@@ -48,12 +48,6 @@ type Props = {
   location: Object,
 };
 
-const PageLayout = styled.div`
-  display: grid;
-  margin-top: ${spacing.medium};
-  grid-gap: ${spacing.small};
-`;
-
 const ChapterNav = styled.div`
   display: flex;
   border-top: 2px solid ${props => props.theme.primary};

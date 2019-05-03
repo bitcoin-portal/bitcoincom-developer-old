@@ -2,19 +2,11 @@
 import * as React from 'react';
 
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Link } from 'bitcoincom-storybook';
 
 const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${props =>
-    props.isActive
-      ? props.theme.foreground
-      : props.subtle
-      ? props.theme.foreground
-      : props.theme.primary};
-  &:hover {
-    color: ${props => props.theme.primary600};
-  }
+  display: inline !important;
+  line-height: unset !important;
 `;
 
 type Props = {

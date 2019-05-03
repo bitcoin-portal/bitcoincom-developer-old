@@ -4,13 +4,9 @@
 import styled from 'styled-components';
 
 import spacing from 'styles/spacing';
-import H1 from './H1';
-import H2 from './H2';
-import H3 from './H3';
+import { H1, H2, H3, UL, OL } from 'bitcoincom-storybook';
 import H4 from './H4';
 import Text from './Text';
-import Ul from './Ul';
-import Ol from './Ol';
 import Img from './Img';
 
 const ThMd = styled.th`
@@ -18,9 +14,13 @@ const ThMd = styled.th`
   text-align: left;
 `;
 const H1Md = styled(H1)`
+  text-align: left;
+  margin-left: 0;
   margin-top: ${spacing.medium};
 `;
 const H2Md = styled(H2)`
+  text-align: left;
+  margin-left: 0;
   margin-top: ${spacing.medium};
 `;
 
@@ -35,14 +35,14 @@ const TextMd = styled(Text)`
   margin-top: ${spacing.small};
 `;
 
-const UlMd = styled(Ul)`
+const UlMd = styled(UL)`
   margin-top: ${spacing.tiny};
   ${TextMd} {
     margin-top: 0;
   }
 `;
 
-const OlMd = styled(Ol)`
+const OlMd = styled(OL)`
   margin-top: ${spacing.medium};
 `;
 

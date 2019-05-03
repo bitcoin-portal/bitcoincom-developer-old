@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import { graphql } from 'gatsby';
 import styled, { css } from 'styled-components';
 import { theme, media, H2 } from 'bitcoincom-storybook';
 
@@ -9,7 +8,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   flex-shrink: 0;
   display: none;
-  max-width: 250px;
+  max-width: 300px;
   margin-right: ${theme.spacing.unit * 8}px;
 
   ${({ bottom = false }) => {
@@ -45,13 +44,11 @@ const Item = styled.a`
 `;
 
 const SideBar = styled.div`
-  padding-left: ${theme.spacing.unit * 2}px;
   box-sizing: border-box;
   border-left: ${theme.border.solid.light} ${theme.palette.primary.main};
   margin-top: ${theme.spacing.unit * 4}px;
   margin-bottom: ${theme.spacing.unit * 4}px;
   overflow: hidden;
-  max-width: 250px;
 
   ${({ sticky = false }) => {
     if (sticky === false) return '';
@@ -159,45 +156,3 @@ class SideMenu extends React.Component<Props> {
 }
 
 export default SideMenu;
-
-export const query = graphql`
-  query SideMenuQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___chapter], order: ASC }
-      filter: { fields: { type: { eq: "chapter" } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            chapter
-            updatedAt(formatString: "MMMM Do, YYYY")
-            publishedAt(formatString: "MMMM Do, YYYY")
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
-      childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`;
