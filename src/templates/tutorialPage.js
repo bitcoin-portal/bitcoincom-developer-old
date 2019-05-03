@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import rehypeReact from 'rehype-react';
+import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -16,7 +16,7 @@ import H3 from 'atoms/H3';
 import spacing from 'styles/spacing';
 import { standardTransforms } from 'utils/markdown-helpers';
 
-const renderAst = new rehypeReact({
+const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
     ...standardTransforms,

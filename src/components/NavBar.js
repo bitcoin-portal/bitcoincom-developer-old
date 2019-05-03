@@ -33,7 +33,7 @@ const NavItem = styled(Link)`
   }
 
   ${props =>
-    props.isActive &&
+    props.isactive === 'true' &&
     css`
       &::after {
         content: '';
@@ -88,16 +88,19 @@ class NavBar extends React.PureComponent<Props> {
       <Main>
         <Container>
           <NavLayout>
-            <NavItem to="/" isActive={homeActive}>
+            <NavItem to="/" isactive={homeActive.toString()}>
               Home
             </NavItem>
-            <NavItem to="/learn" isActive={learnActive}>
+            <NavItem to="/learn" isactive={learnActive.toString()}>
               Learn
             </NavItem>
-            <NavItem to="/develop" isActive={developActive && !learnActive}>
+            <NavItem
+              to="/develop"
+              isactive={(developActive && !learnActive).toString()}
+            >
               Develop
             </NavItem>
-            <NavItem to="/about" isActive={aboutActive}>
+            <NavItem to="/about" isactive={aboutActive.toString()}>
               About
             </NavItem>
           </NavLayout>

@@ -1,12 +1,13 @@
 // @flow
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { defaultProps } from 'recompose';
 
 import { BadgerButton, BadgerBadge } from 'badger-components-react';
 
 import { SmartLink } from 'atoms/StyledLink';
 import { H4Md, ImgMd, ThMd } from 'atoms/markdownAtoms';
+import Pre from 'atoms/Pre';
 
 import Caption from 'atoms/Caption';
 import {
@@ -57,6 +58,17 @@ const StyledCard = styled(Card)`
     display: contents;
   }
 `;
+
+type BasicProps = {
+  children: React.Node,
+};
+// Short use inline custom component, long use codeblock
+const CodePreSplitter = ({ children }: BasicProps) => {
+  if (children && children[0].length > 25) {
+    return <Code fontSize={14}>{children}</Code>;
+  }
+  return <Pre>{children}</Pre>;
+};
 
 type TipProps = {
   children: React.Node,
@@ -119,8 +131,8 @@ const BadgerBadgeTransform = (props: BadgeProps) => {
 
 export const standardTransforms = {
   p: Text,
-  pre: Code,
-  code: Code,
+  pre: CodePreSplitter,
+  code: CodePreSplitter,
   th: ThMd,
   h1: H1,
   h2: H2,

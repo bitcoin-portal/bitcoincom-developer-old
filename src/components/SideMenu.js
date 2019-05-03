@@ -3,6 +3,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { theme, media, H2 } from 'bitcoincom-storybook';
+import StyledLink from 'atoms/StyledLink';
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
   `}
 `;
 
-const Item = styled.a`
+const Item = styled.div`
   display: block;
   color: ${({ selected = false }) =>
     selected ? theme.palette.primary.main : theme.palette.text.secondary};
@@ -138,15 +139,18 @@ class SideMenu extends React.Component<Props> {
               key={`${chapter.node.frontmatter.slug}-${
                 chapter.node.frontmatter.chapter
               }`}
-              href={chapter.node.fields.slug}
-              selected={
-                typeof window !== 'undefined' &&
-                typeof window.location.pathname !== 'undefined' &&
-                window.location.pathname === chapter.node.fields.slug
-              }
             >
-              {chapter.node.frontmatter.chapter}.{' '}
-              {chapter.node.frontmatter.title}
+              <StyledLink
+                to={chapter.node.fields.slug}
+                isActive={
+                  typeof window !== 'undefined' &&
+                  typeof window.location.pathname !== 'undefined' &&
+                  window.location.pathname === chapter.node.fields.slug
+                }
+              >
+                {chapter.node.frontmatter.chapter}.{' '}
+                {chapter.node.frontmatter.title}
+              </StyledLink>
             </Item>
           ))}
         </SideBar>

@@ -1,11 +1,11 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import rehypeReact from 'rehype-react';
+import RehypeReact from 'rehype-react';
 import { graphql, push } from 'gatsby';
 
 import HelmetPlus from 'components/HelmetPlus';
-import DefaultLayout from 'components/layouts/DefaultLayout.js';
+import DefaultLayout from 'components/layouts/DefaultLayout';
 import Container from 'components/Container';
 
 import StyledLink from 'atoms/StyledLink';
@@ -20,7 +20,7 @@ import { getTitleDisplay } from 'utils/formatting';
 import { getIcon } from 'utils/icon-helpers';
 import { standardTransforms } from 'utils/markdown-helpers';
 
-const renderAst = new rehypeReact({
+const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
     ...standardTransforms,
