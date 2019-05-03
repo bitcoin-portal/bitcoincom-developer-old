@@ -28,6 +28,9 @@ type Props = {
 class HelmetPlus extends React.PureComponent<Props> {
   static defaultProps = {
     keywords: [],
+    description: '',
+    image: '',
+    children: null,
   };
 
   render() {
@@ -54,7 +57,7 @@ class HelmetPlus extends React.PureComponent<Props> {
         ) : (
           <meta name="keywords" content={keywordsBase.join(', ')} />
         )}
-        <meta name="image" content={`${location.origin}/favicon.png`} />}
+        <meta name="image" content={`${location.origin}/favicon.png`} />
         {image && <meta name="image" content={`${location.origin}${image}`} />}
         {/* OpenGraph OG meta */}
         {location && (
@@ -67,7 +70,7 @@ class HelmetPlus extends React.PureComponent<Props> {
         {description && (
           <meta property="og:description" content={description} />
         )}
-        <meta name="og:image" content={`${location.origin}/favicon.png`} />}
+        <meta name="og:image" content={`${location.origin}/favicon.png`} />
         {image && (
           <meta property="og:image" content={`${location.origin}${image}`} />
         )}
@@ -78,7 +81,7 @@ class HelmetPlus extends React.PureComponent<Props> {
           <meta name="twitter:description" content={description} />
         )}
         <meta name="twitter:image" content={`${location.origin}/favicon.png`} />
-        }
+
         {image && (
           <meta name="twitter:image" content={`${location.origin}${image}`} />
         )}

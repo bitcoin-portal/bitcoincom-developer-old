@@ -53,70 +53,6 @@ class BchFaucet extends React.PureComponent<Props, State> {
     };
   }
 
-  render() {
-    if (this.state.balance === 0) this.getBalance();
-
-    return (
-      <WrapperDiv>
-        <H3>
-          This is a <u>testnet</u> faucet for Bitcoin Cash! It is built with{' '}
-          <StyledLink to="/bitbox">BITBOX JavaScript SDK</StyledLink> and is
-          funded by the{' '}
-          <SmartLink to="https://www.bitcoin.com/bitcoin-mining">
-            Bitcoin.com Mining Pool
-          </SmartLink>
-          . It currently gives out <u>0.1 BCH</u>.
-        </H3>
-
-        <FaucetBalanceDisplay
-          title="Current faucet balance"
-          data={[{ item: 'BCH', amount: this.state.balance }]}
-        />
-
-        <Text>
-          <SmartLink to="https://github.com/Bitcoin-com/testnet-faucet">
-            Fork the code on GitHub!
-          </SmartLink>
-        </Text>
-
-        <AddressForm>
-          <Text for="bchAddr" as="label" bold>
-            BCH Testnet Address
-          </Text>
-          <Input
-            type="text"
-            id="bchAddr"
-            size="60"
-            placeholder="bchtest:qqmd9unmhkpx4pkmr6fkrr8rm6y77vckjvqe8aey35"
-            value={this.state.bchAddr}
-            onChange={this.handleChange}
-          />
-          <Button type="button" onClick={this.requestBCH}>
-            Get tBCH!
-          </Button>
-        </AddressForm>
-
-        <Well>
-          <Text>{this.state.outputText}</Text>
-        </Well>
-
-        {this.state.linkOn && (
-          <TxLink>
-            <SmartLink to={this.state.linkAddr}>
-              View TX on Block Explorer
-            </SmartLink>
-          </TxLink>
-        )}
-
-        <Text>
-          Please send your leftover testnet coins back to the faucet:
-          <br />
-          <i>bchtest:qqmd9unmhkpx4pkmr6fkrr8rm6y77vckjvqe8aey35</i>
-        </Text>
-      </WrapperDiv>
-    );
-  }
-
   // Updates the state as the user updates the input form.
   handleChange = ({ target }) => {
     this.setState({ bchAddr: target.value });
@@ -126,23 +62,24 @@ class BchFaucet extends React.PureComponent<Props, State> {
     const resp = await fetch(`${SERVER}/coins/`);
     const body = await resp.json();
 
-    this.setState(prevState => ({
+    this.setState(() => ({
       balance: body.balance,
     }));
   };
 
   requestBCH = async () => {
+    const { bchAddr } = this.state;
     try {
       this.wipeOutput();
 
       this.addOutput(`Sending request...`);
 
-      if (this.state.bchAddr === '') {
+      if (bchAddr === '') {
         this.addOutput(`Error: BCH Address can not be blank`);
         return;
       }
 
-      const resp = await fetch(`${SERVER}/coins/${this.state.bchAddr}`);
+      const resp = await fetch(`${SERVER}/coins/${bchAddr}`);
       const body = await resp.json();
       console.log(`body: ${JSON.stringify(body, null, 2)}`);
 
@@ -169,13 +106,6 @@ class BchFaucet extends React.PureComponent<Props, State> {
     }
   };
 
-  showLink(txid: string) {
-    this.setState(prevState => ({
-      linkOn: true,
-      linkAddr: `https://explorer.bitcoin.com/tbch/tx/${txid}`,
-    }));
-  }
-
   // Add another line to the output.
   addOutput = (str: string) => {
     this.setState(prevState => ({
@@ -185,10 +115,80 @@ class BchFaucet extends React.PureComponent<Props, State> {
 
   // Clear the output.
   wipeOutput = () => {
-    this.setState(prevState => ({
+    this.setState(() => ({
       outputText: '',
     }));
   };
+
+  showLink(txid: string) {
+    this.setState(() => ({
+      linkOn: true,
+      linkAddr: `https://explorer.bitcoin.com/tbch/tx/${txid}`,
+    }));
+  }
+
+  render() {
+    const { balance, bchAddr, outputText, linkOn, linkAddr } = this.state;
+    if (balance === 0) this.getBalance();
+
+    return (
+      <WrapperDiv>
+        <H3>
+          This is a <u>testnet</u> faucet for Bitcoin Cash! It is built with{' '}
+          <StyledLink to="/bitbox">BITBOX JavaScript SDK</StyledLink> and is
+          funded by the{' '}
+          <SmartLink to="https://www.bitcoin.com/bitcoin-mining">
+            Bitcoin.com Mining Pool
+          </SmartLink>
+          . It currently gives out <u>0.1 BCH</u>.
+        </H3>
+
+        <FaucetBalanceDisplay
+          title="Current faucet balance"
+          data={[{ item: 'BCH', amount: balance }]}
+        />
+
+        <Text>
+          <SmartLink to="https://github.com/Bitcoin-com/testnet-faucet">
+            Fork the code on GitHub!
+          </SmartLink>
+        </Text>
+
+        <AddressForm>
+          <Text for="bchAddr" as="label" bold>
+            BCH Testnet Address
+          </Text>
+          <Input
+            type="text"
+            id="bchAddr"
+            size="60"
+            placeholder="bchtest:qqmd9unmhkpx4pkmr6fkrr8rm6y77vckjvqe8aey35"
+            value={bchAddr}
+            onChange={this.handleChange}
+          />
+          <Button type="button" onClick={this.requestBCH}>
+            Get tBCH!
+          </Button>
+        </AddressForm>
+
+        <Well>
+          <Text>{outputText}</Text>
+        </Well>
+
+        {linkOn && (
+          <TxLink>
+            <SmartLink to={linkAddr}>View TX on Block Explorer</SmartLink>
+          </TxLink>
+        )}
+
+        <Text>
+          Please send your leftover testnet coins back to the faucet:
+          <br />
+          <i>bchtest:qqmd9unmhkpx4pkmr6fkrr8rm6y77vckjvqe8aey35</i>
+        </Text>
+      </WrapperDiv>
+    );
+  }
 }
 
 export default BchFaucet;

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import RehypeReact from 'rehype-react';
-import { graphql, push } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import HelmetPlus from 'components/HelmetPlus';
 import DefaultLayout from 'components/layouts/DefaultLayout';
@@ -95,29 +95,27 @@ type NavProps = {
   activeDoc: Object,
   docs: Object[],
 };
-class NavLinks extends React.PureComponent<NavProps> {
-  render() {
-    const { docs, activeDoc } = this.props;
+const NavLinks = (props: NavProps) => {
+  const { docs, activeDoc } = props;
 
-    return (
-      <LinksLayout>
-        {docs.map(node => (
-          <StyledLink
-            key={node.node.fields.slug}
-            to={node.node.fields.slug}
-            isActive={node.node.fields.slug === activeDoc.fields.slug}
-          >
-            <Text monospace centerVertical size="small">
-              {getIcon(node.node.frontmatter.icon)}
-              &nbsp;
-              {node.node.frontmatter.title}
-            </Text>
-          </StyledLink>
-        ))}
-      </LinksLayout>
-    );
-  }
-}
+  return (
+    <LinksLayout>
+      {docs.map(node => (
+        <StyledLink
+          key={node.node.fields.slug}
+          to={node.node.fields.slug}
+          isActive={node.node.fields.slug === activeDoc.fields.slug}
+        >
+          <Text monospace centerVertical size="small">
+            {getIcon(node.node.frontmatter.icon)}
+            &nbsp;
+            {node.node.frontmatter.title}
+          </Text>
+        </StyledLink>
+      ))}
+    </LinksLayout>
+  );
+};
 
 type Props = {
   data: Object,
@@ -125,18 +123,6 @@ type Props = {
 };
 
 class DocTemplate extends React.PureComponent<Props> {
-  changeDocs(event: SyntheticEvent<onSelect>) {
-    const pageTarget = {
-      bitbox: '/bitbox/docs/getting-started',
-      badger: '/badger/docs/getting-started',
-      gui: '/gui/docs/getting-started',
-      rest: '/rest/docs/getting-started',
-      slp: '/slp/docs/js/getting-started',
-    }[event.target.value];
-
-    pageTarget && push(pageTarget);
-  }
-
   render() {
     const { data, location } = this.props;
     const doc = data.markdownRemark;

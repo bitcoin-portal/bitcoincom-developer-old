@@ -10,7 +10,7 @@ const sizes = {
   small: 0,
 };
 // Iterate through the sizes and create a media template
-const media = Object.keys(sizes).reduce((acc, label, idx) => {
+const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args: any) => css`
     @media (min-width: ${sizes[label] / 16}em) {
       ${css(...args)};

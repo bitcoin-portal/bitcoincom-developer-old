@@ -132,7 +132,7 @@ const IndexPage = ({ location, data }: Props) => (
           title="Learn"
           subtitle="Build the foundation of knowledge needed to create world changing apps. Access tutorials, blog posts, video streams and code snippets to help you go from being a hobbyist to a professional step by step."
           large
-          link
+          link="true"
           href="/learn"
           image={data.learnImage.childImageSharp.fluid.src}
         />
@@ -140,7 +140,7 @@ const IndexPage = ({ location, data }: Props) => (
           title="Develop"
           subtitle="With the power of Bitcoin Cash, the ease of BITBOX and the Bitcoin.com developer platform, you’ll create your most innovative apps ever."
           large
-          link
+          link="true"
           href="/develop"
           image={data.developImage.childImageSharp.fluid.src}
         />
