@@ -95,7 +95,7 @@ const Learn = ({ location, data }: Props) => (
           subtitle="Based on Mastering Bitcoin by Andreas M. Antonopoulos, Mastering
             Bitcoin Cash is the ultimate guide to bring your knowledge from
             beginner to professional step by step."
-          cta={{ text: 'Read', link: '/mastering-bitcoinc-cash' }}
+          cta={{ text: 'Read', link: '/mastering-bitcoin-cash' }}
         />
       </CardContainer>
     </ContentBlock>

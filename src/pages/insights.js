@@ -5,33 +5,22 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
-import InfoCard from 'components/InfoCard';
 
-import { FaAngleLeft } from 'react-icons/fa';
+import { theme, media, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
 
-import H3 from 'atoms/H3';
-import H1 from 'atoms/H1';
-import StyledLink from 'atoms/StyledLink';
-
-import spacing from 'styles/spacing';
-import media from 'styles/media';
-
-const HeroLayout = styled.div`
-  display: grid;
-  grid-gap: ${spacing.tiny};
+const StyledContentBlock = styled(ContentBlock)`
+  margin: 0;
 `;
 
-const PreviewLayout = styled.div`
+const CardContainer = styled.div`
   display: grid;
-  padding-top: ${spacing.large};
-  grid-gap: ${spacing.medium};
-  grid-template-columns: 1fr;
-  ${media.medium`
-    grid-template-columns: repeat(auto-fit, minmax(400px, .5fr));
-  `};
+  grid-row-gap: ${theme.spacing.unit * 4}px;
+  grid-column-gap: ${theme.spacing.unit * 4}px;
+  margin-top: ${theme.spacing.unit * 8}px;
+  ${media.md`
+    grid-template-columns: 1fr 1fr;
+  `}
 `;
 
 type Props = {
@@ -56,7 +45,17 @@ const Insights = ({ location, data }: Props) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <DefaultLayout location={location}>
+    <DefaultLayout
+      location={location}
+      hero={
+        <StyledContentBlock>
+          <H1 contrast>Insights</H1>
+          <H2 style={{ color: theme.palette.primary.main }}>
+            Learn from developers who have shipped successful apps.
+          </H2>
+        </StyledContentBlock>
+      }
+    >
       <HelmetPlus
         title={`Inisghts - ${data.site.siteMetadata.title}`}
         description="Insights into the learnings and process people have faced while building new products with Bitcoin Cash and Bitbox"
@@ -68,33 +67,17 @@ const Insights = ({ location, data }: Props) => {
         ]}
         location={location}
       />
-      <Hero image={data.heroImage}>
-        <HeroLayout>
-          <StyledLink to="/learn">
-            <H3 centerVertical thin>
-              {' '}
-              <FaAngleLeft />
-              Learn
-            </H3>
-          </StyledLink>
-          <H1 background>Insights</H1>
-          <H3 background thin>
-            Learn from developers who have shipped successful apps.
-          </H3>
-        </HeroLayout>
-      </Hero>
-      <Container>
-        <PreviewLayout>
+      <StyledContentBlock>
+        <CardContainer>
           {posts.map(post => (
-            <InfoCard
-              to={post.node.fields.slug}
+            <Card
               title={post.node.frontmatter.title}
-              text={post.node.frontmatter.description}
-              cta="Read More"
+              subtitle={post.node.frontmatter.description}
+              cta={{ text: 'Read More', link: post.node.fields.slug }}
             />
           ))}
-        </PreviewLayout>
-      </Container>
+        </CardContainer>
+      </StyledContentBlock>
     </DefaultLayout>
   );
 };

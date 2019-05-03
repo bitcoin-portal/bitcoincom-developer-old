@@ -3,37 +3,42 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import { FaAngleLeft } from 'react-icons/fa';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
-import MasteringBitcoinCashAttribution from 'components/MasteringBitcoinCashAttribution';
 import HelmetPlus from 'components/HelmetPlus';
 
-import H3 from 'atoms/H3';
-import H2 from 'atoms/H2';
-import H1 from 'atoms/H1';
-import StyledLink from 'atoms/StyledLink';
+import {
+  theme,
+  media,
+  ContentBlock,
+  H1,
+  H2,
+  H3,
+  OL,
+  Link,
+  Paragraph,
+} from 'bitcoincom-storybook';
 
-import spacing from 'styles/spacing';
+const StyledContentBlock = styled(ContentBlock)`
+  margin: 0;
 
-const HeroLayout = styled.div`
-  display: grid;
-  grid-gap: ${spacing.tiny};
+  & > div > div {
+    margin: ${theme.spacing.unit}px auto !important;
+  }
+
+  & > div > div > div {
+    max-width: unset;
+  }
 `;
 
-const PageLayout = styled.div`
-  display: grid;
-  margin-top: ${spacing.medium};
-  grid-gap: ${spacing.small};
-`;
-
-const ChapterLayout = styled.div`
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-row-gap: ${spacing.tiny};
-  grid-column-gap: ${spacing.tiny};
+const Text = styled(Paragraph)`
+  max-width: 800px;
+  ${media.md`
+  margin: 0 auto ${theme.spacing.unit * 4}px auto;
+  `}
+  & > a {
+    display: inline;
+  }
 `;
 
 type Props = {
@@ -45,7 +50,17 @@ const Learn = ({ location, data }: Props) => {
   const chapters = data.allMarkdownRemark.edges;
 
   return (
-    <DefaultLayout location={location}>
+    <DefaultLayout
+      location={location}
+      hero={
+        <StyledContentBlock>
+          <H1 contrast>Mastering Bitcoin Cash</H1>
+          <H2 style={{ color: theme.palette.primary.main }}>
+            Build a foundation of knowledge
+          </H2>
+        </StyledContentBlock>
+      }
+    >
       <HelmetPlus
         title={`Mastering Bitcoin Cash - book - ${
           data.site.siteMetadata.title
@@ -54,45 +69,39 @@ const Learn = ({ location, data }: Props) => {
         keywords={['mastering bitcoin cash', 'bitcoin cash book', 'free book']}
         location={location}
       />
-      <Hero image={data.heroImage}>
-        <HeroLayout>
-          <StyledLink to="/learn">
-            <H3 centerVertical thin>
-              {' '}
-              <FaAngleLeft />
-              Learn
-            </H3>
-          </StyledLink>
-          <H1 background>Mastering Bitcoin Cash</H1>
-          <H3 background thin>
-            Build a foundation of knowledge
-          </H3>
-        </HeroLayout>
-      </Hero>
-      <Container>
-        <PageLayout>
-          <MasteringBitcoinCashAttribution />
-          <H2 thin>Chapters</H2>
-          <ChapterLayout>
-            {chapters.map(chapter => (
-              <React.Fragment
-                key={`${chapter.node.frontmatter.slug}-${
-                  chapter.node.frontmatter.chapter
-                }`}
-              >
-                <H3 key={chapter.node.frontmatter.chapter} monospace thin>
-                  {chapter.node.frontmatter.chapter}.
-                </H3>
-                <H3 thin key={chapter.node.frontmatter.slug}>
-                  <StyledLink to={chapter.node.fields.slug}>
-                    {chapter.node.frontmatter.title}
-                  </StyledLink>
-                </H3>
-              </React.Fragment>
-            ))}
-          </ChapterLayout>
-        </PageLayout>
-      </Container>
+
+      <ContentBlock>
+        <Text size="tiny">
+          The following is based on{' '}
+          <Link href="https://github.com/bitcoinbook/bitcoinbook">
+            Mastering Bitcoin
+          </Link>{' '}
+          by Andreas M. Antonopoulos{' '}
+          <Link href="https://github.com/bitcoinbook/bitcoinbook#mastering-bitcoin---first-edition">
+            First Edition
+          </Link>{' '}
+          which is licensed under{' '}
+          <Link href="https://creativecommons.org/licenses/by-sa/4.0/">
+            Creative Commons Attribution-ShareAlike
+          </Link>
+        </Text>
+        <H2>Chapters</H2>
+        <OL>
+          {chapters.map(chapter => (
+            <li
+              key={`${chapter.node.frontmatter.slug}-${
+                chapter.node.frontmatter.chapter
+              }`}
+            >
+              <H3 key={chapter.node.frontmatter.slug}>
+                <Link href={chapter.node.fields.slug}>
+                  {chapter.node.frontmatter.title}
+                </Link>
+              </H3>
+            </li>
+          ))}
+        </OL>
+      </ContentBlock>
     </DefaultLayout>
   );
 };
