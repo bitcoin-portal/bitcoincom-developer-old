@@ -69,42 +69,50 @@ const DevelopPage = ({ location, data }: Props) => (
     <ContentBlock>
       <CardContainer>
         <Card
+          image={data.bitboxImage.childImageSharp.fluid.src}
           title="BITBOX"
           subtitle="Fully featured javascript framework. Offering utility methods for Mnemonics, HDNodes, ECPairs, Crypto, Address conversion, Transactions and much more."
           cta={{ text: 'View', link: '/bitbox' }}
         />
         <Card
+          image={data.badgerImage.childImageSharp.fluid.src}
           title="Badger"
           subtitle="Your gateway to the Bitcoin Cash (BCH) ecosystem. Integrate your app with with the Bitcoin Cash blockchain, without the complexity."
           cta={{ text: 'View', link: '/badger' }}
         />
         <Card
+          image={data.restImage.childImageSharp.fluid.src}
           title="REST"
           subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
           cta={{ text: 'View', link: '/rest' }}
         />
         <Card
+          image={data.slpImage.childImageSharp.fluid.src}
           title="SLP"
           subtitle="Tokenize anything. Everything you need to easily issue, spend or trade your own token."
           cta={{ text: 'View', link: '/slp' }}
         />
         <Card
+          image={data.guiImage.childImageSharp.fluid.src}
           title="GUI"
           subtitle="BIP44 development wallet. Convert between cashaddr/legacy addresses. Create QR codes for WIF, XPub and XPrivs. Sign and verify messages."
           cta={{ text: 'View', link: '/gui' }}
         />
         <Card
+          image={data.faucetsImage.childImageSharp.fluid.src}
           to="/faucets"
           title="Faucets"
           subtitle="Testnet BCH for developers."
           cta={{ text: 'View', link: '/faucets' }}
         />
         <Card
+          image={data.cloudImage.childImageSharp.fluid.src}
           title="Cloud"
           subtitle="Blockchain-as-a-Service. Infrastructure to deploy and scale your apps. An ecosystem of add-ons for data, monitoring, logging, metrics, testing and more all built w/ BITBOX."
           cta={{ text: 'Coming soon' }}
         />
         <Card
+          image={data.marketImage.childImageSharp.fluid.src}
           title="Market"
           subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
           cta={{ text: 'Coming soon' }}
@@ -123,13 +131,58 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero-develop.jpg" }) {
+    bitboxImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    badgerImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    restImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    slpImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    guiImage: file(relativePath: { eq: "GUI.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    faucetsImage: file(relativePath: { eq: "faucet.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    cloudImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    marketImage: file(relativePath: { eq: "market.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

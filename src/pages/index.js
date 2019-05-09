@@ -3,9 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-
 import DefaultLayout from 'components/layouts/DefaultLayout';
-
 import {
   theme,
   media,
@@ -16,16 +14,8 @@ import {
   Button,
   Card,
   Paragraph,
+  CardContainer,
 } from 'bitcoincom-storybook';
-
-const StyledContentBlock = styled(ContentBlock)`
-  & > div > :nth-child(2) {
-    flex-basis: 75%;
-  }
-  & > div > div > img {
-    display: none;
-  }
-`;
 
 const ButtonWrapper = styled.div`
   display: grid;
@@ -36,21 +26,6 @@ const ButtonWrapper = styled.div`
   ${media.md`
     grid-template-columns: 1fr 1fr 1fr;
   `}
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
 `;
 
 type Props = {
@@ -67,12 +42,16 @@ const IndexPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock image="none">
-        <H3 style={{ color: theme.palette.primary.main }}>
+      <ContentBlock left>
+        <H3 balanced style={{ color: theme.palette.primary.main }}>
           Bitcoin.com Developer Platform
         </H3>
-        <H1 contrast>Change the world with Bitcoin Cash</H1>
-        <H2 contrast>Developer Tooling, Cloud, and Market</H2>
+        <H1 balanced contrast>
+          Change the world with Bitcoin Cash
+        </H1>
+        <H2 balanced contrast>
+          Developer Tooling, Cloud, and Market
+        </H2>
         <ButtonWrapper>
           <Button href="/bitbox" round link dark>
             BITBOX SDK
@@ -84,20 +63,20 @@ const IndexPage = ({ location, data }: Props) => (
             Badger SDK
           </Button>
         </ButtonWrapper>
-      </StyledContentBlock>
+      </ContentBlock>
     }
   >
     <ContentBlock>
-      <H2>
+      <H2 balanced>
         Developing on{' '}
         <span style={{ color: theme.palette.primary.main }}>Bitcoin Cash</span>
       </H2>
-      <Paragraph center style={{ maxWidth: 'unset' }}>
+      <Paragraph center balanced>
         Money is critical to the Human Condition. Bitcoin Cash and Blockchain
         technology enable financial sovereignty in a way which is unique in
         history.
       </Paragraph>
-      <Paragraph center style={{ maxWidth: 'unset' }}>
+      <Paragraph center balanced>
         Bitcoin Cash is the soundest money the world has ever known. As a
         developer you can make it available to all people, whatever their age,
         gender, nationality or financial status.
@@ -106,12 +85,12 @@ const IndexPage = ({ location, data }: Props) => (
         <Card
           title="Build on BCH"
           subtitle="Leverage the blockchain to build decentralized and censorship resistant applications. Help bring financial sovereignty to every corner of the world."
-          image=""
+          image={data.buildImage.childImageSharp.fluid.src}
         />
         <Card
           title="Create Transactions"
           subtitle="BITBOX supports all standard transaction types including P2PK, P2PKH, P2MS, P2SH and nullData, and all Bitcoin Cash OP codes."
-          image=""
+          image={data.txImage.childImageSharp.fluid.src}
         />
         <Card
           title="BCommerce Solutions"
@@ -132,16 +111,16 @@ const IndexPage = ({ location, data }: Props) => (
           title="Learn"
           subtitle="Build the foundation of knowledge needed to create world changing apps. Access tutorials, blog posts, video streams and code snippets to help you go from being a hobbyist to a professional step by step."
           large
-          link="true"
-          href="/learn"
+          style={{ background: theme.palette.background.light }}
+          link="/learn"
           image={data.learnImage.childImageSharp.fluid.src}
         />
         <Card
           title="Develop"
           subtitle="With the power of Bitcoin Cash, the ease of BITBOX and the Bitcoin.com developer platform, you’ll create your most innovative apps ever."
           large
-          link="true"
-          href="/develop"
+          style={{ background: theme.palette.background.light }}
+          link="/develop"
           image={data.developImage.childImageSharp.fluid.src}
         />
       </CardContainer>
@@ -153,24 +132,16 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    heroImage: file(relativePath: { eq: "hero2.jpg" }) {
+    buildImage: file(relativePath: { eq: "build.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    bannerImage: file(relativePath: { eq: "tech-banner.jpg" }) {
+    txImage: file(relativePath: { eq: "create_tx.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

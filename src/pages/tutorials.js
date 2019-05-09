@@ -1,39 +1,19 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, media, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
-
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-  & > div > div {
-    margin: ${theme.spacing.unit}px auto !important;
-  }
-
-  & > div > div > div {
-    max-width: unset;
-  }
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
-`;
+import {
+  theme,
+  CardContainer,
+  ContentBlock,
+  H1,
+  H3,
+  Card,
+} from 'bitcoincom-storybook';
 
 type Props = {
   location: Object,
@@ -61,13 +41,13 @@ const Tutorials = ({ location, data }: Props) => {
     <DefaultLayout
       location={location}
       hero={
-        <StyledContentBlock>
+        <ContentBlock>
           <H1 contrast>Tutorials</H1>
-          <H2 style={{ color: theme.palette.primary.main }}>
+          <H3 balanced style={{ color: theme.palette.primary.main }}>
             Real world examples to learn from and bootstrap your next Bitcoin
             Cash project
-          </H2>
-        </StyledContentBlock>
+          </H3>
+        </ContentBlock>
       }
     >
       <HelmetPlus
@@ -121,17 +101,6 @@ export const query = graphql`
           fields {
             slug
           }
-        }
-      }
-    }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
-      childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
-          ...GatsbyImageSharpFluid
         }
       }
     }

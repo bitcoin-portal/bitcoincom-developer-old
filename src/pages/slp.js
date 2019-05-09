@@ -1,14 +1,12 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 import {
   theme,
-  media,
   ContentBlock,
   H1,
   H2,
@@ -16,22 +14,8 @@ import {
   Card,
   Link,
   Paragraph,
+  CardContainer,
 } from 'bitcoincom-storybook';
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
-`;
 
 type Props = {
   location: Object,
@@ -65,7 +49,7 @@ const SLPPage = ({ location, data }: Props) => (
 
     <ContentBlock>
       <H2>Simple Ledger Protocol</H2>
-      <Paragraph style={{ maxWidth: 'unset' }}>
+      <Paragraph balanced style={{ maxWidth: 'unset' }}>
         <Link
           href="https://simpleledger.cash/"
           target="_blank"
@@ -79,7 +63,7 @@ const SLPPage = ({ location, data }: Props) => (
         signature addresses and other advanced Bitcoin script features with SLP
         tokens.
       </Paragraph>
-      <CardContainer>
+      <CardContainer columns={3}>
         <Card
           title="Javascript"
           subtitle="SLP SDK is a fully featured javascript framework powered by BITBOX. Everything you need to easily issue, spend or trade your own token. Install via NPM and talk to Bitcoin.com's cloud with no further setup."

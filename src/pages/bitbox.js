@@ -73,11 +73,13 @@ const BitboxPage = ({ location, data }: Props) => (
           </HeroAside>
         }
       >
-        <H3 style={{ color: theme.palette.primary.main }}>
+        <H3 balanced style={{ color: theme.palette.primary.main }}>
           Incredibly powerful. Easy to learn
         </H3>
-        <H1 contrast>BITBOX</H1>
-        <H2 contrast>
+        <H1 contrast balanced>
+          BITBOX
+        </H1>
+        <H2 contrast balanced>
           Powerful and intuitive APIs which will have you creating world class
           applications
         </H2>

@@ -1,7 +1,6 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
@@ -9,44 +8,15 @@ import HelmetPlus from 'components/HelmetPlus';
 
 import {
   theme,
-  media,
   ContentBlock,
   H1,
   H2,
   H3,
+  Button,
   Card,
+  CardContainer,
 } from 'bitcoincom-storybook';
 import content from '../pageContent/gui';
-
-const StyledContentBlock = styled(ContentBlock)`
-  & > div > :nth-child(2) {
-    flex-basis: 75%;
-  }
-  & > div > div > img {
-    display: none;
-  }
-  & > div > div > div {
-    max-width: unset;
-    & > div > div {
-      margin: auto;
-    }
-  }
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
-`;
 
 type Props = {
   location: Object,
@@ -57,15 +27,17 @@ const GuiPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock image="none">
-        <H3 style={{ color: theme.palette.primary.main }}>
+      <ContentBlock left>
+        <H3 balanced style={{ color: theme.palette.primary.main }}>
           Your Personal Blockchain
         </H3>
-        <H1 contrast>GUI</H1>
-        <H2 contrast>
+        <H1 contrast balanced>
+          GUI
+        </H1>
+        <H2 contrast balanced>
           Full BCH blockchain and BIP44 wallet for use during development.
         </H2>
-      </StyledContentBlock>
+      </ContentBlock>
     }
   >
     <HelmetPlus
@@ -75,12 +47,21 @@ const GuiPage = ({ location, data }: Props) => (
       location={location}
     />
 
-    <StyledContentBlock>
+    <ContentBlock>
       <Card
+        full
         title="Instant Blockchain"
         subtitle="Your own Bitcoin Cash blockchain to configure however you choose. It’s recreated from scratch each time you restart GUI. It doesn’t connect to the real network and only consists of transactions and blocks which you create locally so it’s quick and responsive."
-        cta={{ text: 'More', link: '/gui/docs/getting-started' }}
-      />
+        style={{ marginBottom: 32 }}
+      >
+        <Button
+          link
+          href="/gui/docs/getting-started"
+          style={{ margin: 'auto' }}
+        >
+          More
+        </Button>
+      </Card>
       <CardContainer>
         {content.map(item => (
           <Card
@@ -94,7 +75,7 @@ const GuiPage = ({ location, data }: Props) => (
           />
         ))}
       </CardContainer>
-    </StyledContentBlock>
+    </ContentBlock>
   </DefaultLayout>
 );
 

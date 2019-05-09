@@ -1,27 +1,13 @@
 // @flow
 
 import React from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
+import { theme, ContentBlock, H1, H3, Card } from 'bitcoincom-storybook';
 
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-  & > div > div {
-    margin: ${theme.spacing.unit}px auto !important;
-  }
-
-  & > div > div > div {
-    max-width: unset;
-    & > div > div {
-      margin: auto;
-    }
-  }
-`;
 type Props = {
   location: Object,
   data: { heroImage: any },
@@ -31,12 +17,12 @@ const Faucet = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock>
-        <H1 contrast>Faucet</H1>
-        <H2 style={{ color: theme.palette.primary.main }}>
+      <ContentBlock left>
+        <H3 style={{ color: theme.palette.primary.main }}>
           Testnet BCH for developers
-        </H2>
-      </StyledContentBlock>
+        </H3>
+        <H1 contrast>Faucet</H1>
+      </ContentBlock>
     }
   >
     <HelmetPlus
@@ -52,13 +38,13 @@ const Faucet = ({ location, data }: Props) => (
       location={location}
     />
 
-    <StyledContentBlock>
+    <ContentBlock>
       <Card
         title="BCH Testnet Faucet"
         subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
         cta={{ text: 'View', link: '/faucets/bch' }}
       />
-    </StyledContentBlock>
+    </ContentBlock>
   </DefaultLayout>
 );
 

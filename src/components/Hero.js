@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Hero = ({ children, image }: Props) => (
-  <ContentBlock image={image}>
+  <ContentBlock left image={image}>
     {children}
     {/* <Cover />
     <Content>{children}</Content>

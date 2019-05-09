@@ -25,17 +25,6 @@ import {
   Section,
 } from 'bitcoincom-storybook';
 
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-  & > div > div {
-    margin: ${theme.spacing.unit}px auto !important;
-  }
-
-  & > div > div > div {
-    max-width: unset;
-  }
-`;
-
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
@@ -149,10 +138,10 @@ class ChapterTemplate extends React.PureComponent<Props> {
       <DefaultLayout
         location={location}
         hero={
-          <StyledContentBlock>
+          <ContentBlock>
             <H1 contrast>Mastering Bitcoin Cash</H1>
             <MasteringBitcoinCashAttribution contrast />
-          </StyledContentBlock>
+          </ContentBlock>
         }
       >
         <HelmetPlus
