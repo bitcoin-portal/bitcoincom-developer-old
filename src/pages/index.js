@@ -130,14 +130,14 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    buildImage: file(relativePath: { eq: "Build.png" }) {
+    buildImage: file(relativePath: { eq: "build.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    txImage: file(relativePath: { eq: "Create_tx.png" }) {
+    txImage: file(relativePath: { eq: "create_tx.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

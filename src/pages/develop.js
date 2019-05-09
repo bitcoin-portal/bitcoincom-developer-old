@@ -165,7 +165,7 @@ export const query = graphql`
         }
       }
     }
-    faucetsImage: file(relativePath: { eq: "Faucet.png" }) {
+    faucetsImage: file(relativePath: { eq: "faucet.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
