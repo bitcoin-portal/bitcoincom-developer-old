@@ -11,7 +11,7 @@ import {
   CardContainer,
   ContentBlock,
   H1,
-  H3,
+  H2,
   Card,
 } from 'bitcoincom-storybook';
 
@@ -43,10 +43,13 @@ const Tutorials = ({ location, data }: Props) => {
       hero={
         <ContentBlock>
           <H1 contrast>Tutorials</H1>
-          <H3 balanced style={{ color: theme.palette.primary.main }}>
+          <H2
+            balanced
+            style={{ maxWidth: 730, color: theme.palette.primary.main }}
+          >
             Real world examples to learn from and bootstrap your next Bitcoin
             Cash project
-          </H3>
+          </H2>
         </ContentBlock>
       }
     >

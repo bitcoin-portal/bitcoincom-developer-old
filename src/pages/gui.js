@@ -27,14 +27,14 @@ const GuiPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock left>
+      <ContentBlock>
         <H3 balanced style={{ color: theme.palette.primary.main }}>
           Your Personal Blockchain
         </H3>
         <H1 contrast balanced>
           GUI
         </H1>
-        <H2 contrast balanced>
+        <H2 contrast balanced style={{ maxWidth: 730 }}>
           Full BCH blockchain and BIP44 wallet for use during development.
         </H2>
       </ContentBlock>

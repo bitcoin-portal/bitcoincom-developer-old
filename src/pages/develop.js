@@ -113,7 +113,7 @@ const DevelopPage = ({ location, data }: Props) => (
         />
         <Card
           image={data.marketImage.childImageSharp.fluid.src}
-          title="Market"
+          title="Marketplace"
           subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
           cta={{ text: 'Coming soon' }}
         />
@@ -131,28 +131,28 @@ export const query = graphql`
         title
       }
     }
-    bitboxImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+    bitboxImage: file(relativePath: { eq: "Bitbox.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    badgerImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+    badgerImage: file(relativePath: { eq: "Badger.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    restImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+    restImage: file(relativePath: { eq: "Rest.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    slpImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+    slpImage: file(relativePath: { eq: "SLP.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
@@ -166,21 +166,21 @@ export const query = graphql`
         }
       }
     }
-    faucetsImage: file(relativePath: { eq: "faucet.png" }) {
+    faucetsImage: file(relativePath: { eq: "Faucet.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    cloudImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+    cloudImage: file(relativePath: { eq: "Cloud.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    marketImage: file(relativePath: { eq: "market.png" }) {
+    marketImage: file(relativePath: { eq: "Markets.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

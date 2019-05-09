@@ -49,7 +49,9 @@ const Learn = ({ location, data }: Props) => (
     location={location}
     hero={
       <StyledContentBlock>
-        <H1 contrast>Change the world with Bitcoin Cash</H1>
+        <H1 contrast style={{ maxWidth: 730 }}>
+          Change the world with Bitcoin Cash
+        </H1>
         <H2 style={{ color: theme.palette.primary.main }}>
           Developer Tooling, Cloud, and Market
         </H2>
@@ -111,21 +113,21 @@ export const query = graphql`
         title
       }
     }
-    tutorialsImage: file(relativePath: { eq: "build.png" }) {
+    tutorialsImage: file(relativePath: { eq: "Tutorials.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    insightsImage: file(relativePath: { eq: "insightz.png" }) {
+    insightsImage: file(relativePath: { eq: "Insights.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    masteringImage: file(relativePath: { eq: "build.png" }) {
+    masteringImage: file(relativePath: { eq: "Mastering.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

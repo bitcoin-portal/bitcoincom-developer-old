@@ -54,6 +54,15 @@ const CardInstall = styled.div`
   `}
 `;
 
+const CardImage = styled.div`
+  grid-area: logo;
+  margin-bottom: ${theme.spacing.unit * 4}px;
+  ${media.md`
+    margin-bottom: 0;
+    margin-right: ${theme.spacing.unit * 4}px;
+ `};
+`;
+
 type Props = {
   location: Object,
   data: { heroImage: any },
@@ -63,7 +72,7 @@ const FAQ = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock left>
+      <ContentBlock>
         <H3 style={{ color: theme.palette.primary.main }}>
           {`Bitcoin.com's developer platform`}
         </H3>
@@ -80,12 +89,12 @@ const FAQ = ({ location, data }: Props) => (
     <ContentBlock>
       <Card full style={{ marginBottom: 32 }}>
         <CardContent>
-          <div style={{ gridArea: 'logo' }}>
+          <CardImage>
             <img
               src={data.bitboxImage.childImageSharp.fluid.src}
               alt="BITBOX"
             />
-          </div>
+          </CardImage>
           <CardText>
             <H2 left>BITBOX</H2>
             <Paragraph>
@@ -121,7 +130,7 @@ const FAQ = ({ location, data }: Props) => (
         />
         <Card
           image={data.marketImage.childImageSharp.fluid.src}
-          title="Market"
+          title="Marketplace"
           subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
         />
       </CardContainer>
@@ -138,35 +147,35 @@ export const query = graphql`
         title
       }
     }
-    bitboxImage: file(relativePath: { eq: "build.png" }) {
+    bitboxImage: file(relativePath: { eq: "Bitbox.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    badgerImage: file(relativePath: { eq: "build.png" }) {
+    badgerImage: file(relativePath: { eq: "Badger.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    restImage: file(relativePath: { eq: "build.png" }) {
+    restImage: file(relativePath: { eq: "Rest.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    cloudImage: file(relativePath: { eq: "build.png" }) {
+    cloudImage: file(relativePath: { eq: "Cloud.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    marketImage: file(relativePath: { eq: "market.png" }) {
+    marketImage: file(relativePath: { eq: "Markets.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

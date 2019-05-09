@@ -26,7 +26,7 @@ const RestPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock left>
+      <ContentBlock>
         <H3 style={{ color: theme.palette.primary.main }}>BCH RPC over HTTP</H3>
         <H1 contrast>REST</H1>
         <H2 contrast>REST layer for Bitcoin.com Cloud</H2>

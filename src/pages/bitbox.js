@@ -120,16 +120,5 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
-      childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
   }
 `;

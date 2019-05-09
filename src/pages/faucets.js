@@ -6,7 +6,14 @@ import { graphql } from 'gatsby';
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, ContentBlock, H1, H3, Card } from 'bitcoincom-storybook';
+import {
+  theme,
+  ContentBlock,
+  H1,
+  H2,
+  Card,
+  Button,
+} from 'bitcoincom-storybook';
 
 type Props = {
   location: Object,
@@ -17,11 +24,11 @@ const Faucet = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock left>
-        <H3 style={{ color: theme.palette.primary.main }}>
-          Testnet BCH for developers
-        </H3>
+      <ContentBlock>
         <H1 contrast>Faucet</H1>
+        <H2 style={{ color: theme.palette.primary.main }}>
+          Testnet BCH for developers
+        </H2>
       </ContentBlock>
     }
   >
@@ -40,10 +47,15 @@ const Faucet = ({ location, data }: Props) => (
 
     <ContentBlock>
       <Card
+        full
+        image={data.faucetImage.childImageSharp.fluid.src}
         title="BCH Testnet Faucet"
         subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
-        cta={{ text: 'View', link: '/faucets/bch' }}
-      />
+      >
+        <Button link primary href="/faucets/bch" style={{ margin: 'auto' }}>
+          View
+        </Button>
+      </Card>
     </ContentBlock>
   </DefaultLayout>
 );
@@ -57,13 +69,9 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
+    faucetImage: file(relativePath: { eq: "Faucet.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

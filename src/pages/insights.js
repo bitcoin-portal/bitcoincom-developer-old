@@ -1,6 +1,6 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
@@ -10,7 +10,7 @@ import {
   theme,
   ContentBlock,
   H1,
-  H3,
+  H2,
   Card,
   CardContainer,
 } from 'bitcoincom-storybook';
@@ -40,11 +40,14 @@ const Insights = ({ location, data }: Props) => {
     <DefaultLayout
       location={location}
       hero={
-        <ContentBlock left>
-          <H3 balanced style={{ color: theme.palette.primary.main }}>
-            Learn from developers who have shipped successful apps.
-          </H3>
+        <ContentBlock>
           <H1 contrast>Insights</H1>
+          <H2
+            balanced
+            style={{ maxWidth: 730, color: theme.palette.primary.main }}
+          >
+            Learn from developers who have shipped successful apps.
+          </H2>
         </ContentBlock>
       }
     >
@@ -101,17 +104,6 @@ export const query = graphql`
           fields {
             slug
           }
-        }
-      }
-    }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
-      childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
-          ...GatsbyImageSharpFluid
         }
       }
     }

@@ -26,7 +26,7 @@ const SLPPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock aside={<React.Fragment />}>
+      <ContentBlock>
         <H3 style={{ color: theme.palette.primary.main }}>Tokenize anything</H3>
         <H1 contrast>SLP SDK</H1>
         <H2 contrast>Secure Tokens on Bitcoin Cash</H2>
@@ -65,15 +65,16 @@ const SLPPage = ({ location, data }: Props) => (
       </Paragraph>
       <CardContainer columns={3}>
         <Card
+          image={data.jsImage.childImageSharp.fluid.src}
           title="Javascript"
           subtitle="SLP SDK is a fully featured javascript framework powered by BITBOX. Everything you need to easily issue, spend or trade your own token. Install via NPM and talk to Bitcoin.com's cloud with no further setup."
-          image=""
           cta={{
             text: 'More',
             link: '/slp/docs/js/getting-started',
           }}
         />
         <Card
+          image={data.androidImage.childImageSharp.fluid.src}
           title="Android"
           subtitle="Install via Gradle. Convert between cash and slp address formats. Send tokens w/ balances, including both tokens and BCH, available as LiveData. Convenience methods to make it easier to display tokens. Timber for logging."
           cta={{
@@ -82,6 +83,7 @@ const SLPPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          image={data.iosImage.childImageSharp.fluid.src}
           title="iOS"
           subtitle="Install via CocoaPods. Generate mnemonics. Convert between cash and slp address formats. Send tokens and fetch token balances."
           cta={{
@@ -103,13 +105,23 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
+    jsImage: file(relativePath: { eq: "SLP_javascript.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    androidImage: file(relativePath: { eq: "SLP_android.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    iosImage: file(relativePath: { eq: "SLP_ios.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

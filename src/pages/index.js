@@ -95,12 +95,12 @@ const IndexPage = ({ location, data }: Props) => (
         <Card
           title="BCommerce Solutions"
           subtitle="Blockchain commerce is the future of online business. Bitcoin Cash is the money of the Internet Nation. Together they enable an entirely new class of application."
-          image=""
+          image={data.commerceImage.childImageSharp.fluid.src}
         />
         <Card
           title="On chain applications"
           subtitle="Distributed, immutable, decentralized—the blockchain offers capabilities which are extremely powerful. Take your application to the next level with Bitcoin Cash."
-          image=""
+          image={data.onchainImage.childImageSharp.fluid.src}
         />
       </CardContainer>
     </ContentBlock>
@@ -110,7 +110,6 @@ const IndexPage = ({ location, data }: Props) => (
         <Card
           title="Learn"
           subtitle="Build the foundation of knowledge needed to create world changing apps. Access tutorials, blog posts, video streams and code snippets to help you go from being a hobbyist to a professional step by step."
-          large
           style={{ background: theme.palette.background.light }}
           link="/learn"
           image={data.learnImage.childImageSharp.fluid.src}
@@ -118,7 +117,6 @@ const IndexPage = ({ location, data }: Props) => (
         <Card
           title="Develop"
           subtitle="With the power of Bitcoin Cash, the ease of BITBOX and the Bitcoin.com developer platform, you’ll create your most innovative apps ever."
-          large
           style={{ background: theme.palette.background.light }}
           link="/develop"
           image={data.developImage.childImageSharp.fluid.src}
@@ -132,28 +130,42 @@ export default IndexPage;
 
 export const query = graphql`
   query {
-    buildImage: file(relativePath: { eq: "build.png" }) {
+    buildImage: file(relativePath: { eq: "Build.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    txImage: file(relativePath: { eq: "create_tx.png" }) {
+    txImage: file(relativePath: { eq: "Create_tx.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    developImage: file(relativePath: { eq: "develop-thumb.jpg" }) {
+    commerceImage: file(relativePath: { eq: "Commerce.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    learnImage: file(relativePath: { eq: "learn-thumb.jpg" }) {
+    onchainImage: file(relativePath: { eq: "onchain.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    developImage: file(relativePath: { eq: "Develop.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    learnImage: file(relativePath: { eq: "Learn.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

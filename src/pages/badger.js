@@ -82,12 +82,14 @@ const BadgerPage = ({ location, data }: Props) => (
     <ContentBlock>
       <CardContainer>
         <Card
+          image={data.badgerSDKImage.childImageSharp.fluid.src}
           title="Badger SDK"
           subtitle="Badger Wallet injects an API into pages a user visits to allow apps to request a users's permission to send Bitcoin Cash, send tokens, or authenticate with CashID."
           cta={{ text: 'View', link: '/badger/docs/getting-started' }}
         />
 
         <Card
+          image={data.badgerReactImage.childImageSharp.fluid.src}
           title="Badger React Components"
           subtitle="React based components and tools to make integrating Bitcoin Cash (BCH) into your next project easy."
           cta={{ text: 'View', link: '/badger/docs/badger-components-react' }}
@@ -106,13 +108,16 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
+    badgerSDKImage: file(relativePath: { eq: "Badger_sdk.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    badgerReactImage: file(relativePath: { eq: "Badger_react.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
