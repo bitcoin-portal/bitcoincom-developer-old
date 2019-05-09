@@ -179,7 +179,7 @@ export const query = graphql`
         }
       }
     }
-    marketImage: file(relativePath: { eq: "Markets.png" }) {
+    marketImage: file(relativePath: { eq: "marketplace.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

@@ -144,7 +144,7 @@ export const query = graphql`
         }
       }
     }
-    commerceImage: file(relativePath: { eq: "Commerce.png" }) {
+    commerceImage: file(relativePath: { eq: "bcommerce.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
