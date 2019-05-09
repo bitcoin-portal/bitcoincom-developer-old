@@ -100,7 +100,6 @@ const DevelopPage = ({ location, data }: Props) => (
         />
         <Card
           image={data.faucetsImage.childImageSharp.fluid.src}
-          to="/faucets"
           title="Faucets"
           subtitle="Testnet BCH for developers."
           cta={{ text: 'View', link: '/faucets' }}
