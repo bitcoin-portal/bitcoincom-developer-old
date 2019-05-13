@@ -151,7 +151,7 @@ export const query = graphql`
         }
       }
     }
-    onchainImage: file(relativePath: { eq: "onchain.png" }) {
+    onchainImage: file(relativePath: { eq: "onchain_apps.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid

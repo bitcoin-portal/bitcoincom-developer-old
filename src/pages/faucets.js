@@ -13,6 +13,7 @@ import {
   H2,
   Card,
   Button,
+  CardContainer,
 } from 'bitcoincom-storybook';
 
 type Props = {
@@ -46,16 +47,17 @@ const Faucet = ({ location, data }: Props) => (
     />
 
     <ContentBlock>
-      <Card
-        full
-        image={data.faucetImage.childImageSharp.fluid.src}
-        title="BCH Testnet Faucet"
-        subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
-      >
-        <Button link primary href="/faucets/bch" style={{ margin: 'auto' }}>
-          View
-        </Button>
-      </Card>
+      <CardContainer>
+        <Card
+          image={data.faucetImage.childImageSharp.fluid.src}
+          title="BCH Testnet Faucet"
+          subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
+        >
+          <Button link primary href="/faucets/bch" style={{ margin: 'auto' }}>
+            View
+          </Button>
+        </Card>
+      </CardContainer>
     </ContentBlock>
   </DefaultLayout>
 );
