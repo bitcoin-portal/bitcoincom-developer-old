@@ -64,7 +64,7 @@ const DefaultLayout = ({ children, location, heroImage, hero }: Props) => (
               fluid={heroImage.childImageSharp.fluid}
             />
           )}
-          <Nav locale="en" contrast />
+          <Nav locale="en" contrast showLang={false} />
           <NavBar pathname={location ? location.pathname : ''} />
           {hero && hero}
         </TopWrap>
