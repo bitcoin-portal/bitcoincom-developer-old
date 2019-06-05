@@ -83,6 +83,9 @@ class NavBar extends React.PureComponent<Props> {
       false,
     );
     const aboutActive = pathname.includes('/about');
+
+    const docsActive = pathname.includes('/docs');
+    console.log(pathname);
     // const faqActive = pathname.includes('/faq');
     return (
       <Main>
@@ -96,9 +99,19 @@ class NavBar extends React.PureComponent<Props> {
             </NavItem>
             <NavItem
               to="/develop"
-              isactive={(developActive && !learnActive).toString()}
+              isactive={(
+                developActive &&
+                !learnActive &&
+                !docsActive
+              ).toString()}
             >
               Develop
+            </NavItem>
+            <NavItem
+              to="/bitbox/docs/getting-started"
+              isactive={docsActive.toString()}
+            >
+              Docs
             </NavItem>
             <NavItem to="/about" isactive={aboutActive.toString()}>
               About

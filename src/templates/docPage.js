@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import RehypeReact from 'rehype-react';
-import { graphql } from 'gatsby';
+import { graphql, push } from 'gatsby';
 
 import HelmetPlus from 'components/HelmetPlus';
 import DefaultLayout from 'components/layouts/DefaultLayout';
@@ -123,6 +123,18 @@ type Props = {
 };
 
 class DocTemplate extends React.PureComponent<Props> {
+  changeDocs(event) {
+    const pageTarget = {
+      bitbox: '/bitbox/docs/getting-started',
+      badger: '/badger/docs/getting-started',
+      gui: '/gui/docs/getting-started',
+      rest: '/rest/docs/getting-started',
+      slp: '/slp/docs/js/getting-started',
+    }[event.target.value];
+
+    pageTarget && push(pageTarget);
+  }
+
   render() {
     const { data, location } = this.props;
     const doc = data.markdownRemark;
