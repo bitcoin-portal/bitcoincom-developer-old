@@ -5,7 +5,6 @@ import { graphql, push } from 'gatsby';
 
 import HelmetPlus from 'components/HelmetPlus';
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Container from 'components/Container';
 
 import StyledLink from 'atoms/StyledLink';
 import Text from 'atoms/Text';
@@ -17,32 +16,9 @@ import media from 'styles/media';
 
 import { getTitleDisplay } from 'utils/formatting';
 import { getIcon } from 'utils/icon-helpers';
-import { Markdown } from 'bitcoincom-storybook';
-
-const DocLayout = styled.div`
-  padding-top: ${spacing.medium} !important;
-  display: grid;
-  grid-column-gap: ${spacing.medium};
-  grid-row-gap: ${spacing.medium};
-  grid-template-areas:
-    'nav'
-    'breadcrumbs'
-    'content';
-  grid-template-columns: 1fr;
-  grid-template-rows: max-content max-content max-content;
-
-  ${media.medium`
-    grid-template-areas:
-      'nav breadcrumbs'
-      'nav content';
-    grid-template-columns: max-content 1fr;
-    grid-template-rows: max-content 1fr;
-
-  `};
-`;
+import { Markdown, ContentBlock, theme } from 'bitcoincom-storybook';
 
 const SideNavLayout = styled.div`
-  grid-area: nav;
   position: relative;
 `;
 const SideNavSticky = styled.div`
@@ -59,18 +35,32 @@ const BreadCrumbLayout = styled.div`
   grid-template-rows: min-content;
   grid-template-columns: repeat(3, max-content);
   grid-gap: ${spacing.small};
+  margin-bottom: 16px;
 `;
 
-const ContentLayout = styled.div`
-  grid-area: content;
-  & > div {
-    display: grid;
+const StyledContentBlock = styled(ContentBlock)`
+  & > div > :nth-child(1) {
+    align-self: stretch;
+    display: flex;
+    flex-basis: 20%;
+    text-align: left;
+    min-width: 250px;
+    order: 0;
   }
-  /* Remove margin from first element of markdown content */
-  & > div > *:first-child {
-    margin-top: 0 !important;
+
+  & > div > :nth-child(2) {
+    flex-basis: 100%;
+    overflow: auto;
+    text-align: left;
+    order: 1;
+    padding-top: ${theme.spacing.unit * 2}px;
+    ${media.medium`
+      padding-top: 0;
+      flex-basis: 80%;
+    `}
   }
 `;
+
 const LinksLayout = styled.div`
   display: grid;
   grid-gap: ${spacing.tiny};
@@ -149,9 +139,9 @@ class DocTemplate extends React.PureComponent<Props> {
             'documentation',
           ]}
         />
-
-        <Container>
-          <DocLayout>
+        <StyledContentBlock
+          left
+          aside={
             <SideNavLayout>
               <SideNavSticky>
                 <StyledLink isActive to={`/${doc.fields.product}`}>
@@ -174,15 +164,14 @@ class DocTemplate extends React.PureComponent<Props> {
                 </NavFooter>
               </SideNavSticky>
             </SideNavLayout>
-            <BreadCrumbLayout>
-              <H2 centerVertical>{getIcon(doc.frontmatter.icon)}</H2>
-              <H2>{doc.frontmatter.title}</H2>
-            </BreadCrumbLayout>
-            <ContentLayout>
-              <Markdown htmlAst={doc.htmlAst} />
-            </ContentLayout>
-          </DocLayout>
-        </Container>
+          }
+        >
+          <BreadCrumbLayout>
+            <H2 centerVertical>{getIcon(doc.frontmatter.icon)}</H2>
+            <H2>{doc.frontmatter.title}</H2>
+          </BreadCrumbLayout>
+          <Markdown htmlAst={doc.htmlAst} />
+        </StyledContentBlock>
       </DefaultLayout>
     );
   }
