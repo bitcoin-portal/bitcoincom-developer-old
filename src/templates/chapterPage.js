@@ -20,7 +20,6 @@ import {
   H1,
   H2,
   Paragraph,
-  Section,
   Markdown,
 } from 'bitcoincom-storybook';
 
@@ -29,6 +28,28 @@ type Props = {
   location: Object,
 };
 
+const StyledContentBlock = styled(ContentBlock)`
+  & > div > :nth-child(1) {
+    align-self: stretch;
+    display: flex;
+    flex-basis: 20%;
+    text-align: left;
+    min-width: 250px;
+    order: 0;
+  }
+
+  & > div > :nth-child(2) {
+    flex-basis: 100%;
+    overflow: auto;
+    text-align: left;
+    order: 1;
+    padding-top: ${theme.spacing.unit * 2}px;
+    ${media.md`
+      padding-top: 0;
+      flex-basis: 80%;
+    `}
+  }
+`;
 const ChapterNav = styled.div`
   display: flex;
   border-top: 2px solid ${props => props.theme.primary};
@@ -50,60 +71,6 @@ const ChapterHolder = styled.div`
   & > div > *:first-child {
     margin-top: 0 !important;
   }
-`;
-
-const Wrapper = styled.div`
-  width: 100%;
-  position: relative;
-
-  & > section {
-    align-items: flex-start;
-    padding-top: ${theme.spacing.unit * 4}px;
-    padding-bottom: ${theme.spacing.unit * 4}px;
-  }
-
-  ${media.md`
-    & > section {
-      padding-top: ${theme.spacing.unit * 8}px;
-    padding-bottom: ${theme.spacing.unit * 8}px;
-    }
-  `}
-`;
-
-const Content = styled.div`
-  flex: 1;
-  & > p:first-child {
-    margin-top: 0;
-  }
-
-  & > p {
-    line-height: 24px;
-  }
-
-  & > h1 {
-    margin-top: ${theme.spacing.unit * 4}px;
-  }
-
-  & > ul {
-    padding-left: ${theme.spacing.unit * 2}px;
-    line-height: 24px;
-  }
-
-  ${media.md`
-    & > h1 {
-      margin-top: -${theme.spacing.unit * 4}px;
-      padding-top: ${theme.spacing.unit * 12}px;
-    }
-
-    & > p {
-      line-height: 30px;
-    }
-
-    & > ul {
-      padding-left: ${theme.spacing.unit * 4}px;
-      line-height: 30px;
-    }
-  `}
 `;
 
 class ChapterTemplate extends React.PureComponent<Props> {
@@ -147,50 +114,50 @@ class ChapterTemplate extends React.PureComponent<Props> {
             'free book',
           ]}
         />
-        <Wrapper>
-          <Section>
+        <StyledContentBlock
+          aside={
             <SideMenu chapters={allChapters} contentRef={this.contentRef} />
-            <Content>
-              <div>
-                <H2>
-                  {chapterNode.frontmatter.chapter}.{' '}
-                  {chapterNode.frontmatter.title}
-                </H2>
-                {/* {chapterNode.frontmatter.updatedAt && (
-                <Text muted2>Updated: {chapterNode.frontmatter.updatedAt}</Text>
-              )} */}
-              </div>
-              <ChapterHolder>
+          }
+        >
+          <div>
+            <div>
+              <H2>
+                {chapterNode.frontmatter.chapter}.{' '}
+                {chapterNode.frontmatter.title}
+              </H2>
+            </div>
+            <ChapterHolder>
+              {chapterNode.htmlAst && (
                 <Markdown htmlAst={chapterNode.htmlAst} />
-              </ChapterHolder>
-              <Paragraph monospace muted2>
-                Chapter {chapterNode.frontmatter.chapter} End.
-              </Paragraph>
-              <ChapterNav>
-                <div>
-                  {prevChapter && (
-                    <StyledLink to={prevChapter.node.fields.slug}>
-                      <Paragraph centerVertical monospace>
-                        <FaAngleLeft /> Chapter{' '}
-                        {prevChapter.node.frontmatter.chapter}
-                      </Paragraph>
-                    </StyledLink>
-                  )}
-                </div>
-                <div>
-                  {nextChapter && (
-                    <StyledLink to={nextChapter.node.fields.slug}>
-                      <Paragraph centerVertical monospace>
-                        Chapter {nextChapter.node.frontmatter.chapter}{' '}
-                        <FaAngleRight />
-                      </Paragraph>
-                    </StyledLink>
-                  )}
-                </div>
-              </ChapterNav>
-            </Content>
-          </Section>
-        </Wrapper>
+              )}
+            </ChapterHolder>
+            <Paragraph monospace muted2>
+              Chapter {chapterNode.frontmatter.chapter} End.
+            </Paragraph>
+            <ChapterNav>
+              <div>
+                {prevChapter && (
+                  <StyledLink to={prevChapter.node.fields.slug}>
+                    <Paragraph centerVertical monospace>
+                      <FaAngleLeft /> Chapter{' '}
+                      {prevChapter.node.frontmatter.chapter}
+                    </Paragraph>
+                  </StyledLink>
+                )}
+              </div>
+              <div>
+                {nextChapter && (
+                  <StyledLink to={nextChapter.node.fields.slug}>
+                    <Paragraph centerVertical monospace>
+                      Chapter {nextChapter.node.frontmatter.chapter}{' '}
+                      <FaAngleRight />
+                    </Paragraph>
+                  </StyledLink>
+                )}
+              </div>
+            </ChapterNav>
+          </div>
+        </StyledContentBlock>
       </DefaultLayout>
     );
   }
