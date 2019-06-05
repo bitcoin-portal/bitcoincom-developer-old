@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import RehypeReact from 'rehype-react';
 import { graphql, push } from 'gatsby';
 
 import HelmetPlus from 'components/HelmetPlus';
@@ -18,16 +17,8 @@ import media from 'styles/media';
 
 import { getTitleDisplay } from 'utils/formatting';
 import { getIcon } from 'utils/icon-helpers';
-import { standardTransforms } from 'utils/markdown-helpers';
+import { Markdown } from 'bitcoincom-storybook';
 
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components: {
-    ...standardTransforms,
-  },
-}).Compiler;
-
-// Layout Components
 const DocLayout = styled.div`
   padding-top: ${spacing.medium} !important;
   display: grid;
@@ -123,7 +114,7 @@ type Props = {
 };
 
 class DocTemplate extends React.PureComponent<Props> {
-  changeDocs(event) {
+  changeDocs = event => {
     const pageTarget = {
       bitbox: '/bitbox/docs/getting-started',
       badger: '/badger/docs/getting-started',
@@ -132,8 +123,8 @@ class DocTemplate extends React.PureComponent<Props> {
       slp: '/slp/docs/js/getting-started',
     }[event.target.value];
 
-    pageTarget && push(pageTarget);
-  }
+    if (pageTarget) push(pageTarget);
+  };
 
   render() {
     const { data, location } = this.props;
@@ -187,7 +178,9 @@ class DocTemplate extends React.PureComponent<Props> {
               <H2 centerVertical>{getIcon(doc.frontmatter.icon)}</H2>
               <H2>{doc.frontmatter.title}</H2>
             </BreadCrumbLayout>
-            <ContentLayout>{renderAst(doc.htmlAst)}</ContentLayout>
+            <ContentLayout>
+              <Markdown htmlAst={doc.htmlAst} />
+            </ContentLayout>
           </DocLayout>
         </Container>
       </DefaultLayout>

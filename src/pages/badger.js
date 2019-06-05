@@ -25,8 +25,12 @@ const ButtonWrapper = styled.div`
   grid-row-gap: ${theme.spacing.unit * 2}px;
   margin: 0 auto;
   justify-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin-top: ${theme.spacing.unit * 2}px;
   ${media.md`
-    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: ${theme.spacing.unit * 4}px;
+    grid-template-columns: 1fr 1fr;
   `}
 `;
 
@@ -82,6 +86,7 @@ const BadgerPage = ({ location, data }: Props) => (
     <ContentBlock>
       <CardContainer>
         <Card
+          small
           image={data.badgerSDKImage.childImageSharp.fluid.src}
           title="Badger SDK"
           subtitle="Badger Wallet injects an API into pages a user visits to allow apps to request a users's permission to send Bitcoin Cash, send tokens, or authenticate with CashID."
@@ -89,6 +94,7 @@ const BadgerPage = ({ location, data }: Props) => (
         />
 
         <Card
+          small
           image={data.badgerReactImage.childImageSharp.fluid.src}
           title="Badger React Components"
           subtitle="React based components and tools to make integrating Bitcoin Cash (BCH) into your next project easy."

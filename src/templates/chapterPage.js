@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
@@ -13,7 +12,6 @@ import StyledLink from 'atoms/StyledLink';
 
 import spacing from 'styles/spacing';
 import SideMenu from 'components/SideMenu';
-import { standardTransforms } from 'utils/markdown-helpers';
 
 import {
   theme,
@@ -23,14 +21,8 @@ import {
   H2,
   Paragraph,
   Section,
+  Markdown,
 } from 'bitcoincom-storybook';
-
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components: {
-    ...standardTransforms,
-  },
-}).Compiler;
 
 type Props = {
   data: Object,
@@ -168,7 +160,9 @@ class ChapterTemplate extends React.PureComponent<Props> {
                 <Text muted2>Updated: {chapterNode.frontmatter.updatedAt}</Text>
               )} */}
               </div>
-              <ChapterHolder>{renderAst(chapterNode.htmlAst)}</ChapterHolder>
+              <ChapterHolder>
+                <Markdown htmlAst={chapterNode.htmlAst} />
+              </ChapterHolder>
               <Paragraph monospace muted2>
                 Chapter {chapterNode.frontmatter.chapter} End.
               </Paragraph>

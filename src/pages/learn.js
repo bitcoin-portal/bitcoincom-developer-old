@@ -75,6 +75,7 @@ const Learn = ({ location, data }: Props) => (
       <CardContainer>
         <Card
           round
+          small
           image={data.tutorialsImage.childImageSharp.fluid.src}
           title="Tutorials"
           subtitle="Step by step instructions to build Bitcoin Cash apps from scratch.
@@ -84,6 +85,7 @@ const Learn = ({ location, data }: Props) => (
         />
         <Card
           round
+          small
           image={data.insightsImage.childImageSharp.fluid.src}
           title="Insights"
           subtitle="Learn from developers who have already shipped successful apps. What
@@ -92,6 +94,7 @@ const Learn = ({ location, data }: Props) => (
         />
         <Card
           round
+          small
           image={data.masteringImage.childImageSharp.fluid.src}
           title="Mastering Bitcoin Cash"
           subtitle="Based on Mastering Bitcoin by Andreas M. Antonopoulos, Mastering
