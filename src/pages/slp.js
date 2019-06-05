@@ -65,6 +65,7 @@ const SLPPage = ({ location, data }: Props) => (
       </Paragraph>
       <CardContainer columns={3}>
         <Card
+          small
           image={data.jsImage.childImageSharp.fluid.src}
           title="Javascript"
           subtitle="SLP SDK is a fully featured javascript framework powered by BITBOX. Everything you need to easily issue, spend or trade your own token. Install via NPM and talk to Bitcoin.com's cloud with no further setup."
@@ -74,6 +75,7 @@ const SLPPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          small
           image={data.androidImage.childImageSharp.fluid.src}
           title="Android"
           subtitle="Install via Gradle. Convert between cash and slp address formats. Send tokens w/ balances, including both tokens and BCH, available as LiveData. Convenience methods to make it easier to display tokens. Timber for logging."
@@ -83,6 +85,7 @@ const SLPPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          small
           image={data.iosImage.childImageSharp.fluid.src}
           title="iOS"
           subtitle="Install via CocoaPods. Generate mnemonics. Convert between cash and slp address formats. Send tokens and fetch token balances."

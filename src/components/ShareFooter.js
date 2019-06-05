@@ -1,19 +1,19 @@
 // @flow
 
 import React from 'react';
-import styled from 'styled-components';
-import { FaReddit, FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa';
+// import styled from 'styled-components';
+// import { FaReddit, FaTwitter, FaFacebook, FaLinkedin } from 'react-icons/fa';
 
-import H3 from 'atoms/H3';
-import Text from 'atoms/Text';
-import { SmartLink } from 'atoms/StyledLink';
+// import H3 from 'atoms/H3';
+// import Text from 'atoms/Text';
+// import { SmartLink } from 'atoms/StyledLink';
 
-import Container from 'components/Container';
+// import Container from 'components/Container';
 import { ContentBlock, H2, Button } from 'bitcoincom-storybook';
-import spacing from 'styles/spacing';
-import media from 'styles/media';
+// import spacing from 'styles/spacing';
+// import media from 'styles/media';
 
-const ShareLayout = styled.div`
+/* const ShareLayout = styled.div`
   grid-template-columns: 1fr;
   grid-gap: ${spacing.medium};
   display: grid;
@@ -47,27 +47,9 @@ const SocialLinks = styled(H3)`
 
 type Props = {
   location: Object,
-};
+}; */
 
-const makeShareLink = (
-  platform: 'reddit' | 'twitter' | 'facebook' | 'linkedin',
-  href: string,
-) => {
-  switch (platform) {
-    case 'reddit':
-      return `http://www.reddit.com/submit/?url=${href}`;
-    case 'twitter':
-      return `https://twitter.com/intent/tweet/?text=Visit&url=${href}&via=bitcoincom&hashtags=programming,development,bitcoin,bitcoincash,bch`;
-    case 'linkedin':
-      return `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=bitcoincom&source=https://developer.bitcoin.com&summary=developer.bitcoin.com`;
-    case 'facebook':
-      return `https://www.facebook.com/sharer/sharer.php?u=${href}`;
-    default:
-      return '/';
-  }
-};
-
-class ShareFooter extends React.Component<Props> {
+class SharedFooter extends React.Component {
   componentDidMount() {
     const om = document.createElement('script');
     om.src = `https://a.optmnstr.com/app/js/api.min.js`;
@@ -91,48 +73,18 @@ class ShareFooter extends React.Component<Props> {
   }
 
   render() {
-    const { location } = this.props;
-
-    const url = `https://developer.bitcoin.com${location.pathname}`;
-
     return (
-      <Container>
-        <ShareLayout>
-          <EmailCTA>
-            <div id="om-v8lwzo6nqacmgnulutqp-holder" />
-          </EmailCTA>
-          <ShareCTA>
-            <Text right>Share on... </Text>
-            <SocialLinks>
-              <SmartLink subtle to={makeShareLink('reddit', url)}>
-                <FaReddit />
-              </SmartLink>
-              <SmartLink subtle to={makeShareLink('twitter', url)}>
-                <FaTwitter />
-              </SmartLink>
-              <SmartLink subtle to={makeShareLink('facebook', url)}>
-                <FaFacebook />
-              </SmartLink>
-              <SmartLink subtle to={makeShareLink('linkedin', url)}>
-                <FaLinkedin />
-              </SmartLink>
-            </SocialLinks>
-          </ShareCTA>
-        </ShareLayout>
-      </Container>
+      <ContentBlock>
+        <H2>Do You Want To Get Free Developer Resources?</H2>
+        {/* <EmailCTA>
+          <div id="om-v8lwzo6nqacmgnulutqp-holder" />
+        </EmailCTA> */}
+        <Button link primary href="/" style={{ margin: 'auto', marginTop: 32 }}>
+          {"Yes, I'm Interested"}
+        </Button>
+      </ContentBlock>
     );
   }
 }
-export { ShareFooter };
-
-const SharedFooter = () => (
-  <ContentBlock>
-    <H2>Do You Want To Get Free Developer Resources?</H2>
-
-    <Button link primary href="/" style={{ margin: 'auto' }}>
-      {"Yes, I'm Interested"}
-    </Button>
-  </ContentBlock>
-);
 
 export default SharedFooter;

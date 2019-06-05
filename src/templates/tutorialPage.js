@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -10,18 +9,9 @@ import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
 
 import StyledLink from 'atoms/StyledLink';
-import H2 from 'atoms/H2';
-import H3 from 'atoms/H3';
 
 import spacing from 'styles/spacing';
-import { standardTransforms } from 'utils/markdown-helpers';
-
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components: {
-    ...standardTransforms,
-  },
-}).Compiler;
+import { Markdown, H2, H3 } from 'bitcoincom-storybook';
 
 const PageLayout = styled.div`
   display: grid;
@@ -78,7 +68,9 @@ class TutorialTemplate extends React.PureComponent<Props> {
             <div>
               <H2>{tutorial.frontmatter.title}</H2>
             </div>
-            <TutorialHolder>{renderAst(tutorial.htmlAst)}</TutorialHolder>
+            <TutorialHolder>
+              <Markdown htmlAst={tutorial.htmlAst} />
+            </TutorialHolder>
           </PageLayout>
         </Container>
       </DefaultLayout>

@@ -117,21 +117,25 @@ const About = ({ location, data }: Props) => (
 
       <CardContainer>
         <Card
+          small
           image={data.badgerImage.childImageSharp.fluid.src}
           title="Badger"
           subtitle="Your gateway to the world of Bitcoin Cash (BCH) applications."
         />
         <Card
+          small
           image={data.restImage.childImageSharp.fluid.src}
           title="REST"
           subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
         />
         <Card
+          small
           image={data.cloudImage.childImageSharp.fluid.src}
           title="Cloud"
           subtitle="Blockchain-as-a-Service. Infrastructure to deploy and scale your apps. An ecosystem of add-ons for data, monitoring, logging, metrics, testing and more all built w/ BITBOX."
         />
         <Card
+          small
           image={data.marketImage.childImageSharp.fluid.src}
           title="Marketplace"
           subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."

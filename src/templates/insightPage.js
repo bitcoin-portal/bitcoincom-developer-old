@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -10,9 +9,7 @@ import DefaultLayout from 'components/layouts/DefaultLayout';
 
 import StyledLink from 'atoms/StyledLink';
 
-import { standardTransforms } from 'utils/markdown-helpers';
-
-import { theme, ContentBlock, H1, H3 } from 'bitcoincom-storybook';
+import { theme, ContentBlock, H1, H3, Markdown } from 'bitcoincom-storybook';
 
 const StyledContentBlock = styled(ContentBlock)`
   margin: 0;
@@ -25,13 +22,6 @@ const StyledContentBlock = styled(ContentBlock)`
     text-align: left;
   }
 `;
-
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components: {
-    ...standardTransforms,
-  },
-}).Compiler;
 
 type Props = {
   data: Object,
@@ -66,7 +56,9 @@ const InsightTemplate = (props: Props) => {
           'bitcoin cash example',
         ]}
       />
-      <StyledContentBlock>{renderAst(insight.htmlAst)}</StyledContentBlock>
+      <StyledContentBlock>
+        <Markdown htmlAst={insight.htmlAst} />
+      </StyledContentBlock>
     </DefaultLayout>
   );
 };
