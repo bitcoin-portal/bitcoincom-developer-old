@@ -4,32 +4,22 @@ import 'isomorphic-fetch';
 import React from 'react';
 import styled from 'styled-components';
 
-import Button from 'atoms/Button';
 import StyledLink, { SmartLink } from 'atoms/StyledLink';
-import H3 from 'atoms/H3';
-import Text from 'atoms/Text';
-import Input from 'atoms/Input';
-import Well from 'atoms/Well';
-import spacing from 'styles/spacing';
 
+import {
+  ContentBlock,
+  H3,
+  Paragraph,
+  Input,
+  Button,
+  Card,
+} from 'bitcoincom-storybook';
 import FaucetBalanceDisplay from './FaucetBalanceDisplay';
 
 const SERVER = `https://faucet.bchtest.net`;
 
-const WrapperDiv = styled.div`
-  padding-top: ${spacing.large};
-  display: grid;
-  grid-gap: ${spacing.small};
-`;
-
 const TxLink = styled.p`
   padding: 25px;
-`;
-
-const AddressForm = styled.form`
-  display: grid;
-  grid-gap: ${spacing.small};
-  grid-auto-columns: min-content;
 `;
 
 type Props = {};
@@ -132,7 +122,7 @@ class BchFaucet extends React.PureComponent<Props, State> {
     if (balance === 0) this.getBalance();
 
     return (
-      <WrapperDiv>
+      <ContentBlock>
         <H3>
           This is a <u>testnet</u> faucet for Bitcoin Cash! It is built with{' '}
           <StyledLink to="/bitbox">BITBOX JavaScript SDK</StyledLink> and is
@@ -148,16 +138,16 @@ class BchFaucet extends React.PureComponent<Props, State> {
           data={[{ item: 'BCH', amount: balance }]}
         />
 
-        <Text>
+        <Paragraph>
           <SmartLink to="https://github.com/Bitcoin-com/testnet-faucet">
             Fork the code on GitHub!
           </SmartLink>
-        </Text>
+        </Paragraph>
 
-        <AddressForm>
-          <Text for="bchAddr" as="label" bold>
+        <form style={{ textAlign: 'center', marginBottom: 32 }}>
+          <H3 for="bchAddr" as="label">
             BCH Testnet Address
-          </Text>
+          </H3>
           <Input
             type="text"
             id="bchAddr"
@@ -166,14 +156,14 @@ class BchFaucet extends React.PureComponent<Props, State> {
             value={bchAddr}
             onChange={this.handleChange}
           />
-          <Button type="button" onClick={this.requestBCH}>
+          <Button primary onClick={this.requestBCH} style={{ margin: 'auto' }}>
             Get tBCH!
           </Button>
-        </AddressForm>
+        </form>
 
-        <Well>
-          <Text>{outputText}</Text>
-        </Well>
+        <Card full style={{ marginBottom: 32 }}>
+          <Paragraph>{outputText}</Paragraph>
+        </Card>
 
         {linkOn && (
           <TxLink>
@@ -181,12 +171,12 @@ class BchFaucet extends React.PureComponent<Props, State> {
           </TxLink>
         )}
 
-        <Text>
+        <Paragraph>
           Please send your leftover testnet coins back to the faucet:
           <br />
           <i>bchtest:qqmd9unmhkpx4pkmr6fkrr8rm6y77vckjvqe8aey35</i>
-        </Text>
-      </WrapperDiv>
+        </Paragraph>
+      </ContentBlock>
     );
   }
 }

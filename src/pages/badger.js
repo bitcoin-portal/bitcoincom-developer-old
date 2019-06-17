@@ -16,16 +16,8 @@ import {
   H3,
   Button,
   Card,
+  CardContainer,
 } from 'bitcoincom-storybook';
-
-const StyledContentBlock = styled(ContentBlock)`
-  & > div > :nth-child(2) {
-    flex-basis: 75%;
-  }
-  & > div > div > img {
-    display: none;
-  }
-`;
 
 const ButtonWrapper = styled.div`
   display: grid;
@@ -33,23 +25,13 @@ const ButtonWrapper = styled.div`
   grid-row-gap: ${theme.spacing.unit * 2}px;
   margin: 0 auto;
   justify-items: center;
+  justify-content: center;
+  max-width: 700px;
+  margin-top: ${theme.spacing.unit * 2}px;
   ${media.md`
-    grid-template-columns: 1fr 1fr 1fr;
-  `}
-`;
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
+    margin-top: ${theme.spacing.unit * 4}px;
     grid-template-columns: 1fr 1fr;
   `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
 `;
 
 type Props = {
@@ -68,12 +50,16 @@ const BadgerPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock image="none">
-        <H3 style={{ color: theme.palette.primary.main }}>
+      <ContentBlock left>
+        <H3 balanced style={{ color: theme.palette.primary.main }}>
           The easiest way to build BCH apps
         </H3>
-        <H1 contrast>Badger SDK</H1>
-        <H2 contrast>Your gateway to the world of Bitcoin Cash (BCH) apps</H2>
+        <H1 balanced contrast>
+          Badger SDK
+        </H1>
+        <H2 balanced contrast>
+          Your gateway to the world of Bitcoin Cash (BCH) apps
+        </H2>
         <ButtonWrapper>
           <Button round link href="https://badger.bitcoin.com" target="_blank">
             Install Badger
@@ -82,7 +68,7 @@ const BadgerPage = ({ location, data }: Props) => (
             Start Here
           </Button>
         </ButtonWrapper>
-      </StyledContentBlock>
+      </ContentBlock>
     }
   >
     <HelmetPlus
@@ -100,12 +86,16 @@ const BadgerPage = ({ location, data }: Props) => (
     <ContentBlock>
       <CardContainer>
         <Card
+          small
+          image={data.badgerSDKImage.childImageSharp.fluid.src}
           title="Badger SDK"
           subtitle="Badger Wallet injects an API into pages a user visits to allow apps to request a users's permission to send Bitcoin Cash, send tokens, or authenticate with CashID."
           cta={{ text: 'View', link: '/badger/docs/getting-started' }}
         />
 
         <Card
+          small
+          image={data.badgerReactImage.childImageSharp.fluid.src}
           title="Badger React Components"
           subtitle="React based components and tools to make integrating Bitcoin Cash (BCH) into your next project easy."
           cta={{ text: 'View', link: '/badger/docs/badger-components-react' }}
@@ -124,13 +114,16 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
+    badgerSDKImage: file(relativePath: { eq: "Badger_sdk.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    badgerReactImage: file(relativePath: { eq: "Badger_react.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

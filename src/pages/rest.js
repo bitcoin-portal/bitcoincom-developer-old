@@ -1,7 +1,6 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
@@ -9,38 +8,14 @@ import HelmetPlus from 'components/HelmetPlus';
 
 import {
   theme,
-  media,
   ContentBlock,
   H1,
   H2,
   H3,
   Button,
   Card,
+  CardContainer,
 } from 'bitcoincom-storybook';
-
-const StyledContentBlock = styled(ContentBlock)`
-  & > div > :nth-child(2) {
-    flex-basis: 75%;
-  }
-  & > div > div > img {
-    display: none;
-  }
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
-`;
 
 type Props = {
   location: Object,
@@ -51,7 +26,7 @@ const RestPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock image="none">
+      <ContentBlock>
         <H3 style={{ color: theme.palette.primary.main }}>BCH RPC over HTTP</H3>
         <H1 contrast>REST</H1>
         <H2 contrast>REST layer for Bitcoin.com Cloud</H2>
@@ -59,7 +34,7 @@ const RestPage = ({ location, data }: Props) => (
         <Button round dark href="/rest/docs/getting-started">
           Start Here
         </Button>
-      </StyledContentBlock>
+      </ContentBlock>
     }
   >
     <HelmetPlus
@@ -83,21 +58,25 @@ const RestPage = ({ location, data }: Props) => (
             text: 'More',
             link: '/rest/docs/getting-started',
           }}
+          image={data.rpcImage.childImageSharp.fluid.src}
         />
         <Card
           title="Proper REST Semantics"
           subtitle="Instead of POSTing directly to bitcoind we've wrapped the BCH JSON RPC in REST semantics so you GET when reading and POST when writing from/to the chain."
           cta={{ text: 'More', link: '/rest/docs/getting-started' }}
+          image={data.semanticsImage.childImageSharp.fluid.src}
         />
         <Card
           title="SLP support"
           subtitle="Get details for all your SLP tokens. The fastest and easiest API to use for integrating Simple Ledger Protocol (SLP) tokens into your next app."
           cta={{ text: 'More', link: '/rest/docs/address' }}
+          image={data.slpImage.childImageSharp.fluid.src}
         />
         <Card
           title="Addresses, Blocks and Transactions"
           subtitle="Get details such as balance, utxo and unconfirmed transactions for an address. Get details about a block or transaction."
           cta={{ text: 'More', link: '/rest/docs/address' }}
+          image={data.addrImage.childImageSharp.fluid.src}
         />
       </CardContainer>
     </ContentBlock>
@@ -113,13 +92,30 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
+    rpcImage: file(relativePath: { eq: "bch_rpc.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    semanticsImage: file(relativePath: { eq: "properrest.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    slpImage: file(relativePath: { eq: "SLP.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    addrImage: file(relativePath: { eq: "addresses_blocks_transactions.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

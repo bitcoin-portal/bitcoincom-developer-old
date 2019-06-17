@@ -1,14 +1,12 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 import {
   theme,
-  media,
   ContentBlock,
   H1,
   H2,
@@ -16,22 +14,8 @@ import {
   Card,
   Link,
   Paragraph,
+  CardContainer,
 } from 'bitcoincom-storybook';
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
-`;
 
 type Props = {
   location: Object,
@@ -42,7 +26,7 @@ const SLPPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock aside={<React.Fragment />}>
+      <ContentBlock>
         <H3 style={{ color: theme.palette.primary.main }}>Tokenize anything</H3>
         <H1 contrast>SLP SDK</H1>
         <H2 contrast>Secure Tokens on Bitcoin Cash</H2>
@@ -65,7 +49,7 @@ const SLPPage = ({ location, data }: Props) => (
 
     <ContentBlock>
       <H2>Simple Ledger Protocol</H2>
-      <Paragraph style={{ maxWidth: 'unset' }}>
+      <Paragraph balanced style={{ maxWidth: 'unset' }}>
         <Link
           href="https://simpleledger.cash/"
           target="_blank"
@@ -79,17 +63,20 @@ const SLPPage = ({ location, data }: Props) => (
         signature addresses and other advanced Bitcoin script features with SLP
         tokens.
       </Paragraph>
-      <CardContainer>
+      <CardContainer columns={3}>
         <Card
+          small
+          image={data.jsImage.childImageSharp.fluid.src}
           title="Javascript"
           subtitle="SLP SDK is a fully featured javascript framework powered by BITBOX. Everything you need to easily issue, spend or trade your own token. Install via NPM and talk to Bitcoin.com's cloud with no further setup."
-          image=""
           cta={{
             text: 'More',
             link: '/slp/docs/js/getting-started',
           }}
         />
         <Card
+          small
+          image={data.androidImage.childImageSharp.fluid.src}
           title="Android"
           subtitle="Install via Gradle. Convert between cash and slp address formats. Send tokens w/ balances, including both tokens and BCH, available as LiveData. Convenience methods to make it easier to display tokens. Timber for logging."
           cta={{
@@ -98,6 +85,8 @@ const SLPPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          small
+          image={data.iosImage.childImageSharp.fluid.src}
           title="iOS"
           subtitle="Install via CocoaPods. Generate mnemonics. Convert between cash and slp address formats. Send tokens and fetch token balances."
           cta={{
@@ -119,13 +108,23 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
+    jsImage: file(relativePath: { eq: "SLP_javascript.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    androidImage: file(relativePath: { eq: "SLP_android.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    iosImage: file(relativePath: { eq: "SLP_ios.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

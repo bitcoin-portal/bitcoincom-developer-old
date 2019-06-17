@@ -1,5 +1,7 @@
 # Developer.bitcoin.com
 
+Now with redesign!
+
 ## Developer Tooling, Cloud, and Market
 
 ### BITBOX

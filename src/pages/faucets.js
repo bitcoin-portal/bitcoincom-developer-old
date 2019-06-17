@@ -1,27 +1,21 @@
 // @flow
 
 import React from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
+import {
+  theme,
+  ContentBlock,
+  H1,
+  H2,
+  Card,
+  Button,
+  CardContainer,
+} from 'bitcoincom-storybook';
 
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-  & > div > div {
-    margin: ${theme.spacing.unit}px auto !important;
-  }
-
-  & > div > div > div {
-    max-width: unset;
-    & > div > div {
-      margin: auto;
-    }
-  }
-`;
 type Props = {
   location: Object,
   data: { heroImage: any },
@@ -31,12 +25,12 @@ const Faucet = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock>
+      <ContentBlock>
         <H1 contrast>Faucet</H1>
         <H2 style={{ color: theme.palette.primary.main }}>
           Testnet BCH for developers
         </H2>
-      </StyledContentBlock>
+      </ContentBlock>
     }
   >
     <HelmetPlus
@@ -52,13 +46,19 @@ const Faucet = ({ location, data }: Props) => (
       location={location}
     />
 
-    <StyledContentBlock>
-      <Card
-        title="BCH Testnet Faucet"
-        subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
-        cta={{ text: 'View', link: '/faucets/bch' }}
-      />
-    </StyledContentBlock>
+    <ContentBlock>
+      <CardContainer>
+        <Card
+          image={data.faucetImage.childImageSharp.fluid.src}
+          title="BCH Testnet Faucet"
+          subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
+        >
+          <Button link primary href="/faucets/bch" style={{ margin: 'auto' }}>
+            View
+          </Button>
+        </Card>
+      </CardContainer>
+    </ContentBlock>
   </DefaultLayout>
 );
 
@@ -71,13 +71,9 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
+    faucetImage: file(relativePath: { eq: "faucet.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

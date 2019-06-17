@@ -16,34 +16,8 @@ import {
   Card,
   Paragraph,
   Code,
+  CardContainer,
 } from 'bitcoincom-storybook';
-import BitboxLogo from 'assets/images/bitboxLogo';
-
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-  & > div > div {
-    margin: ${theme.spacing.unit}px auto !important;
-  }
-
-  & > div > div > div {
-    max-width: unset;
-  }
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr;
-  `}
-
-  & > div {
-    margin: 0 auto;
-    background-color: ${theme.palette.background.default};
-  }
-`;
 
 const CardContent = styled.div`
   display: grid;
@@ -80,6 +54,15 @@ const CardInstall = styled.div`
   `}
 `;
 
+const CardImage = styled.div`
+  grid-area: logo;
+  margin-bottom: ${theme.spacing.unit * 4}px;
+  ${media.md`
+    margin-bottom: 0;
+    margin-right: ${theme.spacing.unit * 4}px;
+ `};
+`;
+
 type Props = {
   location: Object,
   data: { heroImage: any },
@@ -89,12 +72,14 @@ const About = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <StyledContentBlock>
-        <H1 contrast>About</H1>
-        <H2 style={{ color: theme.palette.primary.main }}>
+      <ContentBlock>
+        <H1 contrast balanced>
+          About
+        </H1>
+        <H2 balanced style={{ color: theme.palette.primary.main }}>
           Developer Tooling, Resources, Cloud, and Market
         </H2>
-      </StyledContentBlock>
+      </ContentBlock>
     }
   >
     <HelmetPlus
@@ -103,12 +88,15 @@ const About = ({ location, data }: Props) => (
       keywords={['about page']}
       location={location}
     />
-    <StyledContentBlock>
-      <Card>
+    <ContentBlock>
+      <Card full style={{ marginBottom: 32 }}>
         <CardContent>
-          <div style={{ gridArea: 'logo' }}>
-            <BitboxLogo size={158} />
-          </div>
+          <CardImage>
+            <img
+              src={data.bitboxImage.childImageSharp.fluid.src}
+              alt="Bitbox"
+            />
+          </CardImage>
           <CardText>
             <H2 left>BITBOX</H2>
             <Paragraph>
@@ -129,23 +117,31 @@ const About = ({ location, data }: Props) => (
 
       <CardContainer>
         <Card
+          small
+          image={data.badgerImage.childImageSharp.fluid.src}
           title="Badger"
           subtitle="Your gateway to the world of Bitcoin Cash (BCH) applications."
         />
         <Card
+          small
+          image={data.restImage.childImageSharp.fluid.src}
           title="REST"
           subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
         />
         <Card
+          small
+          image={data.cloudImage.childImageSharp.fluid.src}
           title="Cloud"
           subtitle="Blockchain-as-a-Service. Infrastructure to deploy and scale your apps. An ecosystem of add-ons for data, monitoring, logging, metrics, testing and more all built w/ BITBOX."
         />
         <Card
-          title="Market"
+          small
+          image={data.marketImage.childImageSharp.fluid.src}
+          title="Marketplace"
           subtitle="Paid downloads, streaming media, in-app purchases, tokens and more ways for you to monetize."
         />
       </CardContainer>
-    </StyledContentBlock>
+    </ContentBlock>
   </DefaultLayout>
 );
 
@@ -158,13 +154,37 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero.jpeg" }) {
+    bitboxImage: file(relativePath: { eq: "Bitbox.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    badgerImage: file(relativePath: { eq: "Badger.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    restImage: file(relativePath: { eq: "Rest.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    cloudImage: file(relativePath: { eq: "Cloud.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    marketImage: file(relativePath: { eq: "marketplace.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

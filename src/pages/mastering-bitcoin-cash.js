@@ -1,7 +1,6 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
@@ -17,18 +16,6 @@ import {
   Link,
 } from 'bitcoincom-storybook';
 
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-
-  & > div > div {
-    margin: ${theme.spacing.unit}px auto !important;
-  }
-
-  & > div > div > div {
-    max-width: unset;
-  }
-`;
-
 type Props = {
   location: Object,
   data: { heroImage: any, allMarkdownRemark: any },
@@ -41,12 +28,12 @@ const Learn = ({ location, data }: Props) => {
     <DefaultLayout
       location={location}
       hero={
-        <StyledContentBlock>
+        <ContentBlock>
           <H1 contrast>Mastering Bitcoin Cash</H1>
           <H2 style={{ color: theme.palette.primary.main }}>
             Build a foundation of knowledge
           </H2>
-        </StyledContentBlock>
+        </ContentBlock>
       }
     >
       <HelmetPlus

@@ -77,6 +77,15 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        custom: {
+          families: ['Gilroy:n4,n6,n7'],
+          urls: ['/fonts.css'],
+        },
+      },
+    },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
   ],

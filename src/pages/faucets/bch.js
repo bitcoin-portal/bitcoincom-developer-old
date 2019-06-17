@@ -1,25 +1,13 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
-import Hero from 'components/Hero';
-import Container from 'components/Container';
 import HelmetPlus from 'components/HelmetPlus';
 
-import H3 from 'atoms/H3';
-import H1 from 'atoms/H1';
-
-import spacing from 'styles/spacing';
-
+import { theme, H1, H3, ContentBlock } from 'bitcoincom-storybook';
 import BchFaucet from 'components/bch-faucet';
-
-const HeroLayout = styled.div`
-  display: grid;
-  grid-gap: ${spacing.tiny};
-`;
 
 type Props = {
   location: Object,
@@ -27,7 +15,15 @@ type Props = {
 };
 
 const Faucet = ({ location, data }: Props) => (
-  <DefaultLayout location={location}>
+  <DefaultLayout
+    location={location}
+    hero={
+      <ContentBlock>
+        <H1 contrast>Testnet BCH Faucet</H1>
+        <H3 style={{ color: theme.palette.primary.main }}>For developers</H3>
+      </ContentBlock>
+    }
+  >
     <HelmetPlus
       title={`Testnet BCH Faucet - ${data.site.siteMetadata.title}`}
       description="Testnet BCH for developers"
@@ -40,17 +36,7 @@ const Faucet = ({ location, data }: Props) => (
       ]}
       location={location}
     />
-    <Hero image={data.heroImage}>
-      <HeroLayout>
-        <H1 background>Testnet BCH Faucet</H1>
-        <H3 primary thin>
-          For developers
-        </H3>
-      </HeroLayout>
-    </Hero>
-    <Container>
-      <BchFaucet />
-    </Container>
+    <BchFaucet />
   </DefaultLayout>
 );
 

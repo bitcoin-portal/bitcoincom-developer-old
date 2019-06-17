@@ -1,27 +1,19 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, media, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
-
-const StyledContentBlock = styled(ContentBlock)`
-  margin: 0;
-`;
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-row-gap: ${theme.spacing.unit * 4}px;
-  grid-column-gap: ${theme.spacing.unit * 4}px;
-  margin-top: ${theme.spacing.unit * 8}px;
-  ${media.md`
-    grid-template-columns: 1fr 1fr;
-  `}
-`;
+import {
+  theme,
+  ContentBlock,
+  H1,
+  H2,
+  Card,
+  CardContainer,
+} from 'bitcoincom-storybook';
 
 type Props = {
   location: Object,
@@ -48,12 +40,15 @@ const Insights = ({ location, data }: Props) => {
     <DefaultLayout
       location={location}
       hero={
-        <StyledContentBlock>
+        <ContentBlock>
           <H1 contrast>Insights</H1>
-          <H2 style={{ color: theme.palette.primary.main }}>
+          <H2
+            balanced
+            style={{ maxWidth: 730, color: theme.palette.primary.main }}
+          >
             Learn from developers who have shipped successful apps.
           </H2>
-        </StyledContentBlock>
+        </ContentBlock>
       }
     >
       <HelmetPlus
@@ -67,7 +62,7 @@ const Insights = ({ location, data }: Props) => {
         ]}
         location={location}
       />
-      <StyledContentBlock>
+      <ContentBlock>
         <CardContainer>
           {posts.map(post => (
             <Card
@@ -77,7 +72,7 @@ const Insights = ({ location, data }: Props) => {
             />
           ))}
         </CardContainer>
-      </StyledContentBlock>
+      </ContentBlock>
     </DefaultLayout>
   );
 };
@@ -109,17 +104,6 @@ export const query = graphql`
           fields {
             slug
           }
-        }
-      }
-    }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
-      childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
-          ...GatsbyImageSharpFluid
         }
       }
     }

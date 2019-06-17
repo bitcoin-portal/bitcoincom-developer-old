@@ -5,6 +5,7 @@ yarn-error.log
 package-lock.json
 /src/data
 /temp
+yarn.lock
 
 # Build directory
 /public

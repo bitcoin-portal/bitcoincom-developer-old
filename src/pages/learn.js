@@ -49,7 +49,9 @@ const Learn = ({ location, data }: Props) => (
     location={location}
     hero={
       <StyledContentBlock>
-        <H1 contrast>Change the world with Bitcoin Cash</H1>
+        <H1 contrast style={{ maxWidth: 730 }}>
+          Change the world with Bitcoin Cash
+        </H1>
         <H2 style={{ color: theme.palette.primary.main }}>
           Developer Tooling, Cloud, and Market
         </H2>
@@ -73,7 +75,8 @@ const Learn = ({ location, data }: Props) => (
       <CardContainer>
         <Card
           round
-          image="temp"
+          small
+          image={data.tutorialsImage.childImageSharp.fluid.src}
           title="Tutorials"
           subtitle="Step by step instructions to build Bitcoin Cash apps from scratch.
             See real world examples built and have your own working copies
@@ -82,7 +85,8 @@ const Learn = ({ location, data }: Props) => (
         />
         <Card
           round
-          image="temp"
+          small
+          image={data.insightsImage.childImageSharp.fluid.src}
           title="Insights"
           subtitle="Learn from developers who have already shipped successful apps. What
             worked and what would they do different?"
@@ -90,7 +94,8 @@ const Learn = ({ location, data }: Props) => (
         />
         <Card
           round
-          image="temp"
+          small
+          image={data.masteringImage.childImageSharp.fluid.src}
           title="Mastering Bitcoin Cash"
           subtitle="Based on Mastering Bitcoin by Andreas M. Antonopoulos, Mastering
             Bitcoin Cash is the ultimate guide to bring your knowledge from
@@ -111,13 +116,23 @@ export const query = graphql`
         title
       }
     }
-    heroImage: file(relativePath: { eq: "hero-learn.jpg" }) {
+    tutorialsImage: file(relativePath: { eq: "Tutorials.png" }) {
       childImageSharp {
-        fluid(
-          duotone: { highlight: "#f9b016", shadow: "#191919" }
-          maxWidth: 2000
-          quality: 85
-        ) {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    insightsImage: file(relativePath: { eq: "Insights.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    masteringImage: file(relativePath: { eq: "Mastering.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
