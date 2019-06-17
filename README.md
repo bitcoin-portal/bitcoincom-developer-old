@@ -1,6 +1,6 @@
 # Developer.bitcoin.com
 
-Now with redesign!
+Now with redesign!!
 
 ## Developer Tooling, Cloud, and Market
 
