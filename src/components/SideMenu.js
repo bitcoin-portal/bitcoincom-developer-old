@@ -136,9 +136,7 @@ class SideMenu extends React.Component<Props> {
         <SideBar sticky={sticky}>
           {chapters.map(chapter => (
             <Item
-              key={`${chapter.node.frontmatter.slug}-${
-                chapter.node.frontmatter.chapter
-              }`}
+              key={`${chapter.node.frontmatter.slug}-${chapter.node.frontmatter.chapter}`}
             >
               <StyledLink
                 to={chapter.node.fields.slug}

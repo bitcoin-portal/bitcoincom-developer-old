@@ -105,9 +105,7 @@ class ChapterTemplate extends React.PureComponent<Props> {
       >
         <HelmetPlus
           location={location}
-          title={`${chapterNode.frontmatter.title} - ${
-            data.site.siteMetadata.title
-          }`}
+          title={`${chapterNode.frontmatter.title} - ${data.site.siteMetadata.title}`}
           keywords={[
             'mastering bitcoin cash',
             `chapter ${currentChapter}`,
