@@ -55,7 +55,7 @@ const IndexPage = ({ location, data }: Props) => {
     <DefaultLayout
       location={location}
       hero={
-        <ContentBlock left>
+        <ContentBlock>
           <H3 balanced style={{ color: theme.palette.primary.main }}>
             Bitcoin.com Developer Platform
           </H3>

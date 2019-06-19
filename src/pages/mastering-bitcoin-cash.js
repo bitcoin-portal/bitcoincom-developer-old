@@ -37,9 +37,7 @@ const Learn = ({ location, data }: Props) => {
       }
     >
       <HelmetPlus
-        title={`Mastering Bitcoin Cash - book - ${
-          data.site.siteMetadata.title
-        }`}
+        title={`Mastering Bitcoin Cash - book - ${data.site.siteMetadata.title}`}
         description="Learn all about Bitcoin Cash to take you from a beginner to expert."
         keywords={['mastering bitcoin cash', 'bitcoin cash book', 'free book']}
         location={location}
@@ -51,9 +49,7 @@ const Learn = ({ location, data }: Props) => {
         <OL>
           {chapters.map(chapter => (
             <li
-              key={`${chapter.node.frontmatter.slug}-${
-                chapter.node.frontmatter.chapter
-              }`}
+              key={`${chapter.node.frontmatter.slug}-${chapter.node.frontmatter.chapter}`}
             >
               <H3 key={chapter.node.frontmatter.slug}>
                 <Link href={chapter.node.fields.slug}>
