@@ -48,9 +48,7 @@ class TutorialTemplate extends React.PureComponent<Props> {
       <DefaultLayout location={location}>
         <HelmetPlus
           location={location}
-          title={`${tutorial.frontmatter.title} - ${
-            data.site.siteMetadata.title
-          }`}
+          title={`${tutorial.frontmatter.title} - ${data.site.siteMetadata.title}`}
           keywords={[
             `${tutorial.frontmatter.title}`,
             'bitcoin cash tutorial',

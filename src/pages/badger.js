@@ -50,7 +50,7 @@ const BadgerPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
-      <ContentBlock left>
+      <ContentBlock>
         <H3 balanced style={{ color: theme.palette.primary.main }}>
           The easiest way to build BCH apps
         </H3>
