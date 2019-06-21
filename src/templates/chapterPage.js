@@ -34,7 +34,7 @@ const StyledContentBlock = styled(ContentBlock)`
     display: flex;
     flex-basis: 20%;
     text-align: left;
-    min-width: 250px;
+    min-width: 300px;
     order: 0;
   }
 
