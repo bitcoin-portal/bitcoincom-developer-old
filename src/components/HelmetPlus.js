@@ -42,7 +42,7 @@ class HelmetPlus extends React.PureComponent<Props> {
       location,
       children,
     } = this.props;
-
+    console.log(location);
     return (
       <Helmet>
         {/* General tags */}
@@ -57,7 +57,10 @@ class HelmetPlus extends React.PureComponent<Props> {
         ) : (
           <meta name="keywords" content={keywordsBase.join(', ')} />
         )}
-        <meta name="image" content={`${location.origin}/favicon.png`} />
+        <meta
+          name="image"
+          content="https://developer.bitcoin.com/facebook.png"
+        />
         {image && <meta name="image" content={`${location.origin}${image}`} />}
         {/* OpenGraph OG meta */}
         {location && (
@@ -70,7 +73,10 @@ class HelmetPlus extends React.PureComponent<Props> {
         {description && (
           <meta property="og:description" content={description} />
         )}
-        <meta name="og:image" content={`${location.origin}/favicon.png`} />
+        <meta
+          name="og:image"
+          content="https://developer.bitcoin.com/facebook.png"
+        />
         {image && (
           <meta property="og:image" content={`${location.origin}${image}`} />
         )}
@@ -80,7 +86,11 @@ class HelmetPlus extends React.PureComponent<Props> {
         {description && (
           <meta name="twitter:description" content={description} />
         )}
-        <meta name="twitter:image" content={`${location.origin}/favicon.png`} />
+        <meta
+          name="twitter:image"
+          content="https://developer.bitcoin.com/facebook.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
 
         {image && (
           <meta name="twitter:image" content={`${location.origin}${image}`} />
