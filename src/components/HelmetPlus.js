@@ -57,7 +57,10 @@ class HelmetPlus extends React.PureComponent<Props> {
         ) : (
           <meta name="keywords" content={keywordsBase.join(', ')} />
         )}
-        <meta name="image" content={`${location.origin}/facebook.png`} />
+        <meta
+          name="image"
+          content="https://developer.bitcoin.com/facebook.png"
+        />
         {image && <meta name="image" content={`${location.origin}${image}`} />}
         {/* OpenGraph OG meta */}
         {location && (
@@ -70,7 +73,10 @@ class HelmetPlus extends React.PureComponent<Props> {
         {description && (
           <meta property="og:description" content={description} />
         )}
-        <meta name="og:image" content={`${location.origin}/facebook.png`} />
+        <meta
+          name="og:image"
+          content="https://developer.bitcoin.com/facebook.png"
+        />
         {image && (
           <meta property="og:image" content={`${location.origin}${image}`} />
         )}
@@ -82,7 +88,7 @@ class HelmetPlus extends React.PureComponent<Props> {
         )}
         <meta
           name="twitter:image"
-          content={`${location.origin}/facebook.png`}
+          content="https://developer.bitcoin.com/facebook.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
 
