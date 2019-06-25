@@ -75,6 +75,9 @@ const IndexPage = ({ location, data }: Props) => {
             <Button href="/badger" round link dark>
               Badger SDK
             </Button>
+            <Button href="/cashscript/docs/getting-started" round link dark>
+              CashScript
+            </Button>
           </ButtonWrapper>
         </ContentBlock>
       }
