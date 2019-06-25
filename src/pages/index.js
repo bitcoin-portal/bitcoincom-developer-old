@@ -25,7 +25,7 @@ const ButtonWrapper = styled.div`
   justify-items: center;
   max-width: 700px;
   ${media.md`
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: ${theme.spacing.unit * 4}px auto;
   `}
 `;
