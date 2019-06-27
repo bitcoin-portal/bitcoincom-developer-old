@@ -39,6 +39,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const isTutorial = filePath.includes('/tutorials/');
     const isInsight = filePath.includes('/insights/');
     const isChapter = filePath.includes('/mastering-bitcoin-cash/');
+    const isCashScript = filePath.includes('/cashscript/');
     let slug = filePath;
 
     if (isDoc) {
@@ -83,6 +84,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       if (isBadger) {
         slug = `/badger/docs/${filename}`;
         product = 'badger';
+      }
+      if (isCashScript) {
+        slug = `/cashscript/docs/${filename}`;
+        product = 'cashscript';
       }
 
       createNodeField({

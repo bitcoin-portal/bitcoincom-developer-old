@@ -98,6 +98,13 @@ const DevelopPage = ({ location, data }: Props) => (
         />
         <Card
           small
+          image={data.cashScriptImage.childImageSharp.fluid.src}
+          cta={{ text: 'View', link: '/cashscript/docs/getting-started' }}
+          title="CashScript"
+          subtitle="Create contracts and complex spending scripts on Bitcoin Cash. Everything you need to write cash contracts and easily integrate them into your applications."
+        />
+        <Card
+          small
           image={data.guiImage.childImageSharp.fluid.src}
           title="GUI"
           subtitle="BIP44 development wallet. Convert between cashaddr/legacy addresses. Create QR codes for WIF, XPub and XPrivs. Sign and verify messages."
@@ -167,6 +174,13 @@ export const query = graphql`
       }
     }
     guiImage: file(relativePath: { eq: "GUI.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    cashScriptImage: file(relativePath: { eq: "Develop.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
           ...GatsbyImageSharpFluid
