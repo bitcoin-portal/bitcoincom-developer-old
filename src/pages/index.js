@@ -25,7 +25,7 @@ const ButtonWrapper = styled.div`
   justify-items: center;
   max-width: 700px;
   ${media.md`
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: ${theme.spacing.unit * 4}px auto;
   `}
 `;
@@ -74,6 +74,9 @@ const IndexPage = ({ location, data }: Props) => {
             </Button>
             <Button href="/badger" round link dark>
               Badger SDK
+            </Button>
+            <Button href="/cashscript/docs/getting-started" round link dark>
+              CashScript
             </Button>
           </ButtonWrapper>
         </ContentBlock>
