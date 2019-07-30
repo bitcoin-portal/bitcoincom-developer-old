@@ -125,3 +125,5 @@ usage
 ```
 
 .
+
+redeploy
