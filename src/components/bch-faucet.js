@@ -13,6 +13,7 @@ import {
   Input,
   Button,
   Card,
+  Link,
 } from 'bitcoincom-storybook';
 import FaucetBalanceDisplay from './FaucetBalanceDisplay';
 
@@ -57,7 +58,8 @@ class BchFaucet extends React.PureComponent<Props, State> {
     }));
   };
 
-  requestBCH = async () => {
+  requestBCH = async e => {
+    e.preventDefault();
     const { bchAddr } = this.state;
     try {
       this.wipeOutput();
@@ -127,7 +129,7 @@ class BchFaucet extends React.PureComponent<Props, State> {
           This is a <u>testnet</u> faucet for Bitcoin Cash! It is built with{' '}
           <StyledLink to="/bitbox">BITBOX JavaScript SDK</StyledLink> and is
           funded by the{' '}
-          <SmartLink to="https://www.bitcoin.com/bitcoin-mining">
+          <SmartLink to="https://mining.bitcoin.com/">
             Bitcoin.com Mining Pool
           </SmartLink>
           . It currently gives out <u>0.1 BCH</u>.
@@ -139,12 +141,23 @@ class BchFaucet extends React.PureComponent<Props, State> {
         />
 
         <Paragraph>
-          <SmartLink to="https://github.com/Bitcoin-com/testnet-faucet">
+          <Link
+            href="https://github.com/Bitcoin-com/testnet-faucet"
+            target="_blank"
+            rel="noopenner noreferrer"
+          >
             Fork the code on GitHub!
-          </SmartLink>
+          </Link>
         </Paragraph>
 
-        <form style={{ textAlign: 'center', marginBottom: 32 }}>
+        <form
+          style={{
+            textAlign: 'center',
+            marginBottom: 32,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <H3 for="bchAddr" as="label">
             BCH Testnet Address
           </H3>
@@ -155,6 +168,7 @@ class BchFaucet extends React.PureComponent<Props, State> {
             placeholder="bchtest:qqmd9unmhkpx4pkmr6fkrr8rm6y77vckjvqe8aey35"
             value={bchAddr}
             onChange={this.handleChange}
+            style={{ margin: 'auto', marginBottom: 16 }}
           />
           <Button primary onClick={this.requestBCH} style={{ margin: 'auto' }}>
             Get tBCH!
