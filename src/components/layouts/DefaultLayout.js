@@ -10,7 +10,7 @@ import NavBar from 'components/NavBar';
 import ShareFooter from 'components/ShareFooter';
 import { theme } from 'bitcoincom-storybook';
 import Img from 'gatsby-image';
-import { GlobalStyle } from './globalStyle';
+// import { GlobalStyle } from './globalStyle';
 
 type Props = {
   children: React.Node,
@@ -49,7 +49,6 @@ const DefaultLayout = ({ children, location, heroImage, hero }: Props) => (
           <meta charSet="utf-8" />
         </HelmetPlus>
 
-        <GlobalStyle />
         <TopWrap background={heroImage !== null}>
           {heroImage && heroImage.childImageSharp && (
             <Img
