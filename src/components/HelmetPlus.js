@@ -42,7 +42,7 @@ class HelmetPlus extends React.PureComponent<Props> {
       location,
       children,
     } = this.props;
-    console.log(location);
+
     return (
       <Helmet>
         {/* General tags */}
