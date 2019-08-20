@@ -90,7 +90,7 @@ class BchFaucet extends React.PureComponent<Props, State> {
 
       this.addOutput(`Success: testnet BCH are on their way!`);
       this.addOutput(`TXID: ${body.txid}`);
-
+      console.log(body);
       // Show the link to the block explorer.
       this.showLink(body.txid);
     } catch (err) {
@@ -181,7 +181,7 @@ class BchFaucet extends React.PureComponent<Props, State> {
 
         {linkOn && (
           <TxLink>
-            <SmartLink to={linkAddr}>View TX on Block Explorer</SmartLink>
+            <SmartLink href={linkAddr}>View TX on Block Explorer</SmartLink>
           </TxLink>
         )}
 
