@@ -1,0 +1,25 @@
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+___gatsby,
+___gatsby div {
+  font-family: 'Gilroy', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #131720;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+@media screen and (min-width: 960px) {
+  html,
+  body,
+  ___gatsby,
+  ___gatsby div {
+    font-size: 20px;
+  }
+}
