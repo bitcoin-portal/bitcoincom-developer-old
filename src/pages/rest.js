@@ -31,7 +31,7 @@ const RestPage = ({ location, data }: Props) => (
         <H1 contrast>REST</H1>
         <H2 contrast>REST layer for Bitcoin.com Cloud</H2>
 
-        <Button round dark href="/rest/docs/getting-started">
+        <Button round link dark href="/rest/docs/getting-started">
           Start Here
         </Button>
       </ContentBlock>
