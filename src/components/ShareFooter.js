@@ -1,8 +1,15 @@
 // @flow
 
 import React from 'react';
+import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import spacing from 'styles/spacing';
 import { ContentBlock, H2, Button } from 'bitcoincom-storybook';
+
+const EmailCTA = styled.div`
+  display: grid;
+  grid-gap: ${spacing.small};
+`;
 
 const SharedFooter = () => (
   <>
@@ -17,6 +24,9 @@ const SharedFooter = () => (
     </Helmet>
     <ContentBlock>
       <H2>Do You Want To Get Free Developer Resources?</H2>
+      <EmailCTA>
+        <div id="om-v8lwzo6nqacmgnulutqp-holder" />
+      </EmailCTA>
       <Button
         link
         primary
