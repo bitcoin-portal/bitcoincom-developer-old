@@ -9,3 +9,6 @@ package-lock.json
 # Build directory
 /public
 .DS_Store
+
+# IDE / Text Editor
+.vscode/
