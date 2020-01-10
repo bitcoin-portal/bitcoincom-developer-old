@@ -7,7 +7,14 @@ import { graphql } from 'gatsby';
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, media, ContentBlock, H2, H1, Card } from 'bitcoincom-storybook';
+import {
+  theme,
+  media,
+  ContentBlock,
+  H2,
+  H1,
+  Card,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const CardContainer = styled.div`
   display: grid;

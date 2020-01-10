@@ -16,7 +16,11 @@ import media from 'styles/media';
 
 import { getTitleDisplay } from 'utils/formatting';
 import { getIcon } from 'utils/icon-helpers';
-import { Markdown, ContentBlock, theme } from 'bitcoincom-storybook';
+import {
+  Markdown,
+  ContentBlock,
+  theme,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const SideNavLayout = styled.div`
   position: relative;

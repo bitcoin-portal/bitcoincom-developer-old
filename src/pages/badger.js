@@ -17,7 +17,7 @@ import {
   Button,
   Card,
   CardContainer,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const ButtonWrapper = styled.div`
   display: grid;

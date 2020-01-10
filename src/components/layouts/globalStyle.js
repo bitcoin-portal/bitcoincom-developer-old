@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from 'bitcoincom-storybook';
+import { theme } from '@bitcoin-portal/bitcoincom-storybook';
 
 export const GlobalStyle = createGlobalStyle`
   html {

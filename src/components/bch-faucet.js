@@ -14,7 +14,7 @@ import {
   Button,
   Card,
   Link,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 import FaucetBalanceDisplay from './FaucetBalanceDisplay';
 
 const SERVER = `https://faucet.bchtest.net`;

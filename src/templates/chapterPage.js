@@ -21,7 +21,7 @@ import {
   H2,
   Paragraph,
   Markdown,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   data: Object,

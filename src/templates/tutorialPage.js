@@ -11,7 +11,7 @@ import HelmetPlus from 'components/HelmetPlus';
 import StyledLink from 'atoms/StyledLink';
 
 import spacing from 'styles/spacing';
-import { Markdown, H2, H3 } from 'bitcoincom-storybook';
+import { Markdown, H2, H3 } from '@bitcoin-portal/bitcoincom-storybook';
 
 const PageLayout = styled.div`
   display: grid;

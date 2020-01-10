@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { theme } from 'bitcoincom-storybook';
+import { theme } from '@bitcoin-portal/bitcoincom-storybook';
 
 const StyledLink = styled(Link)`
   text-decoration: none;

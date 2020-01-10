@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { theme, media, H2 } from 'bitcoincom-storybook';
+import { theme, media, H2 } from '@bitcoin-portal/bitcoincom-storybook';
 import StyledLink from 'atoms/StyledLink';
 
 const Wrapper = styled.div`
