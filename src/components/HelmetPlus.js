@@ -20,6 +20,7 @@ const keywordsBase = [
 type Props = {
   title: string,
   description?: string,
+  canonical: string[],
   image?: string,
   keywords?: string[],
   location: { pathname: string, origin: string },
@@ -29,6 +30,7 @@ class HelmetPlus extends React.PureComponent<Props> {
   static defaultProps = {
     keywords: [],
     description: '',
+    canonical: [],
     image: '',
     children: null,
   };
@@ -37,6 +39,7 @@ class HelmetPlus extends React.PureComponent<Props> {
     const {
       title,
       description,
+      canonical,
       keywords,
       image,
       location,
@@ -49,6 +52,7 @@ class HelmetPlus extends React.PureComponent<Props> {
         <meta charSet="utf-8" />
         {title && <title>{title}</title>}
         {description && <meta name="description" content={description} />}
+        {canonical && <link rel="canonical" href={canonical} />}
         {keywords ? (
           <meta
             name="keywords"

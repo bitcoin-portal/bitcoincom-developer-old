@@ -22,7 +22,7 @@ type Props = {
   data: { heroImage: any },
 };
 
-const RestPage = ({ location, data }: Props) => (
+const CashscriptPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
@@ -45,7 +45,7 @@ const RestPage = ({ location, data }: Props) => (
     <HelmetPlus
       title={`CashScript: CashScript SDK Reference`}
       description="Bitcoin.com developer platform, SDK and resources. Build on Bitcoin Cash (BCH)."
-      canonical="/cashscript"
+      canonical={`/cashscript`}
       keywords={[
         'cashscript',
         'cashscript documentation',
@@ -77,7 +77,7 @@ const RestPage = ({ location, data }: Props) => (
   </DefaultLayout>
 );
 
-export default RestPage;
+export default CashscriptPage;
 
 export const query = graphql`
   query {
