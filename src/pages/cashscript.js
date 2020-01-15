@@ -45,7 +45,6 @@ const CashscriptPage = ({ location, data }: Props) => (
     <HelmetPlus
       title={`CashScript: CashScript SDK Reference`}
       description="Bitcoin.com developer platform, SDK and resources. Build on Bitcoin Cash (BCH)."
-      canonical={`/cashscript`}
       keywords={[
         'cashscript',
         'cashscript documentation',
@@ -55,6 +54,7 @@ const CashscriptPage = ({ location, data }: Props) => (
       ]}
       location={location}
     />
+
     <ContentBlock>
       <CardContainer>
         <Card
