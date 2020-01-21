@@ -13,7 +13,7 @@ import {
   H1,
   H2,
   Card,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   location: Object,

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Paragraph, H4 } from 'bitcoincom-storybook';
+import { Paragraph, H4 } from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   title: string,

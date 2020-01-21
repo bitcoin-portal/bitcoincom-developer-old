@@ -3,7 +3,7 @@
 import React from 'react';
 import DefaultLayout from 'components/layouts/DefaultLayout';
 
-import { H1, Paragraph } from 'bitcoincom-storybook';
+import { H1, Paragraph } from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   location: Object,

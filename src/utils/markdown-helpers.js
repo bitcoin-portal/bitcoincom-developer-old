@@ -20,7 +20,7 @@ import {
   H2,
   H1,
   Card,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 import spacing from 'styles/spacing';
 
 const Text = styled(Paragraph)`

@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import { Nav, Footer } from 'bitcoincom-universal';
+import { Nav, Footer } from '@bitcoin-portal/bitcoincom-universal';
 import { StaticQuery, graphql } from 'gatsby';
 
 import HelmetPlus from 'components/HelmetPlus';
 import NavBar from 'components/NavBar';
 import ShareFooter from 'components/ShareFooter';
-import { theme } from 'bitcoincom-storybook';
+import { theme } from '@bitcoin-portal/bitcoincom-storybook';
 import Img from 'gatsby-image';
 // import { GlobalStyle } from './globalStyle';
 

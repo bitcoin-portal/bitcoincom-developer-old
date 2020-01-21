@@ -4,11 +4,11 @@
   "version": "4.3.0",
   "author": "Peter <peter@bitcoin.com> and Gabriel Cardona <gabriel@bitcoin.com>",
   "dependencies": {
+    "@bitcoin-portal/bitcoincom-storybook": "^1.0.0",
+    "@bitcoin-portal/bitcoincom-universal": "^1.3.10",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "badger-components-react": "^0.3.0",
-    "bitcoincom-storybook": "git+ssh://git@github.com/bitcoin-portal/bitcoincom-storybook.git",
-    "bitcoincom-universal": "git+ssh://git@github.com/bitcoin-portal/bitcoincom-universal.git",
     "gatsby": "^2.1.18",
     "gatsby-image": "^2.0.30",
     "gatsby-plugin-flow": "^1.0.2",
