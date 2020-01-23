@@ -8,6 +8,7 @@ import DefaultLayout from 'components/layouts/DefaultLayout';
 
 import StyledLink from 'atoms/StyledLink';
 import Text from 'atoms/Text';
+import H1 from 'atoms/H1';
 import H2 from 'atoms/H2';
 import Select from 'atoms/Select';
 
@@ -16,7 +17,11 @@ import media from 'styles/media';
 
 import { getTitleDisplay } from 'utils/formatting';
 import { getIcon } from 'utils/icon-helpers';
-import { Markdown, ContentBlock, theme } from 'bitcoincom-storybook';
+import {
+  Markdown,
+  ContentBlock,
+  theme,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const SideNavLayout = styled.div`
   position: relative;
@@ -171,8 +176,8 @@ class DocTemplate extends React.PureComponent<Props> {
           }
         >
           <BreadCrumbLayout>
-            <H2 centerVertical>{getIcon(doc.frontmatter.icon)}</H2>
-            <H2>{doc.frontmatter.title}</H2>
+            <H1 centerVertical>{getIcon(doc.frontmatter.icon)}</H1>
+            <H1>{doc.frontmatter.title}</H1>
           </BreadCrumbLayout>
           <Markdown htmlAst={doc.htmlAst} />
         </StyledContentBlock>

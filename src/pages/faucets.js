@@ -14,7 +14,7 @@ import {
   Card,
   Button,
   CardContainer,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   location: Object,
