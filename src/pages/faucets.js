@@ -49,6 +49,7 @@ const Faucet = ({ location, data }: Props) => (
     <ContentBlock>
       <CardContainer>
         <Card
+          small
           image={data.faucetImage.childImageSharp.fluid.src}
           title="BCH Testnet Faucet"
           subtitle="Bitcoin Cash testnet faucet.  Get some testnet BCH for your development needs"
