@@ -144,6 +144,7 @@ class DocTemplate extends React.PureComponent<Props> {
             'developer resource',
             'documentation',
           ]}
+          canonical={doc.frontmatter.canonical}
         />
         <StyledContentBlock
           left

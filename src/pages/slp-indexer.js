@@ -14,8 +14,7 @@ import {
   H1,
   H3,
   Button,
-  Card,
-  CardContainer,
+  Markdown,
 } from '@bitcoin-portal/bitcoincom-storybook';
 
 const ButtonWrapper = styled.div`
@@ -45,7 +44,7 @@ type Props = {
   },
 };
 
-const BadgerPage = ({ location, data }: Props) => (
+const SlpIndexerPage = ({ location, data }: Props) => (
   <DefaultLayout
     location={location}
     hero={
@@ -87,29 +86,11 @@ const BadgerPage = ({ location, data }: Props) => (
       keywords={['slp', 'slp indexer', 'SLP tokens', 'simple ledger protocol']}
       location={location}
     />
-    <ContentBlock>
-      <CardContainer>
-        <Card
-          small
-          image={data.badgerSDKImage.childImageSharp.fluid.src}
-          title="Badger SDK"
-          subtitle="Badger Wallet injects an API into pages a user visits to allow apps to request a users's permission to send Bitcoin Cash, send tokens, or authenticate with CashID."
-          cta={{ text: 'View', link: '/badger/docs/getting-started' }}
-        />
-
-        <Card
-          small
-          image={data.badgerReactImage.childImageSharp.fluid.src}
-          title="Badger React Components"
-          subtitle="React based components and tools to make integrating Bitcoin Cash (BCH) into your next project easy."
-          cta={{ text: 'View', link: '/badger/docs/badger-components-react' }}
-        />
-      </CardContainer>
-    </ContentBlock>
+    <ContentBlock></ContentBlock>
   </DefaultLayout>
 );
 
-export default BadgerPage;
+export default SlpIndexerPage;
 
 export const query = graphql`
   query {
