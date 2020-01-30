@@ -152,7 +152,7 @@ class DocTemplate extends React.PureComponent<Props> {
           location={location}
           title={`${getTitleDisplay(doc.fields.product)}: ${
             doc.frontmatter.title
-          } - ${data.site.siteMetadata.title}`}
+          }`}
           keywords={[
             `${doc.fields.product}`,
             `${doc.fields.product} documentation`,

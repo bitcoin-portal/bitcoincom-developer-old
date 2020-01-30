@@ -86,7 +86,9 @@ const SlpIndexerPage = ({ location, data }: Props) => (
       keywords={['slp', 'slp indexer', 'SLP tokens', 'simple ledger protocol']}
       location={location}
     />
-    <ContentBlock></ContentBlock>
+    {/* <ContentBlock>
+      <Markdown htmlAst={data.markdownRemark.htmlAst} />
+    </ContentBlock> */}
   </DefaultLayout>
 );
 
@@ -99,18 +101,14 @@ export const query = graphql`
         title
       }
     }
-    badgerSDKImage: file(relativePath: { eq: "Badger_sdk.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 200, quality: 85) {
-          ...GatsbyImageSharpFluid
-        }
+    markdownRemark(fields: { slug: { eq: "/bitbox/docs/getting-started" } }) {
+      htmlAst
+      frontmatter {
+        title
       }
-    }
-    badgerReactImage: file(relativePath: { eq: "Badger_react.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 200, quality: 85) {
-          ...GatsbyImageSharpFluid
-        }
+      fields {
+        product
+        slug
       }
     }
   }
