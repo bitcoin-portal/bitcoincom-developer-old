@@ -116,6 +116,7 @@ class ChapterTemplate extends React.PureComponent<Props> {
             `chapter ${currentChapter}`,
             'free book',
           ]}
+          canonical={`https://developer.bitcoin.com${chapterNode.fields.slug}`}
         />
         <StyledContentBlock
           aside={

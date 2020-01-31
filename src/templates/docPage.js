@@ -162,7 +162,7 @@ class DocTemplate extends React.PureComponent<Props> {
             'developer resource',
             'documentation',
           ]}
-          canonical={doc.frontmatter.canonical}
+          canonical={`https://developer.bitcoin.com${doc.fields.slug}`}
         />
         <StyledContentBlock
           left
