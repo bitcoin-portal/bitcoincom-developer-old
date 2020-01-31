@@ -32,6 +32,12 @@ const ButtonWrapper = styled.div`
   `}
 `;
 
+const StyledContentBlock = styled(ContentBlock)`
+  & div div {
+    text-align: left;
+  }
+`;
+
 type Props = {
   location: Object,
   data: {
@@ -86,9 +92,9 @@ const SlpIndexerPage = ({ location, data }: Props) => (
       keywords={['slp', 'slp indexer', 'SLP tokens', 'simple ledger protocol']}
       location={location}
     />
-    {/* <ContentBlock>
-      <Markdown htmlAst={data.markdownRemark.htmlAst} />
-    </ContentBlock> */}
+    <StyledContentBlock>
+      <Markdown htmlAst={data.file.childMarkdownRemark.htmlAst} />
+    </StyledContentBlock>
   </DefaultLayout>
 );
 
@@ -109,6 +115,11 @@ export const query = graphql`
       fields {
         product
         slug
+      }
+    }
+    file(relativePath: { eq: "slp-indexer-readme.md" }) {
+      childMarkdownRemark {
+        htmlAst
       }
     }
   }
