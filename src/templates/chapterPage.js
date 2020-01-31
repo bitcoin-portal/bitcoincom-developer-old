@@ -66,6 +66,11 @@ const ChapterHolder = styled.div`
   word-break: break-word;
   & > div {
     display: grid;
+    max-width: 820px;
+  }
+  & > div > div {
+    max-width: 820px !important;
+    overflow: auto;
   }
   /* Remove margin from first element of markdown content */
   & > div > *:first-child {
@@ -111,6 +116,7 @@ class ChapterTemplate extends React.PureComponent<Props> {
             `chapter ${currentChapter}`,
             'free book',
           ]}
+          canonical={`https://developer.bitcoin.com${chapterNode.fields.slug}`}
         />
         <StyledContentBlock
           aside={

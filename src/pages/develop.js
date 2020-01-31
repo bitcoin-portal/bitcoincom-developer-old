@@ -105,6 +105,13 @@ const DevelopPage = ({ location, data }: Props) => (
         />
         <Card
           small
+          image={data.slpImage.childImageSharp.fluid.src}
+          title="SLP Indexer"
+          subtitle="Validate and index SLP Tokens on the Bitcoin Cash network. Our SLP Indexer is built to scale for exchanges, wallets, games, and the entire token community."
+          cta={{ text: 'View', link: '/slp-indexer' }}
+        />
+        <Card
+          small
           image={data.cashScriptImage.childImageSharp.fluid.src}
           cta={{ text: 'View', link: '/cashscript/docs/getting-started' }}
           title="CashScript"

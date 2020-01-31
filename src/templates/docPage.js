@@ -8,7 +8,6 @@ import DefaultLayout from 'components/layouts/DefaultLayout';
 
 import StyledLink from 'atoms/StyledLink';
 import Text from 'atoms/Text';
-import H1 from 'atoms/H1';
 import H2 from 'atoms/H2';
 import Select from 'atoms/Select';
 
@@ -21,6 +20,7 @@ import {
   Markdown,
   ContentBlock,
   theme,
+  H1,
 } from '@bitcoin-portal/bitcoincom-storybook';
 
 const SideNavLayout = styled.div`
@@ -35,12 +35,30 @@ const SideNavSticky = styled.div`
 `;
 
 const BreadCrumbLayout = styled.div`
-  grid-area: breadcrumbs;
-  display: grid;
-  grid-template-rows: min-content;
-  grid-template-columns: repeat(3, max-content);
-  grid-gap: ${spacing.small};
+  width: 100%;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  & h1 {
+    padding-bottom: 0;
+    display: inline-block;
+  }
+  & div {
+    display: inline-block;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 5px;
+    ${media.medium`
+    font-size: 40px;
+    margin-right: 10px;
+    `}
+    ${media.large`
+    font-size: 60px;
+    `}
+  }
 `;
 
 const StyledContentBlock = styled(ContentBlock)`
@@ -134,7 +152,7 @@ class DocTemplate extends React.PureComponent<Props> {
           location={location}
           title={`${getTitleDisplay(doc.fields.product)}: ${
             doc.frontmatter.title
-          } - ${data.site.siteMetadata.title}`}
+          }`}
           keywords={[
             `${doc.fields.product}`,
             `${doc.fields.product} documentation`,
@@ -144,6 +162,7 @@ class DocTemplate extends React.PureComponent<Props> {
             'developer resource',
             'documentation',
           ]}
+          canonical={`https://developer.bitcoin.com${doc.fields.slug}`}
         />
         <StyledContentBlock
           left
@@ -176,7 +195,7 @@ class DocTemplate extends React.PureComponent<Props> {
           }
         >
           <BreadCrumbLayout>
-            <H1 centerVertical>{getIcon(doc.frontmatter.icon)}</H1>
+            <div centerVertical>{getIcon(doc.frontmatter.icon)}</div>
             <H1>{doc.frontmatter.title}</H1>
           </BreadCrumbLayout>
           <Markdown htmlAst={doc.htmlAst} />
