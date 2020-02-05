@@ -51,6 +51,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       const isGui = filePath.includes('/gui/');
       const isRest = filePath.includes('/rest/');
       const isBadger = filePath.includes('/badger/');
+      const isWalletApi = filePath.includes('/wallet-api/');
 
       // get platform
       const isJs = filePath.includes('/js/');
@@ -88,6 +89,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       if (isCashScript) {
         slug = `/cashscript/docs/${filename}`;
         product = 'cashscript';
+      }
+      if (isWalletApi) {
+        slug = `/wallet-api/docs/${filename}`;
+        product = 'wallet-api';
       }
 
       createNodeField({

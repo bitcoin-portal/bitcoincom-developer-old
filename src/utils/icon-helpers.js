@@ -35,6 +35,7 @@ import {
   FaUserCircle,
   FaWallet,
   FaReact,
+  FaFileInvoiceDollar,
 } from 'react-icons/fa';
 
 // Whitelist of valid icons
@@ -100,6 +101,8 @@ export const getIcon = (icon: string): React.Node => {
       return <FaUserCircle />;
     case 'react':
       return <FaReact />;
+    case 'invoice':
+      return <FaFileInvoiceDollar />;
     default:
       return <FaAngleRight />;
   }
