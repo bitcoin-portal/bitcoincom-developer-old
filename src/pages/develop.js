@@ -91,6 +91,13 @@ const DevelopPage = ({ location, data }: Props) => (
         />
         <Card
           small
+          image={data.buildImage.childImageSharp.fluid.src}
+          title="Wallet API"
+          subtitle="A javascript client package for building blockchain connected applications; with support for existing Bitcoin Cash non-custodial Wallets."
+          cta={{ text: 'View', link: '/wallet-api' }}
+        />
+        <Card
+          small
           image={data.restImage.childImageSharp.fluid.src}
           title="REST"
           subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
@@ -169,6 +176,13 @@ export const query = graphql`
     badgerImage: file(relativePath: { eq: "Badger.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    buildImage: file(relativePath: { eq: "build.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 132, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }
