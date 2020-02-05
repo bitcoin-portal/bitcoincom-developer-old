@@ -12,9 +12,8 @@ function init() {
 
 function downloadData() {
   console.log('Downloading Data. Please wait...')
-  // TODO: revert once PR on bitcoin-com/developer.bitcoin.com is merged
   download(
-    'direct:https://github.com/nickfujita/developer.bitcoin.com.git#wallet-api',
+    'direct:https://github.com/Bitcoin-com/developer.bitcoin.com.git',
     'temp',
     { clone: true },
     function(err) {
