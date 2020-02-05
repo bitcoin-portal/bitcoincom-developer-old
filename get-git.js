@@ -1,17 +1,17 @@
-const download = require('download-git-repo');
-const ncp = require('ncp').ncp;
-const rimraf = require('rimraf');
+const download = require('download-git-repo')
+const ncp = require('ncp').ncp
+const rimraf = require('rimraf')
 
 function init() {
-  console.log('Cleaning up directories');
-  rimraf('./temp', () => {});
+  console.log('Cleaning up directories')
+  rimraf('./temp', () => {})
   rimraf('./src/data', () => {
-    downloadData();
-  });
+    downloadData()
+  })
 }
 
 function downloadData() {
-  console.log('Downloading Data. Please wait...');
+  console.log('Downloading Data. Please wait...')
   // TODO: revert once PR on bitcoin-com/developer.bitcoin.com is merged
   download(
     'direct:https://github.com/nickfujita/developer.bitcoin.com.git#wallet-api',
@@ -21,33 +21,33 @@ function downloadData() {
       console.log(
         err
           ? 'Error Downloading Data. Trying again in 10 seconds'
-          : 'Download Success!',
-      );
+          : 'Download Success!'
+      )
       if (!err) {
-        move();
+        move()
       } else {
-        setTimeout(downloadData(), 10 * 1000);
+        setTimeout(downloadData(), 10 * 1000)
       }
-    },
-  );
+    }
+  )
 }
 
 function move() {
-  console.log('Copying Data, please wait');
+  console.log('Copying Data, please wait')
   ncp('./temp/src/data', './src/data', function(err) {
     if (err) {
-      return console.error(err);
+      return console.error(err)
     }
-    console.log('Copying Complete');
-    deleteTemp();
-  });
+    console.log('Copying Complete')
+    deleteTemp()
+  })
 }
 
 function deleteTemp() {
-  console.log('Deleting Temp Directory');
+  console.log('Deleting Temp Directory')
   rimraf('./temp', function() {
-    console.log('Deleted Temp Directory');
-  });
+    console.log('Deleted Temp Directory')
+  })
 }
 
-init();
+init()
