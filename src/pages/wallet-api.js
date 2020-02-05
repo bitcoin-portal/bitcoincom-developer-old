@@ -40,14 +40,18 @@ const WalletApiPage = ({ location, data }: Props) => (
     }
   >
     <HelmetPlus
-      title={`REST - ${data.site.siteMetadata.title}`}
-      description="REST based bitcoin.com developer platform and resources.  Full Bitcoin Cash and SLP api over a REST interface"
+      title={`Wallet API - ${data.site.siteMetadata.title}`}
+      description="A standard interface for blockchain connected applications to interact with 3rd party user wallets."
       keywords={[
-        'rest api',
-        'bitcoin cash RPC',
-        'bitcoin cash rest',
-        'bitcoin rest',
-        'slp rest',
+        'walelt api',
+        'bitcoin cash wallet',
+        'bitcoin cash apps',
+        'bitcoin api',
+        'web3',
+        'bitcoin web3',
+        'bitcoin cash web3',
+        'web4bch',
+        'dapi',
       ]}
       location={location}
     />
