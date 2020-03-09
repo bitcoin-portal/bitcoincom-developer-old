@@ -1,0 +1,35 @@
+name: Build and deploy to staging environment
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Config
+        run: |
+          npm config set //npm.pkg.github.com/:_authToken ${{ secrets.PERSONAL_ACCESS_TOKEN_DOWNLOAD_PACKAGES}}
+          npm config set @bitcoin-portal:registry https://npm.pkg.github.com
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --cache-control 'no-cache, no-store'
+        env:
+          AWS_S3_BUCKET: ${{ secrets.STAGING_AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.STAGING_AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-east-1'
+          SOURCE_DIR: 'public/'
+      - uses: ncribt/slack-deploy-notification@master
+        if: always()
+        with:
+          slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          job-status: ${{ job.status }}
+          deployed-project-url: 'https://${{ secrets.STAGING_AWS_S3_BUCKET }}'
