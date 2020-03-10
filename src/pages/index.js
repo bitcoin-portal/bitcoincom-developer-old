@@ -102,8 +102,8 @@ const IndexPage = ({ location, data }: Props) => {
             <Button href="/cashscript/docs/getting-started" round link dark>
               CashScript
             </Button>
-            <Button href="/wallet-api" round link dark>
-              Wallet API
+            <Button href="/bitcoincom-link" round link dark>
+              Bitcoin.com Link
             </Button>
           </ButtonWrapper>
         </ContentBlock>
