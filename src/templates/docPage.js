@@ -135,7 +135,7 @@ class DocTemplate extends React.PureComponent<Props> {
       rest: '/rest/docs/getting-started',
       slp: '/slp/docs/js/getting-started',
       cashscript: '/cashscript/docs/getting-started',
-      'wallet-api': '/wallet-api/docs/getting-started',
+      'bitcoincom-link': '/bitcoincom-link/docs/getting-started',
     }[event.target.value];
 
     if (pageTarget) push(pageTarget);
@@ -189,8 +189,8 @@ class DocTemplate extends React.PureComponent<Props> {
                     <option value="cashscript">
                       {getTitleDisplay('cashscript')}
                     </option>
-                    <option value="wallet-api">
-                      {getTitleDisplay('wallet-api')}
+                    <option value="bitcoincom-link">
+                      {getTitleDisplay('bitcoincom-link')}
                     </option>
                   </Select>
                 </NavFooter>

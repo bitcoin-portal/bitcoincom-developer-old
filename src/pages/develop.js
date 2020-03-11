@@ -92,9 +92,9 @@ const DevelopPage = ({ location, data }: Props) => (
         <Card
           small
           image={data.buildImage.childImageSharp.fluid.src}
-          title="Wallet API"
+          title="Bitcoin.com Link"
           subtitle="A javascript client package for building blockchain connected applications; with support for existing Bitcoin Cash non-custodial Wallets."
-          cta={{ text: 'View', link: '/wallet-api' }}
+          cta={{ text: 'View', link: '/bitcoincom-link' }}
         />
         <Card
           small
