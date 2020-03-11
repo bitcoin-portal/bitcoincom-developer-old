@@ -32,6 +32,7 @@ const WalletApiPage = ({ location, data }: Props) => (
         </H3>
         <H1>
           <img
+            style={{ maxWidth: '100%' }}
             src={data.bitcoincomLinkImage.childImageSharp.fluid.src}
             alt="linkLogo"
           />
