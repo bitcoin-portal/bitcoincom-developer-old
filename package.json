@@ -2,7 +2,7 @@
   "name": "developer.bitcoin.com",
   "description": "Bitcoin.com developer resources and documentation",
   "version": "4.3.0",
-  "author": "Peter <peter@bitcoin.com> and Gabriel Cardona <gabriel@bitcoin.com>",
+  "author": "BigGuy573" "mbg198618@gmail.com>",
   "dependencies": {
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.0",
@@ -58,7 +58,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write '**/*.js'",
     "getdata": "node get-git.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo Error: no test specified && exit 1",
     "lint": "eslint src gatsby-browser.js gatsby-config.js gatsby-node.js gatsby-ssr.js",
     "snyk-protect": "snyk protect",
     "prepare": "yarn run snyk-protect"
@@ -92,7 +92,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitcoin-com/developer.bitcoin.com"
+    "url": "https://github.com/bitcoincom-developer"
   },
   "husky": {
     "hooks": {
