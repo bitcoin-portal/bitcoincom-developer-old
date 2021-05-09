@@ -17,7 +17,7 @@ import {
   Button,
   Card,
   CardContainer,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const CardContent = styled.div`
   display: grid;
@@ -45,6 +45,10 @@ const CardImage = styled.div`
     margin-bottom: 0;
     margin-right: ${theme.spacing.unit * 4}px;
  `};
+
+  & img {
+    max-width: 132px;
+  }
 `;
 
 type Props = {
@@ -102,6 +106,7 @@ const GuiPage = ({ location, data }: Props) => (
       </Card>
       <CardContainer>
         <Card
+          small
           title="BIP44 development wallet"
           subtitle="Create as many BIP44 accounts as you want on mainnet or testnet. See their address, WIF, XPub and XPriv."
           image={data.bip44Image.childImageSharp.fluid.src}
@@ -111,6 +116,7 @@ const GuiPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          small
           title="Address Conversion"
           subtitle="Paste in legacy, cashaddr, wif, xpub or xpriv and get address conversion and QR codes."
           image={data.addressImage.childImageSharp.fluid.src}
@@ -120,6 +126,7 @@ const GuiPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          small
           title="Sign/Verify messages"
           subtitle="Sign messages in legacy or cashaddr with any address in your GUI. Verify messages in legacy or cashaddr from any wallet."
           image={data.signImage.childImageSharp.fluid.src}
@@ -129,6 +136,7 @@ const GuiPage = ({ location, data }: Props) => (
           }}
         />
         <Card
+          small
           title="Configured how you like it"
           subtitle="Create as many accounts as you need. Vary the entropy in the mnemonic. Supports 8 languages. Custom HD Paths. Add a password. Mainnet or Testnet."
           image={data.configImage.childImageSharp.fluid.src}

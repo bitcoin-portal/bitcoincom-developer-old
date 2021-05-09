@@ -16,7 +16,12 @@ import media from 'styles/media';
 
 import { getTitleDisplay } from 'utils/formatting';
 import { getIcon } from 'utils/icon-helpers';
-import { Markdown, ContentBlock, theme } from 'bitcoincom-storybook';
+import {
+  Markdown,
+  ContentBlock,
+  theme,
+  H1,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const SideNavLayout = styled.div`
   position: relative;
@@ -30,12 +35,30 @@ const SideNavSticky = styled.div`
 `;
 
 const BreadCrumbLayout = styled.div`
-  grid-area: breadcrumbs;
-  display: grid;
-  grid-template-rows: min-content;
-  grid-template-columns: repeat(3, max-content);
-  grid-gap: ${spacing.small};
+  width: 100%;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  & h1 {
+    padding-bottom: 0;
+    display: inline-block;
+  }
+  & div {
+    display: inline-block;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 5px;
+    ${media.medium`
+    font-size: 40px;
+    margin-right: 10px;
+    `}
+    ${media.large`
+    font-size: 60px;
+    `}
+  }
 `;
 
 const StyledContentBlock = styled(ContentBlock)`
@@ -112,6 +135,7 @@ class DocTemplate extends React.PureComponent<Props> {
       rest: '/rest/docs/getting-started',
       slp: '/slp/docs/js/getting-started',
       cashscript: '/cashscript/docs/getting-started',
+      'bitcoincom-link': '/bitcoincom-link/docs/getting-started',
     }[event.target.value];
 
     if (pageTarget) push(pageTarget);
@@ -129,7 +153,7 @@ class DocTemplate extends React.PureComponent<Props> {
           location={location}
           title={`${getTitleDisplay(doc.fields.product)}: ${
             doc.frontmatter.title
-          } - ${data.site.siteMetadata.title}`}
+          }`}
           keywords={[
             `${doc.fields.product}`,
             `${doc.fields.product} documentation`,
@@ -139,6 +163,7 @@ class DocTemplate extends React.PureComponent<Props> {
             'developer resource',
             'documentation',
           ]}
+          canonical={`https://developer.bitcoin.com${doc.fields.slug}`}
         />
         <StyledContentBlock
           left
@@ -164,6 +189,9 @@ class DocTemplate extends React.PureComponent<Props> {
                     <option value="cashscript">
                       {getTitleDisplay('cashscript')}
                     </option>
+                    <option value="bitcoincom-link">
+                      {getTitleDisplay('bitcoincom-link')}
+                    </option>
                   </Select>
                 </NavFooter>
               </SideNavSticky>
@@ -171,8 +199,8 @@ class DocTemplate extends React.PureComponent<Props> {
           }
         >
           <BreadCrumbLayout>
-            <H2 centerVertical>{getIcon(doc.frontmatter.icon)}</H2>
-            <H2>{doc.frontmatter.title}</H2>
+            <div centerVertical>{getIcon(doc.frontmatter.icon)}</div>
+            <H1>{doc.frontmatter.title}</H1>
           </BreadCrumbLayout>
           <Markdown htmlAst={doc.htmlAst} />
         </StyledContentBlock>

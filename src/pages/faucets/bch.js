@@ -6,7 +6,12 @@ import { graphql } from 'gatsby';
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, H1, H3, ContentBlock } from 'bitcoincom-storybook';
+import {
+  theme,
+  H1,
+  H3,
+  ContentBlock,
+} from '@bitcoin-portal/bitcoincom-storybook';
 import BchFaucet from 'components/bch-faucet';
 
 type Props = {

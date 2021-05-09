@@ -9,7 +9,13 @@ import DefaultLayout from 'components/layouts/DefaultLayout';
 
 import StyledLink from 'atoms/StyledLink';
 
-import { theme, ContentBlock, H1, H3, Markdown } from 'bitcoincom-storybook';
+import {
+  theme,
+  ContentBlock,
+  H1,
+  H3,
+  Markdown,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const StyledContentBlock = styled(ContentBlock)`
   margin: 0;

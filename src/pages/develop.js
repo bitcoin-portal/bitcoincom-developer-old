@@ -7,7 +7,14 @@ import { graphql } from 'gatsby';
 import DefaultLayout from 'components/layouts/DefaultLayout';
 import HelmetPlus from 'components/HelmetPlus';
 
-import { theme, media, ContentBlock, H1, H2, Card } from 'bitcoincom-storybook';
+import {
+  theme,
+  media,
+  ContentBlock,
+  H1,
+  H2,
+  Card,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const CardContainer = styled.div`
   display: grid;
@@ -84,6 +91,13 @@ const DevelopPage = ({ location, data }: Props) => (
         />
         <Card
           small
+          image={data.buildImage.childImageSharp.fluid.src}
+          title="Bitcoin.com Link"
+          subtitle="A javascript client package for building blockchain connected applications; with support for existing Bitcoin Cash non-custodial Wallets."
+          cta={{ text: 'View', link: '/bitcoincom-link' }}
+        />
+        <Card
+          small
           image={data.restImage.childImageSharp.fluid.src}
           title="REST"
           subtitle="The BCH JSON RPC over HTTP including a fully documented and interactive GUI which developers can use to test their ideas and confirm their code is making proper API calls."
@@ -95,6 +109,13 @@ const DevelopPage = ({ location, data }: Props) => (
           title="SLP"
           subtitle="Tokenize anything. Everything you need to easily issue, spend or trade your own token."
           cta={{ text: 'View', link: '/slp' }}
+        />
+        <Card
+          small
+          image={data.slpImage.childImageSharp.fluid.src}
+          title="SLP Indexer"
+          subtitle="Validate and index SLP Tokens on the Bitcoin Cash network. Our SLP Indexer is built to scale for exchanges, wallets, games, and the entire token community."
+          cta={{ text: 'View', link: '/slp-indexer' }}
         />
         <Card
           small
@@ -155,6 +176,13 @@ export const query = graphql`
     badgerImage: file(relativePath: { eq: "Badger.png" }) {
       childImageSharp {
         fluid(maxWidth: 200, quality: 85) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    buildImage: file(relativePath: { eq: "build.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 132, quality: 85) {
           ...GatsbyImageSharpFluid
         }
       }

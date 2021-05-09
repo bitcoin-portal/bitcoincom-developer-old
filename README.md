@@ -2,6 +2,7 @@
 
 Now with redesign!
 
+
 ## Developer Tooling, Cloud, and Market
 
 ### BITBOX

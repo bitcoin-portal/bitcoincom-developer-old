@@ -51,6 +51,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       const isGui = filePath.includes('/gui/');
       const isRest = filePath.includes('/rest/');
       const isBadger = filePath.includes('/badger/');
+      const isBitcoincomLink = filePath.includes('/bitcoincom-link/');
 
       // get platform
       const isJs = filePath.includes('/js/');
@@ -88,6 +89,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       if (isCashScript) {
         slug = `/cashscript/docs/${filename}`;
         product = 'cashscript';
+      }
+      if (isBitcoincomLink) {
+        slug = `/bitcoincom-link/docs/${filename}`;
+        product = 'bitcoincom-link';
       }
 
       createNodeField({

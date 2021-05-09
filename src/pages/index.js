@@ -15,7 +15,7 @@ import {
   Card,
   Paragraph,
   CardContainer,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const ButtonWrapper = styled.div`
   display: grid;
@@ -25,8 +25,32 @@ const ButtonWrapper = styled.div`
   justify-items: center;
   max-width: 700px;
   ${media.md`
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
     margin: ${theme.spacing.unit * 4}px auto;
+
+    grid-template-areas:
+      "a a b b c c"
+      ". d d e e .";
+
+    div:nth-child(1) {
+      grid-area: a;
+    }
+
+    div:nth-child(2) {
+      grid-area: b;
+    }
+
+    div:nth-child(3) {
+      grid-area: c;
+    }
+
+    div:nth-child(4) {
+      grid-area: d;
+    }
+
+    div:nth-child(5) {
+      grid-area: e;
+    }
   `}
 `;
 
@@ -77,6 +101,9 @@ const IndexPage = ({ location, data }: Props) => {
             </Button>
             <Button href="/cashscript/docs/getting-started" round link dark>
               CashScript
+            </Button>
+            <Button href="/bitcoincom-link" round link dark>
+              Bitcoin.com Link
             </Button>
           </ButtonWrapper>
         </ContentBlock>

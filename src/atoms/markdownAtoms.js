@@ -4,7 +4,7 @@
 import styled from 'styled-components';
 
 import spacing from 'styles/spacing';
-import { H1, H2, H3, UL, OL } from 'bitcoincom-storybook';
+import { H1, H2, H3, UL, OL } from '@bitcoin-portal/bitcoincom-storybook';
 import H4 from './H4';
 import Text from './Text';
 import Img from './Img';

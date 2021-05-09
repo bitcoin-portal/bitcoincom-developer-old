@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 
 import Container from 'components/Container';
 
-import { theme } from 'bitcoincom-storybook';
+import { theme } from '@bitcoin-portal/bitcoincom-storybook';
 
 const Main = styled.div`
   position: sticky;

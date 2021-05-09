@@ -12,3 +12,4 @@ package-lock.json
 
 # IDE / Text Editor
 .vscode/
+.idea

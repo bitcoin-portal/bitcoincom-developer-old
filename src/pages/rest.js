@@ -15,7 +15,7 @@ import {
   Button,
   Card,
   CardContainer,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   location: Object,
@@ -52,6 +52,7 @@ const RestPage = ({ location, data }: Props) => (
     <ContentBlock>
       <CardContainer>
         <Card
+          small
           title="BCH RPC over HTTP"
           subtitle="100% of the Bitcoin Cash JSON RPC available over HTTP with proper REST semantics. BITBOX SDK integration lets you GET and POST requests to the BCH network with no further setup. Or create your own client which to speak to the blockchain over REST."
           cta={{
@@ -61,18 +62,21 @@ const RestPage = ({ location, data }: Props) => (
           image={data.rpcImage.childImageSharp.fluid.src}
         />
         <Card
+          small
           title="Proper REST Semantics"
           subtitle="Instead of POSTing directly to bitcoind we've wrapped the BCH JSON RPC in REST semantics so you GET when reading and POST when writing from/to the chain."
           cta={{ text: 'More', link: '/rest/docs/getting-started' }}
           image={data.semanticsImage.childImageSharp.fluid.src}
         />
         <Card
+          small
           title="SLP support"
           subtitle="Get details for all your SLP tokens. The fastest and easiest API to use for integrating Simple Ledger Protocol (SLP) tokens into your next app."
           cta={{ text: 'More', link: '/rest/docs/address' }}
           image={data.slpImage.childImageSharp.fluid.src}
         />
         <Card
+          small
           title="Addresses, Blocks and Transactions"
           subtitle="Get details such as balance, utxo and unconfirmed transactions for an address. Get details about a block or transaction."
           cta={{ text: 'More', link: '/rest/docs/address' }}

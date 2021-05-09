@@ -1,7 +1,12 @@
 // @flow
 import * as React from 'react';
 import styled from 'styled-components';
-import { theme, media, Paragraph, Link } from 'bitcoincom-storybook';
+import {
+  theme,
+  media,
+  Paragraph,
+  Link,
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const Text = styled(Paragraph)`
   max-width: 800px;

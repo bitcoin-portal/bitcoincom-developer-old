@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { ContentBlock } from 'bitcoincom-storybook';
+import { ContentBlock } from '@bitcoin-portal/bitcoincom-storybook';
 
 type Props = {
   children: React.Node,

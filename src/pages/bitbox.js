@@ -18,7 +18,7 @@ import {
   Code,
   Button,
   Paragraph,
-} from 'bitcoincom-storybook';
+} from '@bitcoin-portal/bitcoincom-storybook';
 
 const HeroAside = styled.div`
   padding: ${theme.spacing.unit * 4}px;
